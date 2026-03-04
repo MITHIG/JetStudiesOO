@@ -19,8 +19,8 @@
 #include "fastjet/ClusterSequence.hh"
 #include "fastjet/ClusterSequenceArea.hh"
 #include "fastjet/contrib/SoftDrop.hh"
-#include "/afs/cern.ch/user/h/hbossi/public/headers/JetUncertainty.h"
-#include "/afs/cern.ch/user/h/hbossi/public/headers/JetCorrector.h"
+#include "HeavyIonsAnalysis/JetAnalysis/interface/JetUncertainty.h"
+#include "HeavyIonsAnalysis/JetAnalysis/interface/JetCorrector.h"
 
 using namespace std;
 using namespace edm;
@@ -551,7 +551,7 @@ void HiInclusiveJetAnalyzer::analyze(const Event& iEvent, const EventSetup& iSet
 
   // manually do the MC truth corrections for now
   vector<string> Files;
-  Files.push_back("/afs/cern.ch/user/s/subehera/public/JEC_output/for_Rp4/Files/ParallelMC_L2Relative_AK4PF.txt");
+  Files.push_back("HeavyIonsAnalysis/JetAnalysis/interface/ParallelMC_L2Relative_AK4PF.txt");
   JetCorrector JEC(Files);
 
   for (unsigned int j = 0; j < jets->size(); ++j) {
