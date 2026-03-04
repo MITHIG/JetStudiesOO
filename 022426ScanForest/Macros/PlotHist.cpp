@@ -4,6 +4,28 @@
 #include <TH1F.h>
 #include <TLegend.h>
 
+struct BlockCaptionInfo{
+  std::vector<std::string> text;
+  double x;
+  double y;
+  double size;
+  double spacing;
+  bool useNDC;
+};
+
+static void DrawTLatexLines(const BlockCaptionInfo& info)
+{
+  TLatex lat;
+  lat.SetNDC(info.useNDC);
+  lat.SetTextSize(info.size);
+  double yy = info.y;
+  for (const auto& s : info.text) {
+    lat.SetTextFont(132);  // Helvetica (normal, not bold)
+    lat.DrawLatex(info.x, yy, s.c_str());
+    yy -= info.spacing;
+  }
+}
+
 static void DrawAndSave(const std::vector<TH1*>& hs,
                         const std::vector<std::string>& labels,
                         const std::string& outPng,
@@ -13,7 +35,8 @@ static void DrawAndSave(const std::vector<TH1*>& hs,
                         float xMin = -999, float xMax = -999,
                         float yMin = -999, float yMax = -999,
                         bool logx = false,
-                        bool logy = false) {
+                        bool logy = false,
+                        BlockCaptionInfo captionInfo = {}) {
   if (hs.empty()) return;
 
   // basic sanity on labels
@@ -53,17 +76,21 @@ static void DrawAndSave(const std::vector<TH1*>& hs,
   bool first = true;
   for (auto h : hs) {
     if (!h) continue;
-    if (first) { h->Draw("HIST"); first = false; }
-    else       { h->Draw("HIST SAME"); }
+    if (first) { h->Draw("E1 HIST"); first = false; }
+    else       { h->Draw("E1 HIST SAME"); }
   }
+
+  DrawTLatexLines(captionInfo);
   // legend placement: adapt height to number of entries
   const size_t n = hs.size();
   double ly2 = 0.9;
   double ly1 = ly2 - 0.05 * std::max<size_t>(n, 1);
   if (ly1 < 0.1) ly1 = 0.1;
-  TLegend* leg = new TLegend(0.6, ly1, 0.9, ly2);
+  TLegend* leg = new TLegend(0.5, ly1, 0.9, ly2);
   leg->SetBorderSize(0);
   leg->SetFillStyle(0);
+  leg->SetTextFont(132);
+  leg->SetTextSize(0.035);
   for (size_t i = 0; i < hs.size(); ++i) {
     if (!hs[i]) continue;
     leg->AddEntry(hs[i], lab[i].c_str(), "l");
@@ -84,9 +111,13 @@ static void Normalize(TH1* h){
   if (integral > 0) h->Scale(1.0 / integral);
 }
 
+static void NormalizePerEvt(TH1* h, double nEvts){
+  if (nEvts > 0) h->Scale(1.0 / nEvts);
+}
+
 
 int PlotHist(){
-    string inputFileName = "../RootFiles/HistTFiles/JetSubstructureHistogramNocuts.root";
+    string inputFileName = "../RootFiles/HistTFiles/JetSubstructureHistogramChain0304.root";
 
     TFile *file = TFile::Open(inputFileName.c_str());
     if (!file || file->IsZombie()) {
@@ -95,6 +126,8 @@ int PlotHist(){
     
     
     }
+
+    TNamed* cutInfo = (TNamed*)file->Get("Cuts");
     TDirectory *dir = (TDirectory*)file->Get("EventLevelHistRaw");
 
     TH1F *hjtpt1 = (TH1F*)file->Get("EventLevelHistRaw/hjtpt1");
@@ -128,91 +161,152 @@ int PlotHist(){
     vector<TH1F*> refHists = {hrefpt, hrefeta, hrefphi, hrefsym, hrefrg, hrefdynkt, hrefangu,
                                 hAjref, hXjref, hdPhiref};
 
+  
     for (TH1F* h : jetHists) {
         StyleHist(h, kRed, 20);
+        NormalizePerEvt(h,h->GetEntries());
     }
     for (TH1F* h : refHists) {
         StyleHist(h, kBlue, 24);
+        NormalizePerEvt(h,h->GetEntries());
     }
 
     gStyle->SetOptStat(0); // Disable statistics box
     string outfolder = "../Plots/0224JetPlotswithoutCut/";
+
+    BlockCaptionInfo captionInfo;
+    vector<std::string> cutInfoVector;
+
+    std::stringstream ss(cutInfo->GetTitle());
+    std::string item;
+    while (std::getline(ss, item, ';')) cutInfoVector.push_back(item);
+
+    vector<std::string> jetlevelcut = cutInfoVector;
+    vector<std::string> observlevelcut = cutInfoVector;
+
+    jetlevelcut.push_back(Form("NEvents: %.0f", hjtpt->GetEntries())); 
+    observlevelcut.push_back(Form("NEvents: %.0f", hAj->GetEntries()));
+
+
+    captionInfo = {jetlevelcut, 0.20, 0.44, 0.030, 0.04, true};
     DrawAndSave({hjtpt, hrefpt},
-                 {"Jet pT", "Reference Jet pT"},
+                 {"Reconstructed Jet", "Reference Jet"},
                 outfolder + "JetPt.png",
                 "pT",
                 "dN/dpT",
                 "Jet pT Distributions",
                 0, 1600,
                 -999, -999,
-                false, true);
+                false, true,
+                captionInfo);
+
+    captionInfo = {jetlevelcut, 0.20, 0.54, 0.035, 0.04, true};
     DrawAndSave({hjteta, hrefeta},
-                    {"Jet eta", "Reference Jet eta"},
+                    {"Reconstructed Jet", "Reference Jet"},
                     outfolder + "JetEta.png",
                     "eta",
                     "dN/deta",
                     "Jet eta Distributions",
-                    -2.1, 2.1);
+                    -2.1, 2.1,
+                    -999, -999,
+                    false, false,
+                    captionInfo);
+
+    captionInfo = {jetlevelcut, 0.20, 0.54, 0.035, 0.04, true};
     DrawAndSave({hjtphi, hrefphi},
-                    {"Jet phi", "Reference Jet phi"},
+                    {"Reconstructed Jet", "Reference Jet"},
                     outfolder + "JetPhi.png",
                     "phi",
                     "dN/dphi",
                     "Jet phi Distributions",
-                    -TMath::Pi(), TMath::Pi()); 
+                    -TMath::Pi(), TMath::Pi(),
+                    -999, -999,
+                    false, false,
+                    captionInfo); 
 
+    captionInfo = {jetlevelcut, 0.20, 0.54, 0.035, 0.04, true};
     DrawAndSave({hjtsym, hrefsym},
-                    {"Jet Symmetry", "Reference Jet Symmetry"},
+                    {"Reconstructed Jet", "Reference Jet"},
                         outfolder + "JetSymmetry.png",
                         "Symmetry",
                         "dN/dSymmetry",
                         " Jet Symmetry Distributions",
-                        0, 2);
+                        0, 2,
+                        -999, -999,
+                        false, false,
+                        captionInfo);
+
+    captionInfo = {jetlevelcut, 0.20, 0.54, 0.035, 0.04, true};
     DrawAndSave({hjtrg, hrefrg},
-                    {"Jet RG", "Reference Jet RG"},
+                    {"Reconstructed Jet", "Reference Jet"},
                         outfolder + "JetRG.png",
                         "RG",
                         "dN/dRG",
                         "Leading and Subleading Jet RG Distributions",
-                        0, 1);
+                        0, 1,
+                        -999, -999,
+                        false, false,
+                        captionInfo);
+
+    captionInfo = {jetlevelcut, 0.46, 0.70, 0.035, 0.04, true};
     DrawAndSave({hjtdynkt, hrefdynkt},
-                    {"Jet DynKt", "Reference Jet DynKt"},
+                    {"Reconstructed Jet", "Reference Jet"},
                         outfolder + "JetDynKt.png",
                         "DynKt",
                         "dN/dDynKt",
                         "Jet DynKt Distributions",
-                    0, 150,
-                    -999, -999,
-                    false, true);
+                        0, 150,
+                        -999, -999,
+                        false, true,
+                        captionInfo);
+
+    captionInfo = {jetlevelcut, 0.45, 0.54, 0.035, 0.04, true};
     DrawAndSave({hjtangu, hrefangu},
-                    {"Jet Angularity", "Reference Jet Angularity"},
+                    {"Reconstructed Jet", "Reference Jet"},
                         outfolder + "JetAngularity.png",
                         "Angularity",
                         "dN/dAngularity",
                         "Jet Angularity Distributions",
-                        0, 1);
+                        0, 1,
+                        -999, -999,
+                        false, false,
+                        captionInfo);
 
+    captionInfo = {observlevelcut, 0.20, 0.54, 0.035, 0.04, true};
     DrawAndSave({hAj, hAjref},
-                    {"Jet Asymmetry", "Reference Jet Asymmetry"},
-                    outfolder + "JetAsymmetry.png",
+                    {"Reconstructed Jet", "Reference Jet"},
+                    outfolder + "DiJetAsymmetry.png",
                     "A_{J}",
                     "dN/dA_{J}",
-                    "Jet Asymmetry Distributions",
-                    0, 1);
+                    "A_{J} Asymmetry Distributions",
+                    0, 1,
+                    -999, -999,
+                    false, false,
+                    captionInfo);
+
+    captionInfo = {observlevelcut, 0.20, 0.54, 0.035, 0.04, true};
     DrawAndSave({hXj, hXjref},
-                    {"Jet Momentum Balance", "Reference Jet Momentum Balance"},
+                    {"Reconstructed Jet", "Reference Jet"},
                     outfolder + "JetMomentumBalance.png",
                     "X_{J}",
                     "dN/dX_{J}",
                     "Jet Momentum Balance Distributions",
-                    0, 1);
+                    0, 1,
+                    -999, -999,
+                    false, false, 
+                    captionInfo);
+
+    captionInfo = {observlevelcut, 0.20, 0.54, 0.035, 0.04, true};
     DrawAndSave({hdPhi, hdPhiref},
-                    {"Jet #Delta#phi", "Reference Jet #Delta#phi"},
+                    {"Reconstructed Jet", "Reference Jet"},
                     outfolder + "JetDeltaPhi.png",
                     "#Delta#phi",
                     "dN/d#Delta#phi",
                     "Jet #Delta#phi Distributions",
-                    0, TMath::Pi());
+                    0, TMath::Pi(),
+                    -999, -999,
+                    false, false,
+                    captionInfo);
 
     TH1F* ptRatio = (TH1F*)hjtpt->Clone("ptRatio");
     ptRatio->Divide(hrefpt);
