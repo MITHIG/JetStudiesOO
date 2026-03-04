@@ -1,8 +1,10 @@
 # JetStudiesOO
 
-# Setting up the environment
+# Forest Analyzers Instructions
 
+## Setting up the environment
 
+```bash
 cmsrel CMSSW_15_0_18
 cd CMSSW_15_0_18/src
 cmsenv
@@ -13,8 +15,9 @@ git remote add cmshi git@github.com:CmsHI/cmssw.git
 git cms-checkdeps -A -a
 
 scram b -j 8
+```
 
-# Adding in the changes
+## Adding in the changes
 
 Replace the files in ./src/HeavyIonsAnalysis/JetAnalysis with the files from this repo. Then recompile and run the forest
 
