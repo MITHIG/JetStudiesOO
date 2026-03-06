@@ -22,3 +22,7 @@ scram b -j 8
 Replace the files in ./src/HeavyIonsAnalysis/JetAnalysis with the files from this repo. Then recompile and run the forest
 
 `cmsRun forest_CMSSWConfig_Run3_OO_MC_miniAOD.py`
+
+## Running Crab Jobs
+
+The files needed to run crab jobs can be found in `ForestAnalyzers/OOsubstructure/CrabFiles`. 
