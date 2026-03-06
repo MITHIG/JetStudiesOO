@@ -1,5 +1,5 @@
 # crab config to run over a single file (test.txt)
-# if you modify 
+# if you would like to run over a different (or larger) set of input files, modify test.txt
 from WMCore.Configuration import Configuration
 
 config = Configuration()
@@ -21,7 +21,7 @@ config.Data.userInputFiles = open("test.txt").readlines()
 
 config.Data.inputDBS = "global"
 config.Data.splitting = "FileBased"
-config.Data.unitsPerJob = 2 ## Number of *input* event per job !
+config.Data.unitsPerJob = 2 ## Number of *input* files per job ! (file based splitting)
 config.Data.outputDatasetTag = "OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8"
 config.Data.outLFNDirBase = "/store/group/phys_heavyions/hbossi/mc_productions"
 config.Data.publication = False
