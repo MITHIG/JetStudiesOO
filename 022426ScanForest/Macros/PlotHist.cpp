@@ -90,7 +90,7 @@ static void DrawAndSave(const std::vector<TH1*>& hs,
   leg->SetBorderSize(0);
   leg->SetFillStyle(0);
   leg->SetTextFont(132);
-  leg->SetTextSize(0.035);
+  leg->SetTextSize(0.020);
   for (size_t i = 0; i < hs.size(); ++i) {
     if (!hs[i]) continue;
     leg->AddEntry(hs[i], lab[i].c_str(), "l");
@@ -187,342 +187,300 @@ static void NormalizePerEvt(TH1* h, double nEvts){
 
 
 int PlotHist(){
-    string inputFileName = "../RootFiles/HistTFiles/JetSubstructureHistogramChain_031026.root";
 
-    TFile *file = TFile::Open(inputFileName.c_str());
-    if (!file || file->IsZombie()) {
-        std::cerr << "Error opening file: " << inputFileName << std::endl;
+    string outfolder = "/home/xirong/JetStudiesOO/022426ScanForest/Plots/03201PDPlots/";
+
+    string inputFileDATA = "/home/xirong/JetStudiesOO/022426ScanForest/RootFiles/0318OnePD/JetSubHist_Data_93.4MEvts_Data1PD_withjetcuts_20260319.root";
+    string inputFileMCpthat15 = "/home/xirong/JetStudiesOO/022426ScanForest/RootFiles/0318OnePD/JetSubHist_MC_99.7MEvts_pthat151PD_withjetcuts_20260319.root";
+    string inputFileMCpthat0 = "/home/xirong/JetStudiesOO/022426ScanForest/RootFiles/0318OnePD/JetSubHist_MC_31KEvts_pthat01PD_withjetcuts_20260319.root";
+
+    TFile *fileDATA = TFile::Open(inputFileDATA.c_str());
+    TFile *fileMCpthat15 = TFile::Open(inputFileMCpthat15.c_str());
+    TFile *fileMCpthat0 = TFile::Open(inputFileMCpthat0.c_str());
+
+    if (!fileDATA || !fileMCpthat15 || !fileMCpthat0) {
+        cout << "Error opening files!" << endl;
         return 1;
-    
-    
     }
 
-    TNamed* cutInfo = (TNamed*)file->Get("Cuts");
-    TDirectory *dir = (TDirectory*)file->Get("EventLevelHistRaw");
-    // Event-level histograms (kept for use elsewhere in the macro)
-    TH1F *hjtpt1 = (TH1F*)file->Get("EventLevelHistRaw/hjtpt1");
-    TH1F *hjtpt2 = (TH1F*)file->Get("EventLevelHistRaw/hjtpt2");
-    TH1F *hAj    = (TH1F*)file->Get("EventLevelHistRaw/hAj");
-    TH1F *hAjref = (TH1F*)file->Get("EventLevelHistRaw/hAjref");
-    TH1F *hXj    = (TH1F*)file->Get("EventLevelHistRaw/hXj");
-    TH1F *hXjref = (TH1F*)file->Get("EventLevelHistRaw/hXjref");
-    TH1F *hdPhi   = (TH1F*)file->Get("EventLevelHistRaw/hdPhi");
-    TH1F *hdPhiref   = (TH1F*)file->Get("EventLevelHistRaw/hdPhiref");
+    TNamed* cutInfoData = (TNamed*)fileDATA->Get("Cuts");
+    TNamed* cutInfoMCpthat15 = (TNamed*)fileMCpthat15->Get("Cuts");
+    TNamed* cutInfoMCpthat0 = (TNamed*)fileMCpthat0->Get("Cuts");
 
-    // Jet-level histograms (all under JetLevelHistRaw)
-    TH1F *hjtpt   = (TH1F*)file->Get("JetLevelHistRaw/hjtpt");
-    TH1F *hjteta  = (TH1F*)file->Get("JetLevelHistRaw/hjteta");
-    TH1F *hjtphi  = (TH1F*)file->Get("JetLevelHistRaw/hjtphi");
-    TH1F *hjty    = (TH1F*)file->Get("JetLevelHistRaw/hjty");
-    TH1F *hjtrg   = (TH1F*)file->Get("JetLevelHistRaw/hjtrg");
-    TH1F *hjtzg   = (TH1F*)file->Get("JetLevelHistRaw/hjtzg");
-    TH1F *hjtkt   = (TH1F*)file->Get("JetLevelHistRaw/hjtkt");
-    TH1F *hjtangu = (TH1F*)file->Get("JetLevelHistRaw/hjtangu");
-
-    TH1F *hrefpt   = (TH1F*)file->Get("JetLevelHistRaw/hrefpt");
-    TH1F *hrefeta  = (TH1F*)file->Get("JetLevelHistRaw/hrefeta");
-    TH1F *hrefphi  = (TH1F*)file->Get("JetLevelHistRaw/hrefphi");
-    TH1F *hrefy    = (TH1F*)file->Get("JetLevelHistRaw/hrefy");
-    TH1F *hrefrg   = (TH1F*)file->Get("JetLevelHistRaw/hrefrg");
-    TH1F *hrefzg   = (TH1F*)file->Get("JetLevelHistRaw/hrefzg");
-    TH1F *hrefkt   = (TH1F*)file->Get("JetLevelHistRaw/hrefkt");
-    TH1F *hrefangu = (TH1F*)file->Get("JetLevelHistRaw/hrefangu");
-
-    TH1F *hgenpt   = (TH1F*)file->Get("JetLevelHistRaw/hgenpt");
-    TH1F *hgeneta  = (TH1F*)file->Get("JetLevelHistRaw/hgeneta");
-    TH1F *hgenphi  = (TH1F*)file->Get("JetLevelHistRaw/hgenphi");
-    TH1F *hgeny    = (TH1F*)file->Get("JetLevelHistRaw/hgeny");
-    TH1F *hgenrg   = (TH1F*)file->Get("JetLevelHistRaw/hgenrg");
-    TH1F *hgenzg   = (TH1F*)file->Get("JetLevelHistRaw/hgenzg");
-    TH1F *hgenkt   = (TH1F*)file->Get("JetLevelHistRaw/hgenkt");
-    TH1F *hgenangu = (TH1F*)file->Get("JetLevelHistRaw/hgenangu");
-
-    TH1F *hjtPfCHF = (TH1F*)file->Get("JetLevelHistRaw/hjtPfCHF");
-    TH1F *hjtPfNHF = (TH1F*)file->Get("JetLevelHistRaw/hjtPfNHF");
-    TH1F *hjtPfCEF = (TH1F*)file->Get("JetLevelHistRaw/hjtPfCEF");
-    TH1F *hjtPfNEF = (TH1F*)file->Get("JetLevelHistRaw/hjtPfNEF");
-    TH1F *hjtPfMUF = (TH1F*)file->Get("JetLevelHistRaw/hjtPfMUF");
-
-    TH2F *hpthatvjtpt = (TH2F*)file->Get("JetLevelHistRaw/hpthatvjtpt");
-    
-    TDirectory *dirTrack = (TDirectory*)file->Get("TrackLevelHistRaw");
-    TH1F *hxvtx = (TH1F*)file->Get("TrackLevelHistRaw/hxvtx");
-    TH1F *hyvtx = (TH1F*)file->Get("TrackLevelHistRaw/hyvtx");
-    TH1F *hzvtx = (TH1F*)file->Get("TrackLevelHistRaw/hzvtx");
-    TH1F *hxErrVtx = (TH1F*)file->Get("TrackLevelHistRaw/hxErrVtx");
-    TH1F *hyErrVtx = (TH1F*)file->Get("TrackLevelHistRaw/hyErrVtx");
-    TH1F *hzErrVtx = (TH1F*)file->Get("TrackLevelHistRaw/hzErrVtx");
-
-    // grouped hist vectors
-    std::vector<TH1F*> jetHists = {hjtpt, hjteta, hjtphi, hjty, hjtrg, hjtzg, hjtkt, hjtangu,hAj, hXj, hdPhi};
-    std::vector<TH1F*> refHists = {hrefpt, hrefeta, hrefphi, hrefy, hrefrg, hrefzg, hrefkt, hrefangu, hAjref, hXjref, hdPhiref};
-    std::vector<TH1F*> genHists = {hgenpt, hgeneta, hgenphi, hgeny, hgenrg, hgenzg, hgenkt, hgenangu};
-
-    std::vector<TH1F*> evtHists = {hjtpt1, hjtpt2, hAj, hAjref, hXj, hXjref, hdPhi, hdPhiref};
-    std::vector<TH1F*> pfHists  = {hjtPfCHF, hjtPfNHF, hjtPfCEF, hjtPfNEF, hjtPfMUF};
+    TNamed* generalInfoData = (TNamed*)fileDATA->Get("GeneralInfo");
+   // TNamed* generalInfoMCpthat15 = (TNamed*)fileMCpthat15->Get("GeneralInfo");
+   // TNamed* generalInfoMCpthat0 = (TNamed*)fileMCpthat0->Get("GeneralInfo");
 
   
-    for (TH1F* h : jetHists) {
-        StyleHist(h, kRed, 20);
-        NormalizePerEvt(h,h->GetEntries());
+    cout << "Debug: Cuts applied in Data: " << cutInfoData->GetTitle() << endl;
+    cout << "Debug: Cuts applied in MC pthat15: " << cutInfoMCpthat15->GetTitle() << endl;
+    cout << "Debug: Cuts applied in MC pthat0: " << cutInfoMCpthat0->GetTitle() << endl;
+    cout << "GeneralInfo:" << generalInfoData->GetTitle() << endl;
+    cout << "Debug: Data histogram entries:" << endl;
+
+    TH1F* hjtpt_data = (TH1F*)fileDATA->Get("JetLevelHistRaw/hjtpt");
+    TH1F* hjteta_data = (TH1F*)fileDATA->Get("JetLevelHistRaw/hjteta");
+    TH1F* hjtphi_data = (TH1F*)fileDATA->Get("JetLevelHistRaw/hjtphi");
+    TH1F* hjty_data = (TH1F*)fileDATA->Get("JetLevelHistRaw/hjty");
+    TH1F* hjtrg_data = (TH1F*)fileDATA->Get("JetLevelHistRaw/hjtrg");
+    TH1F* hjtzg_data = (TH1F*)fileDATA->Get("JetLevelHistRaw/hjtzg");
+    TH1F* hjtkt_data = (TH1F*)fileDATA->Get("JetLevelHistRaw/hjtkt");
+    TH1F* hjtangu_data = (TH1F*)fileDATA->Get("JetLevelHistRaw/hjtangu");
+
+    TH1F* hjtPfCHF_data = (TH1F*)fileDATA->Get("JetLevelHistRaw/hjtPfCHF");
+    TH1F* hjtPfNHF_data = (TH1F*)fileDATA->Get("JetLevelHistRaw/hjtPfNHF");
+    TH1F* hjtPfCEF_data = (TH1F*)fileDATA->Get("JetLevelHistRaw/hjtPfCEF");
+    TH1F* hjtPfNEF_data = (TH1F*)fileDATA->Get("JetLevelHistRaw/hjtPfNEF");
+    TH1F* hjtPfMUF_data = (TH1F*)fileDATA->Get("JetLevelHistRaw/hjtPfMUF");
+
+    TH1F* hjtpt1_data = (TH1F*)fileDATA->Get("EventLevelHistRaw/hjtpt1");
+    TH1F* hjtpt2_data = (TH1F*)fileDATA->Get("EventLevelHistRaw/hjtpt2");
+    TH1F* hAj_data = (TH1F*)fileDATA->Get("EventLevelHistRaw/hAj");
+    TH1F* hXj_data = (TH1F*)fileDATA->Get("EventLevelHistRaw/hXj");
+    TH1F* hdPhi_data = (TH1F*)fileDATA->Get("EventLevelHistRaw/hdPhi");
+
+    // Repeat same retrieval for MC pthat15
+    // Jet-level (pthat15)
+    TH1F* hjtpt_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hjtpt");
+    TH1F* hjteta_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hjteta");
+    TH1F* hjtphi_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hjtphi");
+    TH1F* hjty_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hjty");
+    TH1F* hjtrg_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hjtrg");
+    TH1F* hjtzg_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hjtzg");
+    TH1F* hjtkt_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hjtkt");
+    TH1F* hjtangu_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hjtangu");
+
+    TH1F* hjtPfCHF_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hjtPfCHF");
+    TH1F* hjtPfNHF_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hjtPfNHF");
+    TH1F* hjtPfCEF_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hjtPfCEF");
+    TH1F* hjtPfMUF_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hjtPfMUF");
+
+    TH1F* hjtpt1_pthat15 = (TH1F*)fileMCpthat15->Get("EventLevelHistRaw/hjtpt1");
+    TH1F* hjtpt2_pthat15 = (TH1F*)fileMCpthat15->Get("EventLevelHistRaw/hjtpt2");
+    TH1F* hAj_pthat15 = (TH1F*)fileMCpthat15->Get("EventLevelHistRaw/hAj");
+    TH1F* hXj_pthat15 = (TH1F*)fileMCpthat15->Get("EventLevelHistRaw/hXj");
+    TH1F* hdPhi_pthat15 = (TH1F*)fileMCpthat15->Get("EventLevelHistRaw/hdPhi");
+
+    TH1F* hrefpt_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hrefpt");
+    TH1F* hrefeta_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hrefeta");
+    TH1F* hrefphi_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hrefphi");
+    TH1F* hrefy_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hrefy");
+    TH1F* hrefrg_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hrefrg");
+    TH1F* hrefzg_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hrefzg");
+    TH1F* hrefkt_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hrefkt");
+    TH1F* hrefangu_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hrefangu");
+
+    TH1F* hrefpt1_pthat15 = (TH1F*)fileMCpthat15->Get("EventLevelHistRaw/hrefpt1");
+    TH1F* hrefpt2_pthat15 = (TH1F*)fileMCpthat15->Get("EventLevelHistRaw/hrefpt2");
+    TH1F* hAj_ref_pthat15 = (TH1F*)fileMCpthat15->Get("EventLevelHistRaw/hAjref");
+    TH1F* hXj_ref_pthat15 = (TH1F*)fileMCpthat15->Get("EventLevelHistRaw/hXjref");
+    TH1F* hdPhi_ref_pthat15 = (TH1F*)fileMCpthat15->Get("EventLevelHistRaw/hdPhiref");
+
+    TH1F* hgenpt_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hgenpt");
+    TH1F* hgeneta_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hgeneta");
+    TH1F* hgenphi_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hgenphi");
+    TH1F* hgeny_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hgeny");
+    TH1F* hgenrg_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hgenrg");
+    TH1F* hgenzg_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hgenzg");
+    TH1F* hgenkt_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hgenkt");
+    TH1F* hgenangu_pthat15 = (TH1F*)fileMCpthat15->Get("JetLevelHistRaw/hgenangu");
+
+    std::vector<TH1F*> dataHists = {hjtpt_data, hjteta_data, hjtphi_data, hjty_data, hjtrg_data, hjtzg_data, hjtkt_data, hjtangu_data,hjtpt1_data, hjtpt2_data, hAj_data, hXj_data, hdPhi_data};
+    std::vector<TH1F*> mcPthat15jtHists = {hjtpt_pthat15, hjteta_pthat15, hjtphi_pthat15, hjty_pthat15, hjtrg_pthat15, hjtzg_pthat15, hjtkt_pthat15, hjtangu_pthat15};
+    std::vector<TH1F*> mcPthat15refHists = {hrefpt_pthat15, hrefeta_pthat15, hrefphi_pthat15, hrefy_pthat15, hrefrg_pthat15, hrefzg_pthat15, hrefkt_pthat15, hrefangu_pthat15};
+    std::vector<TH1F*> mcPthat15genHists = {hgenpt_pthat15, hgeneta_pthat15, hgenphi_pthat15, hgeny_pthat15, hgenrg_pthat15, hgenzg_pthat15, hgenkt_pthat15, hgenangu_pthat15};
+    //std::vector<TH1F*> mcPthat0Hists = {hjtpt_pthat0, hjteta_pthat0, hjtphi_pthat0, hjty_pthat0, hjtrg_pthat0, hjtzg_pthat0, hjtkt_pthat0, hjtangu_pthat0,};
+
+    for (auto h : dataHists) {
+      StyleHist(h, kBlack, 21);
+      h->Scale(1.0 / h->GetSumOfWeights());
     }
-    for (TH1F* h : refHists) {
-        StyleHist(h, kBlue, 24);
-        NormalizePerEvt(h,h->GetEntries());
+    for (auto h : mcPthat15jtHists) {
+      StyleHist(h, kRed, 22);
+      h->Scale(1.0 / h->GetSumOfWeights());
     }
-    for (TH1F* h : genHists) {
-        StyleHist(h, kGreen+2, 25);
-        NormalizePerEvt(h,h->GetEntries());
+    for (auto h : mcPthat15refHists) {
+      StyleHist(h, kGreen+2, 23);
+      h->Scale(1.0 / h->GetSumOfWeights());
+    } 
+    for (auto h : mcPthat15genHists) {
+      StyleHist(h, kBlue+1, 24);
+      h->Scale(1.0 / h->GetSumOfWeights());
     }
-    hjtPfCHF->SetFillColor(kRed-10);
-    hjtPfNHF->SetFillColor(kBlue-10);
-    hjtPfCEF->SetFillColor(kGreen-10);
-    hjtPfNEF->SetFillColor(kYellow-10);
-    hjtPfMUF->SetFillColor(kMagenta-10);
 
     gStyle->SetOptStat(0); // Disable statistics box
-    string outfolder = "../Plots/0307MCPlotsWithCutQaa/";
 
     BlockCaptionInfo captionInfo;
-    vector<std::string> cutInfoVector;
+    vector<std::string> cutInfoDataVector;
+    vector<std::string> generalInfoDataVector;
 
-    std::stringstream ss(cutInfo->GetTitle());
+    std::stringstream ssCut(cutInfoData->GetTitle());
     std::string item;
-    while (std::getline(ss, item, ';')) cutInfoVector.push_back(item);
+    while (std::getline(ssCut, item, ';')) cutInfoDataVector.push_back(item);
 
-    vector<std::string> jetlevelcut = cutInfoVector;
-    vector<std::string> observlevelcut = cutInfoVector;
-    vector<std::string> tracklevelcut = cutInfoVector;
+    std::stringstream ssGen(generalInfoData->GetTitle());
+    while (std::getline(ssGen, item, ';')) generalInfoDataVector.push_back(item);
 
-    jetlevelcut.push_back(Form("NEvents: %.0f", hjtpt->GetEntries())); 
-    observlevelcut.push_back(Form("NEvents: %.0f", hAj->GetEntries()));
-    tracklevelcut.push_back(Form("NEvents: %.0f", hxvtx->GetEntries()));
-    captionInfo = {jetlevelcut, 0.20, 0.44, 0.030, 0.04, true};
-   
-    captionInfo = {jetlevelcut, 0.20, 0.60, 0.020, 0.04, true};
-    DrawAndSave({hjtpt, hrefpt, hgenpt},
-                 {"jtpt", "refpt","genpt"},
-                outfolder + "JetPt.png",
-                "pT",
-                "dN/dpT",
-                "Jet pT Distributions",
-                0, 1600,
-                -999, -999,
-                false, true,
-                captionInfo);
-
-    captionInfo = {jetlevelcut, 0.20, 0.60, 0.020, 0.04, true};
-    DrawAndSave({hjteta, hrefeta, hgeneta},
-                {"jteta", "refeta", "geneta"},
-                outfolder + "JetEta.png",
-                "eta",
-                "dN/d(eta)",
-                "Jet eta Distributions",
-                -2.1, 2.1,
-                -999, -999,
-                false, false,
-                captionInfo);
-    captionInfo = {jetlevelcut, 0.20, 0.60, 0.020, 0.04, true};
-            
-    DrawAndSave({hjtphi, hrefphi, hgenphi},
-                  {"jtphi", "refphi", "genphi"},
-                  outfolder + "JetPhi.png",
-                  "phi",
-                  "dN/d(phi)",
-                  "Jet phi Distributions",
-                  -TMath::Pi(), TMath::Pi(),
-                  -999, -999,
-                  false, false,
-                  captionInfo);
-    captionInfo = {jetlevelcut, 0.60, 0.60, 0.020, 0.04, true};
-    DrawAndSave({hjtrg, hrefrg, hgenrg},
-                  {"jtrg", "refrg", "genrg"},
-                  outfolder + "JetRG.png",
-                  "RG",
-                  "dN/d(RG)",
-                  "Jet RG Distributions",
-                  0, 1,
-                  -999, -999,
-                  false, false,
-                  captionInfo);
-
-    captionInfo = {jetlevelcut, 0.50, 0.60, 0.030, 0.04, true};
-    DrawAndSave({hjtkt, hrefkt, hgenkt},
-                  {"jtkt", "refkt", "genkt"},
-                  outfolder + "JetKt.png",
-                  "Kt",
-                  "dN/d(Kt)",
-                  "Jet Kt Distributions",
-                  0, 500,
-                  -999, -999,
-                  false, true,
-                  captionInfo);
-    DrawAndSave({hjtangu, hrefangu, hgenangu},
-                  {"jtangu", "refangu", "genangu"},
-                  outfolder + "JetAngularity.png",
-                  "Angularity",
-                  "dN/d(Angularity)",
-                  "Jet Angularity Distributions",
-                  -2.1, 2.1,
-                  -999, -999,
-                  false, false,
-                  captionInfo);
-
-    DrawStack({hjtPfCHF, hjtPfNHF, hjtPfCEF, hjtPfNEF, hjtPfMUF},
-                  {"jtPfCHF", "jtPfNHF", "jtPfCEF", "jtPfNEF", "jtPfMUF"},
-                  outfolder + "JetPF.png",
-                  "PF Energy Fraction",
-                  "dN/d(PF Energy Fraction)",
-                  "Jet PF Energy Fraction Distributions",
-                  0, 1,
-                  -999, -999,
-                  false, true,
-                  captionInfo);
-
-    captionInfo = {jetlevelcut, 0.60, 0.60, 0.020, 0.04, true};
-    DrawAndSave({hjtzg, hrefzg, hgenzg},
-                 {"jtzg", "refzg","genzg"},
-                outfolder + "JetZg.png",
-                "Zg",
-                "dN/d(Zg)",
-                "Jet Zg Distributions",
-                0, 1,
-                -999, -999,
-                false, false,
-                captionInfo);
+    // Debug Caption Info
+    for (const auto& s : cutInfoDataVector) cout << "Cut Info: " << s << endl;
+    for (const auto& s : generalInfoDataVector) cout << "General Info: " << s << endl;
 
 
-    TH1F* ptRatio = (TH1F*)hjtpt->Clone("ptRatio");
-    ptRatio->Divide(hrefpt);
-    TH1F* etaRatio = (TH1F*)hjteta->Clone("etaRatio");
-    etaRatio->Divide(hrefeta);
-    TH1F* phiRatio = (TH1F*)hjtphi->Clone("phiRatio");
-    phiRatio->Divide(hrefphi);
-    TH1F* rgRatio = (TH1F*)hjtrg->Clone("rgRatio");
-    rgRatio->Divide(hrefrg);
-    TH1F* anguRatio = (TH1F*)hjtangu->Clone("anguRatio");
-    anguRatio->Divide(hrefangu);
+    vector<std::string> captionLines = cutInfoDataVector;
+      captionLines.push_back(generalInfoDataVector[4]);
+    captionLines.push_back(generalInfoDataVector[5]);
+    captionLines.push_back(generalInfoDataVector[7]);
+    captionLines.push_back(generalInfoDataVector[8]);
+
+    /*************************************************************************
+     *                                                                       *
+     *                      MC, Data Comparison                              *
+     *                                                                       *
+     *************************************************************************/
+
+    std::vector<std::string> obsNames = {"hjtpt", "hjteta", "hjtphi", "hjty", "hjtrg", "hjtzg", "hjtkt", "hjtangu"};
+    std::vector<std::string> xTitles = {
+      "Jet p_{T} (GeV/c)",
+      "Jet #eta",
+      "Jet #phi",
+      "Jet y",
+      "Jet rg",
+      "Jet zg",
+      "Jet kt",
+      "Jet angularity"
+    };
     
-    DrawAndSave({ptRatio},
-                    {"Jet pT / Reference Jet pT"},
-                    outfolder + "JetPtRatio.png",
-                    "pT Ratio",
-                    "dN/d(pT Ratio)",
-                    "Jet pT Ratio Distributions",
-                    -999,-999,
-                    0, 2);
-    DrawAndSave({etaRatio},
-                    {"Jet eta / Reference Jet eta"},
-                    outfolder + "JetEtaRatio.png",
-                    "eta Ratio",
-                    "dN/d(eta Ratio)",
-                    "Jet eta Ratio Distributions",
-                    -2.1, 2.1,
-                    0, 2);
-    DrawAndSave({phiRatio}, 
-                    {"Jet phi / Reference Jet phi"},
-                    outfolder + "JetPhiRatio.png",
-                    "phi Ratio",
-                    "dN/d(phi Ratio)",
-                    "Jet phi Ratio Distributions",
-                    -TMath::Pi(), TMath::Pi(),
-                    0, 2);
-    DrawAndSave({rgRatio},
-                    {"Jet RG / Reference Jet RG"},
-                    outfolder + "JetRGRatio.png",
-                    "RG Ratio",
-                    "dN/d(RG Ratio)",
-                    "Jet RG Ratio Distributions",
-                    -999,-999,
-                    0, 2);
-    DrawAndSave({anguRatio},
-                    {"Jet Angularity / Reference Jet Angularity"},
-                    outfolder + "JetAngularityRatio.png",
-                    "Angularity Ratio",
-                    "dN/d(Angularity Ratio)",
-                    "Jet Angularity Ratio Distributions",
-                    -999,-999,
-                    0, 2);
+    std::vector<std::pair<float,float>> xranges = {
+      {0, 500},    // pt
+      {-2.5f, 2.5f},// eta
+      {-3.2f, 3.2f},// phi
+      {-2.5f, 2.5f},// y
+      {0, 1.0f},   // rg
+      {0, 1.0f},   // zg
+      {0, 100},    // kt
+      {0, 1} // angularity: auto
+    };
 
-    captionInfo = {observlevelcut, 0.50, 0.70, 0.020, 0.04, true};
-    DrawAndSave({hAj, hAjref},
-                    {"Aj", "Ajref"},
-                    outfolder + "Aj.png",
-                    "Aj",
-                    "dN/d(Aj)",
-                    "Jet Aj Distributions",
-                    0, 1,
-                    -999, -999,
-                    false, false,
-                    captionInfo);
+    std::vector<BlockCaptionInfo> captionInfos = {
+      {captionLines, 0.6, 0.6, 0.023, 0.022, true}, //pt
+      {captionLines, 0.4, 0.5, 0.023, 0.022, true},// eta
+      {captionLines, 0.6, 0.6, 0.023, 0.022, true},// phi
+      {captionLines, 0.20, 0.55, 0.023, 0.022, true},// y
+      {captionLines, 0.6, 0.6, 0.023, 0.022, true},// rg
+      {captionLines, 0.6, 0.6, 0.023, 0.022, true},// zg
+      {captionLines, 0.6, 0.6, 0.023, 0.022, true},// kt
+      {captionLines, 0.6, 0.6, 0.023, 0.022, true} // angularity: auto
+    };
 
-    captionInfo = {observlevelcut, 0.20, 0.60, 0.020, 0.04, true};
-    DrawAndSave({hXj, hXjref},
-                    {"Xj", "Xjref"},
-                    outfolder + "Xj.png",
-                    "Xj",
-                    "dN/d(Xj)",
-                    "Jet Xj Distributions",
-                    0, 1,
-                    -999, -999,
-                    false, false,
-                    captionInfo); 
-    DrawAndSave({hdPhi, hdPhiref},
-                    {"dPhi", "dPhiref"},
-                    outfolder + "dPhi.png",
-                    "dPhi",
-                    "dN/d(dPhi)",
-                    "Jet dPhi Distributions",
-                    -TMath::Pi(), TMath::Pi(),
-                    -999, -999,
-                    false, false,
-                     captionInfo);
-    
-    captionInfo = {tracklevelcut, 0.20, 0.60, 0.020, 0.04, true};
-    DrawAndSave({hxvtx},
-                    {"xvtx"},
-                    outfolder + "xvtx.png",
-                    "xvtx",
-                    "dN/d(xvtx)",
-                    "Vertex x Position Distributions",
-                    -0.1, 0.1,
-                    -999, -999,
-                    false, false,
-                    captionInfo); 
+    for (size_t i = 0; i < dataHists.size() && i < mcPthat15jtHists.size(); ++i) {
+      TH1F* hdata = dataHists[i];
+      TH1F* hMC = mcPthat15jtHists[i];
+      if (!hdata || !hMC) continue;
+      captionInfo = captionInfos[i];
 
-    DrawAndSave({hyvtx},
-                    {"yvtx"},
-                    outfolder + "yvtx.png",
-                    "yvtx",
-                    "dN/d(yvtx)",
-                    "Vertex y Position Distributions",
-                    -0.1, 0.1,
-                    -999, -999,
-                    false, false,
-                    captionInfo); 
+      DrawAndSave({hdata, hMC},
+            {"Data", "MC Reco"},
+            outfolder + obsNames[i] + "_datamc_comp.png",
+            xTitles[i],
+            Form("dN/d%s", xTitles[i].c_str()),
+            std::string("Comparison of jet-level and reference for ") + xTitles[i],
+            xranges[i].first, xranges[i].second,
+            -999, -999,
+            false, false,
+            captionInfo);
 
-    DrawAndSave({hzvtx},
-                    {"zvtx"},
-                    outfolder + "zvtx.png",
-                    "zvtx",
-                    "dN/d(zvtx)",
-                    "Vertex z Position Distributions",
-                    -15, 15,
-                    -999, -999,
-                    false, false,
-                    captionInfo);
+      std::string rname = std::string("ratio_") + obsNames[i] + "_mcovedata";
 
-    TCanvas* c = new TCanvas("c", "canvas", 800, 800);
-    c->SetTicks(1,1);
-    c->SetLeftMargin(0.14);
-    c->SetBottomMargin(0.12);
-    c->SetTopMargin(0.08);
-    c->SetRightMargin(0.14);
-    hpthatvjtpt->SetTitle("pthat vs Leading Jet pT; pthat; Jet pT");
-    hpthatvjtpt->Draw("COLZ");
-    c->SaveAs((outfolder + "pthatvjtpt.png").c_str());
+      TH1F* ratio = (TH1F*)hMC->Clone(rname.c_str());
+      ratio->SetDirectory(nullptr);
+      ratio->Divide(hdata); // now MC / Data
+      StyleHist(ratio, kBlack, 21);
 
-    file->Close();
+      std::string outname = outfolder + obsNames[i] + "_mcoverdata.png";
+      float xmin = xranges[i].first;
+      float xmax = xranges[i].second;
+      // use y range 0,2 for pt-like distributions, otherwise auto (you can adjust if desired)
+      float ymin = 0;
+      float ymax = 2;
+      DrawAndSave({ratio},
+            {"Jet / Ref"},
+            outname,
+            xTitles[i],
+            "Jet / Ref",
+            std::string("Ratio of jet-level to ref-level for ") + xTitles[i],
+            xmin, xmax, ymin, ymax,
+            false, false,
+            captionInfo);
+      delete ratio;
+    }
+  
+
+    /*************************************************************************
+     *                                                                       *
+     *                      Jt vs Ref vs Gen comparison:                     *
+     *                                                                       *
+     *************************************************************************/
+
+    captionInfos = {
+      {captionLines, 0.6, 0.6, 0.020, 0.02, true}, //pt
+      {captionLines, 0.4, 0.5, 0.023, 0.02, true},// eta
+      {captionLines, 0.6, 0.6, 0.020, 0.02, true},// phi
+      {captionLines, 0.20, 0.55, 0.020, 0.02, true},// y
+      {captionLines, 0.6, 0.6, 0.020, 0.02, true},// rg
+      {captionLines, 0.6, 0.6, 0.020, 0.02, true},// zg
+      {captionLines, 0.6, 0.6, 0.020, 0.02, true},// kt
+      {captionLines, 0.6, 0.6, 0.020, 0.02, true} // angularity: auto
+    };
+
+    for (size_t i = 0; i < mcPthat15jtHists.size() && i < mcPthat15refHists.size(); ++i) {
+      TH1F* hj = mcPthat15jtHists[i];
+      TH1F* hr = mcPthat15refHists[i];
+      TH1F* hg = mcPthat15genHists[i];
+      if (!hj || !hr || !hg) continue;
+      captionInfo = captionInfos[i];
+
+      DrawAndSave({hj, hr, hg},
+            {"Jet Reco", "Ref", "Gen"},
+            outfolder + obsNames[i] + "_jt_and_ref_and_gen.png",
+            xTitles[i],
+            Form("dN/d%s", xTitles[i].c_str()),
+            std::string("Comparison of jet-level and reference for ") + xTitles[i],
+            xranges[i].first, xranges[i].second,
+            -999, -999,
+            false, false,
+            captionInfo);
+
+      std::string rname = std::string("ratio_") + obsNames[i] + "_jt_over_ref";
+
+      TH1F* ratio = (TH1F*)hj->Clone(rname.c_str());
+      ratio->SetDirectory(nullptr); // avoid ownership by current file/canvas
+      ratio->Divide(hr);
+      StyleHist(ratio, kBlack, 21);
+
+      std::string outname = outfolder + obsNames[i] + "_jt_over_ref.png";
+      float xmin = xranges[i].first;
+      float xmax = xranges[i].second;
+      // use y range 0..2 for pt-like distributions, otherwise auto (you can adjust if desired)
+      float ymin = -999, ymax = -999;
+      if (i == 0) { ymin = 0; ymax = 2; } // pt
+      else if (i == 4 || i == 6 || i==5) { ymin = 0; ymax = 2; } // R, kt maybe
+      DrawAndSave({ratio},
+            {"Jet / Ref"},
+            outname,
+            xTitles[i],
+            "Jet / Ref",
+            std::string("Ratio of jet-level to ref-level for ") + xTitles[i],
+            xmin, xmax, ymin, ymax,
+            false, false,
+            captionInfo);
+
+      delete ratio;
+    }
+  
+
+    fileDATA->Close();
+    fileMCpthat15->Close();
+    fileMCpthat0->Close();
 
     return 0;
 }
