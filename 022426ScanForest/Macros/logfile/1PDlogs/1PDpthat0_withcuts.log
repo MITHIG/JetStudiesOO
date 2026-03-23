@@ -1,0 +1,70 @@
+nohup: ignoring input
+   ------------------------------------------------------------------
+  | Welcome to ROOT 6.30/08                        https://root.cern |
+  | (c) 1995-2024, The ROOT Team; conception: R. Brun, F. Rademakers |
+  | Built for linuxx8664gcc on Apr 19 2025, 17:03:44                 |
+  | From heads/master@tags/v6-30-08                                  |
+  | With c++ (GCC) 8.5.0 20210514 (Red Hat 8.5.0-26)                 |
+  | Try '.help'/'.?', '.demo', '.license', '.credits', '.quit'/'.q'  |
+   ------------------------------------------------------------------
+
+
+Processing SaveHistChain.cpp...
+Searching for ROOT files in: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/MinBias_OO_5p36TeV_hijing/MiniumBiasOO_MC_5p36TeV_HIJING/260316_213344/0000
+Found 7 ROOT files
+Number of ROOT files to process: 7
+SysError in <TFile::ReadBuffer>: error reading from file /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/MinBias_OO_5p36TeV_hijing/MiniumBiasOO_MC_5p36TeV_HIJING/260316_213344/0000/HiForestMiniAOD_1.root Input/output error
+Error in <TKey::ReadFile>: Failed to read data.
+Error in <TString::ReadBuffer>: found case with nwh=255 and nchars=-1
+Error in <TString::ReadBuffer>: found case with nwh=255 and nchars=-117440513
+Error in <TString::ReadBuffer>: found case with nwh=255 and nchars=-16
+Info in <TFile::Recover>: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/MinBias_OO_5p36TeV_hijing/MiniumBiasOO_MC_5p36TeV_HIJING/260316_213344/0000/HiForestMiniAOD_1.root, recovered key TDirectoryFile:hltanalysis at address 250
+Info in <TFile::Recover>: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/MinBias_OO_5p36TeV_hijing/MiniumBiasOO_MC_5p36TeV_HIJING/260316_213344/0000/HiForestMiniAOD_1.root, recovered key TDirectoryFile:l1object at address 371
+Info in <TFile::Recover>: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/MinBias_OO_5p36TeV_hijing/MiniumBiasOO_MC_5p36TeV_HIJING/260316_213344/0000/HiForestMiniAOD_1.root, recovered key TDirectoryFile:l1MetFilterRecoTree at address 486
+Info in <TFile::Recover>: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/MinBias_OO_5p36TeV_hijing/MiniumBiasOO_MC_5p36TeV_HIJING/260316_213344/0000/HiForestMiniAOD_1.root, recovered key TDirectoryFile:skimanalysis at address 623
+Info in <TFile::Recover>: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/MinBias_OO_5p36TeV_hijing/MiniumBiasOO_MC_5p36TeV_HIJING/260316_213344/0000/HiForestMiniAOD_1.root, recovered key TDirectoryFile:HiForestInfo at address 746
+Info in <TFile::Recover>: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/MinBias_OO_5p36TeV_hijing/MiniumBiasOO_MC_5p36TeV_HIJING/260316_213344/0000/HiForestMiniAOD_1.root, recovered key TDirectoryFile:ppTracks at address 869
+Info in <TFile::Recover>: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/MinBias_OO_5p36TeV_hijing/MiniumBiasOO_MC_5p36TeV_HIJING/260316_213344/0000/HiForestMiniAOD_1.root, recovered key TDirectoryFile:particleFlowAnalyser at address 984
+Info in <TFile::Recover>: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/MinBias_OO_5p36TeV_hijing/MiniumBiasOO_MC_5p36TeV_HIJING/260316_213344/0000/HiForestMiniAOD_1.root, recovered key TDirectoryFile:hiEvtAnalyzer at address 1123
+Info in <TFile::Recover>: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/MinBias_OO_5p36TeV_hijing/MiniumBiasOO_MC_5p36TeV_HIJING/260316_213344/0000/HiForestMiniAOD_1.root, recovered key TDirectoryFile:HiGenParticleAna at address 1248
+Info in <TFile::Recover>: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/MinBias_OO_5p36TeV_hijing/MiniumBiasOO_MC_5p36TeV_HIJING/260316_213344/0000/HiForestMiniAOD_1.root, recovered key TDirectoryFile:akCs4PFJetAnalyzer at address 1379
+SysError in <TFile::ReadBuffer>: error reading from file /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/MinBias_OO_5p36TeV_hijing/MiniumBiasOO_MC_5p36TeV_HIJING/260316_213344/0000/HiForestMiniAOD_1.root Input/output error
+Error in <TFile::Recover>: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/MinBias_OO_5p36TeV_hijing/MiniumBiasOO_MC_5p36TeV_HIJING/260316_213344/0000/HiForestMiniAOD_1.root: failed to read the key data from disk at 33640.
+SysError in <TFile::ReadBuffer>: error reading from file /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/MinBias_OO_5p36TeV_hijing/MiniumBiasOO_MC_5p36TeV_HIJING/260316_213344/0000/HiForestMiniAOD_1.root Input/output error
+Warning in <TFile::GetRecordHeader>: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/MinBias_OO_5p36TeV_hijing/MiniumBiasOO_MC_5p36TeV_HIJING/260316_213344/0000/HiForestMiniAOD_1.root: failed to read the StreamerInfo data from disk.
+Warning in <TClass::Init>: no dictionary for class L1Analysis::L1AnalysisRecoMetFilterDataFormat is available
+Number of entries: 13000
+
+Error in <TChain::SetBranchAddress>: The pointer type given "Float_t" (5) does not correspond to the type needed "Int_t" (3) by the branch: jtPfCHM
+Starting processing...
+
+Processing entry 0 out of 31000; 0%
+Number of Jets in this event: 0
+Total jets processed so far: 0
+Current memory usage: 244.617 MB (+0 MB from start)
+pthat: -1; weight: 1
+
+
+=== PROCESSING SUMMARY ===
+Events before cuts: 31000
+Events after cuts: 20172
+Event cut efficiency: 65.071%
+Jets before selection: 76600
+Jets after selection: 206
+Jet selection efficiency: 0.26893%
+Total jets processed: 116947
+=========================
+
+=== TIMING SUMMARY ===
+Total processing time (H:M:S): 0h 0m 3.81s
+Events processed per second: 8142.89 Hz
+Average time per event: 0.122806 ms
+=======================
+Cuts applied: L1 MinBias Trigger;Cluster Compatibility Filter;Primary Vertex Filter;Jet pT > 30.0 GeV/c;Jet |eta| < 1.6;HF E_{Max}+ AND HF E_{Max}- > 14;Jet PF CEF < 0.8;Jet PF NEF < 0.8;Jet PF MUF < 0.8;
+General info: NEntries: 31K;Sample: MC;Tag: pthat01PD_withjetcuts;ProcessingDate: 20260319;EventsBeforeCuts: 31000;EventsAfterCuts: 20172;EventCutEfficiency: 65.07%;JetsBeforeSelection: 76600;JetsAfterSelection: 206;JetSelectionEfficiency: 0.27%;TotalJetsProcessed: 116947;MCWeighted: Yes;L1MinBiasEvents: 30733;CCFilterEvents: 30729;PVFilterEvents: 30422;ZvtxCutEvents: 30281;HFEFilterEvents: 20172;
+
+=== MEMORY SUMMARY ===
+Peak memory usage: 257.152 MB
+Memory cleanup completed.
+=======================
+(int) 0

@@ -1,0 +1,937 @@
+   ------------------------------------------------------------------
+  | Welcome to ROOT 6.30/08                        https://root.cern |
+  | (c) 1995-2024, The ROOT Team; conception: R. Brun, F. Rademakers |
+  | Built for linuxx8664gcc on Apr 19 2025, 17:03:44                 |
+  | From heads/master@tags/v6-30-08                                  |
+  | With c++ (GCC) 8.5.0 20210514 (Red Hat 8.5.0-26)                 |
+  | Try '.help'/'.?', '.demo', '.license', '.credits', '.quit'/'.q'  |
+   ------------------------------------------------------------------
+
+
+Processing SaveHistChain.cpp...
+Found 111 ROOT files matching pattern: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_7*
+Number of ROOT files to process: 111
+Warning in <TClass::Init>: no dictionary for class L1Analysis::L1AnalysisRecoMetFilterDataFormat is available
+Number of entries: 12788000
+
+Starting processing...
+
+Processing entry 0 out of 12788000; 0%
+Number of Jets in this event: 3
+Total jets processed so far: 3
+Current memory usage: 248.277 MB (+0 MB from start)
+pthat: 31.0843; weight: 0.0376609
+
+
+Processing entry 100000 out of 12788000; 0.781983%
+Number of Jets in this event: 2
+Total jets processed so far: 383436
+Current memory usage: 350.02 MB (+101.742 MB from start)
+pthat: 37.6583; weight: 0.0158868
+
+
+Processing entry 200000 out of 12788000; 1.56397%
+Number of Jets in this event: 1
+Total jets processed so far: 766455
+Current memory usage: 360.352 MB (+112.074 MB from start)
+pthat: 17.5202; weight: 0.49709
+
+
+Processing entry 300000 out of 12788000; 2.34595%
+Number of Jets in this event: 3
+Total jets processed so far: 1149310
+Current memory usage: 367.18 MB (+118.902 MB from start)
+pthat: 21.3298; weight: 0.205048
+
+
+Processing entry 400000 out of 12788000; 3.12793%
+Number of Jets in this event: 3
+Total jets processed so far: 1534308
+Current memory usage: 377.668 MB (+129.391 MB from start)
+pthat: 28.8529; weight: 0.0526691
+
+
+Processing entry 500000 out of 12788000; 3.90992%
+Number of Jets in this event: 2
+Total jets processed so far: 1916735
+Current memory usage: 384.309 MB (+136.031 MB from start)
+pthat: 19.8344; weight: 0.284391
+
+
+Processing entry 600000 out of 12788000; 4.6919%
+Number of Jets in this event: 2
+Total jets processed so far: 2299979
+Current memory usage: 393.359 MB (+145.082 MB from start)
+pthat: 17.6795; weight: 0.477302
+
+
+Processing entry 700000 out of 12788000; 5.47388%
+Number of Jets in this event: 2
+Total jets processed so far: 2683415
+Current memory usage: 393.602 MB (+145.324 MB from start)
+pthat: 29.9321; weight: 0.0446464
+
+
+Processing entry 800000 out of 12788000; 6.25587%
+Number of Jets in this event: 2
+Total jets processed so far: 3066763
+Current memory usage: 393.602 MB (+145.324 MB from start)
+pthat: 33.4884; weight: 0.0269393
+
+
+Processing entry 900000 out of 12788000; 7.03785%
+Number of Jets in this event: 2
+Total jets processed so far: 3451183
+Current memory usage: 393.602 MB (+145.324 MB from start)
+pthat: 39.0305; weight: 0.0135237
+
+
+Processing entry 1000000 out of 12788000; 7.81983%
+Number of Jets in this event: 3
+Total jets processed so far: 3834920
+Current memory usage: 394.484 MB (+146.207 MB from start)
+pthat: 84.091; weight: 0.000427588
+
+
+Processing entry 1100000 out of 12788000; 8.60181%
+Number of Jets in this event: 2
+Total jets processed so far: 4218054
+Current memory usage: 394.734 MB (+146.457 MB from start)
+pthat: 90.2343; weight: 0.000311342
+
+
+Processing entry 1200000 out of 12788000; 9.3838%
+Number of Jets in this event: 2
+Total jets processed so far: 4601618
+Current memory usage: 398.434 MB (+150.156 MB from start)
+pthat: 30.2096; weight: 0.0428308
+
+
+Processing entry 1300000 out of 12788000; 10.1658%
+Number of Jets in this event: 2
+Total jets processed so far: 4985125
+Current memory usage: 398.68 MB (+150.402 MB from start)
+pthat: 44.9382; weight: 0.007172
+
+
+Processing entry 1400000 out of 12788000; 10.9478%
+Number of Jets in this event: 2
+Total jets processed so far: 5367778
+Current memory usage: 398.68 MB (+150.402 MB from start)
+pthat: 21.9994; weight: 0.178447
+
+
+Processing entry 1500000 out of 12788000; 11.7297%
+Number of Jets in this event: 1
+Total jets processed so far: 5751815
+Current memory usage: 398.68 MB (+150.402 MB from start)
+pthat: 23.8158; weight: 0.122014
+
+
+Processing entry 1600000 out of 12788000; 12.5117%
+Number of Jets in this event: 2
+Total jets processed so far: 6134995
+Current memory usage: 398.68 MB (+150.402 MB from start)
+pthat: 47.0107; weight: 0.0058548
+
+
+Processing entry 1700000 out of 12788000; 13.2937%
+Number of Jets in this event: 1
+Total jets processed so far: 6518086
+Current memory usage: 404.336 MB (+156.059 MB from start)
+pthat: 22.0944; weight: 0.175041
+
+
+Processing entry 1800000 out of 12788000; 14.0757%
+Number of Jets in this event: 4
+Total jets processed so far: 6901867
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 62.2713; weight: 0.00165228
+
+
+Processing entry 1900000 out of 12788000; 14.8577%
+Number of Jets in this event: 1
+Total jets processed so far: 7284679
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 24.6316; weight: 0.107323
+
+
+Processing entry 2000000 out of 12788000; 15.6397%
+Number of Jets in this event: 2
+Total jets processed so far: 7668176
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 29.9016; weight: 0.0448508
+
+
+Processing entry 2100000 out of 12788000; 16.4216%
+Number of Jets in this event: 2
+Total jets processed so far: 8051526
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 27.2436; weight: 0.0681901
+
+
+Processing entry 2200000 out of 12788000; 17.2036%
+Number of Jets in this event: 2
+Total jets processed so far: 8433897
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 38.1076; weight: 0.015061
+
+
+Processing entry 2300000 out of 12788000; 17.9856%
+Number of Jets in this event: 2
+Total jets processed so far: 8817992
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 25.9152; weight: 0.0853778
+
+
+Processing entry 2400000 out of 12788000; 18.7676%
+Number of Jets in this event: 2
+Total jets processed so far: 9201050
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 28.993; weight: 0.0515337
+
+
+Processing entry 2500000 out of 12788000; 19.5496%
+Number of Jets in this event: 2
+Total jets processed so far: 9583829
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 49.9725; weight: 0.00444755
+
+
+Processing entry 2600000 out of 12788000; 20.3316%
+Number of Jets in this event: 2
+Total jets processed so far: 9967386
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 33.1897; weight: 0.0280468
+
+
+Processing entry 2700000 out of 12788000; 21.1135%
+Number of Jets in this event: 2
+Total jets processed so far: 10350658
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 21.1432; weight: 0.212287
+
+
+Processing entry 2800000 out of 12788000; 21.8955%
+Number of Jets in this event: 2
+Total jets processed so far: 10733879
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 46.2508; weight: 0.00630047
+
+
+Processing entry 2900000 out of 12788000; 22.6775%
+Number of Jets in this event: 4
+Total jets processed so far: 11118066
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 23.276; weight: 0.13846
+
+
+Processing entry 3000000 out of 12788000; 23.4595%
+Number of Jets in this event: 2
+Total jets processed so far: 11501819
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 39.0797; weight: 0.0134462
+
+
+Processing entry 3100000 out of 12788000; 24.2415%
+Number of Jets in this event: 5
+Total jets processed so far: 11885171
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 66.7193; weight: 0.0012108
+
+
+Processing entry 3200000 out of 12788000; 25.0235%
+Number of Jets in this event: 1
+Total jets processed so far: 12268543
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 25.2673; weight: 0.0956965
+
+
+Processing entry 3300000 out of 12788000; 25.8054%
+Number of Jets in this event: 2
+Total jets processed so far: 12653259
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 47.8078; weight: 0.00542806
+
+
+Processing entry 3400000 out of 12788000; 26.5874%
+Number of Jets in this event: 3
+Total jets processed so far: 13037283
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 68.2328; weight: 0.00109507
+
+
+Processing entry 3500000 out of 12788000; 27.3694%
+Number of Jets in this event: 3
+Total jets processed so far: 13419616
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 42.447; weight: 0.00922888
+
+
+Processing entry 3600000 out of 12788000; 28.1514%
+Number of Jets in this event: 1
+Total jets processed so far: 13803190
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 25.6696; weight: 0.0891304
+
+
+Processing entry 3700000 out of 12788000; 28.9334%
+Number of Jets in this event: 2
+Total jets processed so far: 14186615
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 53.5687; weight: 0.00325303
+
+
+Processing entry 3800000 out of 12788000; 29.7154%
+Number of Jets in this event: 2
+Total jets processed so far: 14570954
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 18.8704; weight: 0.355934
+
+
+Processing entry 3900000 out of 12788000; 30.4973%
+Number of Jets in this event: 1
+Total jets processed so far: 14955303
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 16.2061; weight: 0.706091
+
+
+Processing entry 4000000 out of 12788000; 31.2793%
+Number of Jets in this event: 2
+Total jets processed so far: 15339614
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 26.5236; weight: 0.0769247
+
+
+Processing entry 4100000 out of 12788000; 32.0613%
+Number of Jets in this event: 2
+Total jets processed so far: 15722067
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 31.5376; weight: 0.0352926
+
+
+Processing entry 4200000 out of 12788000; 32.8433%
+Number of Jets in this event: 2
+Total jets processed so far: 16104895
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 20.2387; weight: 0.259699
+
+
+Processing entry 4300000 out of 12788000; 33.6253%
+Number of Jets in this event: 2
+Total jets processed so far: 16487287
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 24.0229; weight: 0.120115
+
+
+Processing entry 4400000 out of 12788000; 34.4073%
+Number of Jets in this event: 3
+Total jets processed so far: 16871322
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 39.5365; weight: 0.012761
+
+
+Processing entry 4500000 out of 12788000; 35.1892%
+Number of Jets in this event: 0
+Total jets processed so far: 17254191
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 19.2007; weight: 0.329214
+
+
+Processing entry 4600000 out of 12788000; 35.9712%
+Number of Jets in this event: 1
+Total jets processed so far: 17638187
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 17.9853; weight: 0.441848
+
+
+Processing entry 4700000 out of 12788000; 36.7532%
+Number of Jets in this event: 3
+Total jets processed so far: 18021352
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 28.0367; weight: 0.0599208
+
+
+Processing entry 4800000 out of 12788000; 37.5352%
+Number of Jets in this event: 3
+Total jets processed so far: 18405109
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 28.3815; weight: 0.0567132
+
+
+Processing entry 4900000 out of 12788000; 38.3172%
+Number of Jets in this event: 1
+Total jets processed so far: 18789370
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 17.1691; weight: 0.544403
+
+
+Processing entry 5000000 out of 12788000; 39.0992%
+Number of Jets in this event: 2
+Total jets processed so far: 19173148
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 22.2514; weight: 0.16955
+
+
+Processing entry 5100000 out of 12788000; 39.8811%
+Number of Jets in this event: 3
+Total jets processed so far: 19556883
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 41.0928; weight: 0.0107267
+
+
+Processing entry 5200000 out of 12788000; 40.6631%
+Number of Jets in this event: 2
+Total jets processed so far: 19940002
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 15.8407; weight: 0.782372
+
+
+Processing entry 5300000 out of 12788000; 41.4451%
+Number of Jets in this event: 0
+Total jets processed so far: 20322139
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 15.2428; weight: 0.92725
+
+
+Processing entry 5400000 out of 12788000; 42.2271%
+Number of Jets in this event: 2
+Total jets processed so far: 20705298
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 30.7677; weight: 0.0394442
+
+
+Processing entry 5500000 out of 12788000; 43.0091%
+Number of Jets in this event: 1
+Total jets processed so far: 21089208
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 26.6287; weight: 0.0755671
+
+
+Processing entry 5600000 out of 12788000; 43.7911%
+Number of Jets in this event: 2
+Total jets processed so far: 21473293
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 20.2624; weight: 0.258334
+
+
+Processing entry 5700000 out of 12788000; 44.573%
+Number of Jets in this event: 2
+Total jets processed so far: 21855261
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 65.5586; weight: 0.00131092
+
+
+Processing entry 5800000 out of 12788000; 45.355%
+Number of Jets in this event: 1
+Total jets processed so far: 22237955
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 27.9776; weight: 0.0605013
+
+
+Processing entry 5900000 out of 12788000; 46.137%
+Number of Jets in this event: 3
+Total jets processed so far: 22621232
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 70.1971; weight: 0.00096377
+
+
+Processing entry 6000000 out of 12788000; 46.919%
+Number of Jets in this event: 3
+Total jets processed so far: 23004482
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 19.818; weight: 0.285465
+
+
+Processing entry 6100000 out of 12788000; 47.701%
+Number of Jets in this event: 3
+Total jets processed so far: 23388250
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 106.349; weight: 0.000148629
+
+
+Processing entry 6200000 out of 12788000; 48.483%
+Number of Jets in this event: 2
+Total jets processed so far: 23772472
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 34.4509; weight: 0.0237142
+
+
+Processing entry 6300000 out of 12788000; 49.2649%
+Number of Jets in this event: 1
+Total jets processed so far: 24156282
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 29.3602; weight: 0.0486964
+
+
+Processing entry 6400000 out of 12788000; 50.0469%
+Number of Jets in this event: 2
+Total jets processed so far: 24538115
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 63.5236; weight: 0.00151079
+
+
+Processing entry 6500000 out of 12788000; 50.8289%
+Number of Jets in this event: 2
+Total jets processed so far: 24921398
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 32.8613; weight: 0.0293291
+
+
+Processing entry 6600000 out of 12788000; 51.6109%
+Number of Jets in this event: 3
+Total jets processed so far: 25305604
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 54.2764; weight: 0.00306651
+
+
+Processing entry 6700000 out of 12788000; 52.3929%
+Number of Jets in this event: 1
+Total jets processed so far: 25688262
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 26.6868; weight: 0.0748172
+
+
+Processing entry 6800000 out of 12788000; 53.1749%
+Number of Jets in this event: 0
+Total jets processed so far: 26072039
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 21.998; weight: 0.17852
+
+
+Processing entry 6900000 out of 12788000; 53.9568%
+Number of Jets in this event: 1
+Total jets processed so far: 26454729
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 28.5457; weight: 0.0552687
+
+
+Processing entry 7000000 out of 12788000; 54.7388%
+Number of Jets in this event: 1
+Total jets processed so far: 26836888
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 25.336; weight: 0.0945345
+
+
+Processing entry 7100000 out of 12788000; 55.5208%
+Number of Jets in this event: 2
+Total jets processed so far: 27219811
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 28.4061; weight: 0.0564977
+
+
+Processing entry 7200000 out of 12788000; 56.3028%
+Number of Jets in this event: 2
+Total jets processed so far: 27603248
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 49.2596; weight: 0.00474463
+
+
+Processing entry 7300000 out of 12788000; 57.0848%
+Number of Jets in this event: 3
+Total jets processed so far: 27986070
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 19.2897; weight: 0.321511
+
+
+Processing entry 7400000 out of 12788000; 57.8668%
+Number of Jets in this event: 2
+Total jets processed so far: 28370105
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 25.0681; weight: 0.0991535
+
+
+Processing entry 7500000 out of 12788000; 58.6487%
+Number of Jets in this event: 3
+Total jets processed so far: 28753255
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 103.306; weight: 0.000169372
+
+
+Processing entry 7600000 out of 12788000; 59.4307%
+Number of Jets in this event: 2
+Total jets processed so far: 29136839
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 54.6298; weight: 0.00297829
+
+
+Processing entry 7700000 out of 12788000; 60.2127%
+Number of Jets in this event: 2
+Total jets processed so far: 29519391
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 57.4642; weight: 0.00237205
+
+
+Processing entry 7800000 out of 12788000; 60.9947%
+Number of Jets in this event: 3
+Total jets processed so far: 29901471
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 69.5762; weight: 0.00100305
+
+
+Processing entry 7900000 out of 12788000; 61.7767%
+Number of Jets in this event: 1
+Total jets processed so far: 30284316
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 29.9977; weight: 0.0442091
+
+
+Processing entry 8000000 out of 12788000; 62.5587%
+Number of Jets in this event: 2
+Total jets processed so far: 30667635
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 28.7346; weight: 0.0536519
+
+
+Processing entry 8100000 out of 12788000; 63.3406%
+Number of Jets in this event: 2
+Total jets processed so far: 31051694
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 48.0465; weight: 0.00530802
+
+
+Processing entry 8200000 out of 12788000; 64.1226%
+Number of Jets in this event: 2
+Total jets processed so far: 31435946
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 26.0198; weight: 0.0838505
+
+
+Processing entry 8300000 out of 12788000; 64.9046%
+Number of Jets in this event: 2
+Total jets processed so far: 31819549
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 19.7832; weight: 0.287678
+
+
+Processing entry 8400000 out of 12788000; 65.6866%
+Number of Jets in this event: 2
+Total jets processed so far: 32203786
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 64.7574; weight: 0.00138549
+
+
+Processing entry 8500000 out of 12788000; 66.4686%
+Number of Jets in this event: 2
+Total jets processed so far: 32586810
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 27.4964; weight: 0.0632723
+
+
+Processing entry 8600000 out of 12788000; 67.2505%
+Number of Jets in this event: 2
+Total jets processed so far: 32969281
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 18.9496; weight: 0.349309
+
+
+Processing entry 8700000 out of 12788000; 68.0325%
+Number of Jets in this event: 1
+Total jets processed so far: 33353602
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 15.6697; weight: 0.821562
+
+
+Processing entry 8800000 out of 12788000; 68.8145%
+Number of Jets in this event: 2
+Total jets processed so far: 33736787
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 29.4873; weight: 0.047759
+
+
+Processing entry 8900000 out of 12788000; 69.5965%
+Number of Jets in this event: 0
+Total jets processed so far: 34119907
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 17.2524; weight: 0.532829
+
+
+Processing entry 9000000 out of 12788000; 70.3785%
+Number of Jets in this event: 2
+Total jets processed so far: 34503884
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 19.9395; weight: 0.277775
+
+
+Processing entry 9100000 out of 12788000; 71.1605%
+Number of Jets in this event: 1
+Total jets processed so far: 34887420
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 17.0223; weight: 0.566015
+
+
+Processing entry 9200000 out of 12788000; 71.9425%
+Number of Jets in this event: 2
+Total jets processed so far: 35271595
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 35; weight: 0.022081
+
+
+Processing entry 9300000 out of 12788000; 72.7244%
+Number of Jets in this event: 4
+Total jets processed so far: 35653576
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 73.4847; weight: 0.000784378
+
+
+Processing entry 9400000 out of 12788000; 73.5064%
+Number of Jets in this event: 2
+Total jets processed so far: 36036235
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 32.3689; weight: 0.0313933
+
+
+Processing entry 9500000 out of 12788000; 74.2884%
+Number of Jets in this event: 2
+Total jets processed so far: 36421215
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 44.0907; weight: 0.00781354
+
+
+Processing entry 9600000 out of 12788000; 75.0704%
+Number of Jets in this event: 4
+Total jets processed so far: 36805127
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 76.7315; weight: 0.000645696
+
+
+Processing entry 9700000 out of 12788000; 75.8524%
+Number of Jets in this event: 4
+Total jets processed so far: 37188730
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 52.6181; weight: 0.00352597
+
+
+Processing entry 9800000 out of 12788000; 76.6343%
+Number of Jets in this event: 0
+Total jets processed so far: 37573424
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 15.4483; weight: 0.87589
+
+
+Processing entry 9900000 out of 12788000; 77.4163%
+Number of Jets in this event: 2
+Total jets processed so far: 37956935
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 16.6422; weight: 0.626561
+
+
+Processing entry 10000000 out of 12788000; 78.1983%
+Number of Jets in this event: 0
+Total jets processed so far: 38340672
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 18.9303; weight: 0.350912
+
+
+Processing entry 10100000 out of 12788000; 78.9803%
+Number of Jets in this event: 2
+Total jets processed so far: 38723721
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 29.1804; weight: 0.0500611
+
+
+Processing entry 10200000 out of 12788000; 79.7623%
+Number of Jets in this event: 2
+Total jets processed so far: 39106598
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 65.2056; weight: 0.00134317
+
+
+Processing entry 10300000 out of 12788000; 80.5443%
+Number of Jets in this event: 3
+Total jets processed so far: 39492343
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 42.0728; weight: 0.00964719
+
+
+Processing entry 10400000 out of 12788000; 81.3262%
+Number of Jets in this event: 3
+Total jets processed so far: 39876050
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 30.3435; weight: 0.0419831
+
+
+Processing entry 10500000 out of 12788000; 82.1082%
+Number of Jets in this event: 1
+Total jets processed so far: 40259676
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 28.7359; weight: 0.0536182
+
+
+Processing entry 10600000 out of 12788000; 82.8902%
+Number of Jets in this event: 2
+Total jets processed so far: 40644445
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 66.55; weight: 0.00122531
+
+
+Processing entry 10700000 out of 12788000; 83.6722%
+Number of Jets in this event: 2
+Total jets processed so far: 41027038
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 22.3209; weight: 0.16719
+
+
+Processing entry 10800000 out of 12788000; 84.4542%
+Number of Jets in this event: 1
+Total jets processed so far: 41408703
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 20.8763; weight: 0.225925
+
+
+Processing entry 10900000 out of 12788000; 85.2362%
+Number of Jets in this event: 2
+Total jets processed so far: 41791829
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 32.6495; weight: 0.0301972
+
+
+Processing entry 11000000 out of 12788000; 86.0181%
+Number of Jets in this event: 2
+Total jets processed so far: 42174794
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 22.936; weight: 0.147939
+
+
+Processing entry 11100000 out of 12788000; 86.8001%
+Number of Jets in this event: 2
+Total jets processed so far: 42558692
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 33.5904; weight: 0.0265732
+
+
+Processing entry 11200000 out of 12788000; 87.5821%
+Number of Jets in this event: 1
+Total jets processed so far: 42942065
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 15.5327; weight: 0.854483
+
+
+Processing entry 11300000 out of 12788000; 88.3641%
+Number of Jets in this event: 2
+Total jets processed so far: 43325125
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 73.6438; weight: 0.000776779
+
+
+Processing entry 11400000 out of 12788000; 89.1461%
+Number of Jets in this event: 3
+Total jets processed so far: 43707993
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 72.3196; weight: 0.000842863
+
+
+Processing entry 11500000 out of 12788000; 89.9281%
+Number of Jets in this event: 4
+Total jets processed so far: 44092474
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 46.4717; weight: 0.00616644
+
+
+Processing entry 11600000 out of 12788000; 90.71%
+Number of Jets in this event: 2
+Total jets processed so far: 44476549
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 32.9038; weight: 0.0291552
+
+
+Processing entry 11700000 out of 12788000; 91.492%
+Number of Jets in this event: 2
+Total jets processed so far: 44861106
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 22.7179; weight: 0.154439
+
+
+Processing entry 11800000 out of 12788000; 92.274%
+Number of Jets in this event: 3
+Total jets processed so far: 45244073
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 52.4689; weight: 0.00357151
+
+
+Processing entry 11900000 out of 12788000; 93.056%
+Number of Jets in this event: 4
+Total jets processed so far: 45627342
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 66.5656; weight: 0.00122398
+
+
+Processing entry 12000000 out of 12788000; 93.838%
+Number of Jets in this event: 3
+Total jets processed so far: 46011143
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 90.1898; weight: 0.000312032
+
+
+Processing entry 12100000 out of 12788000; 94.62%
+Number of Jets in this event: 4
+Total jets processed so far: 46393854
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 74.1947; weight: 0.000751157
+
+
+Processing entry 12200000 out of 12788000; 95.4019%
+Number of Jets in this event: 2
+Total jets processed so far: 46777716
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 21.4626; weight: 0.199454
+
+
+Processing entry 12300000 out of 12788000; 96.1839%
+Number of Jets in this event: 3
+Total jets processed so far: 47160481
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 35.0915; weight: 0.0218275
+
+
+Processing entry 12400000 out of 12788000; 96.9659%
+Number of Jets in this event: 2
+Total jets processed so far: 47543830
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 34.8925; weight: 0.0223931
+
+
+Processing entry 12500000 out of 12788000; 97.7479%
+Number of Jets in this event: 2
+Total jets processed so far: 47927431
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 40.2835; weight: 0.0117303
+
+
+Processing entry 12600000 out of 12788000; 98.5299%
+Number of Jets in this event: 1
+Total jets processed so far: 48311092
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 22.776; weight: 0.152673
+
+
+Processing entry 12700000 out of 12788000; 99.3119%
+Number of Jets in this event: 2
+Total jets processed so far: 48693640
+Current memory usage: 405.758 MB (+157.48 MB from start)
+pthat: 50.664; weight: 0.00418083
+
+
+=== PROCESSING SUMMARY ===
+Events before cuts: 12788000
+Events after cuts: 11495891
+Event cut efficiency: 89.8959%
+Jets before selection: 45217049
+Jets after selection: 18413264
+Jet selection efficiency: 40.7219%
+Total jets processed: 49030726
+=========================
+
+=== TIMING SUMMARY ===
+Total processing time (H:M:S): 1h 46m 4.83s
+Events processed per second: 2009.17 Hz
+Average time per event: 0.497719 ms
+=======================
+Cuts applied: L1 MinBias Trigger;Cluster Compatibility Filter;Primary Vertex Filter;Jet pT > 30.0 GeV/c;Jet |eta| < 1.6;HF E_{Max}+ AND HF E_{Max}- > 14;Jet PF CEF < 0.8;Jet PF NEF < 0.8;Jet PF MUF < 0.8;
+General info: NEntries: 12.8M;Sample: MC;Tag: pthat15_1PD_7_withjetcuts;ProcessingDate: 20260320;EventsBeforeCuts: 12788000;EventsAfterCuts: 11495891;EventCutEfficiency: 89.90%;JetsBeforeSelection: 45217049;JetsAfterSelection: 18413264;JetSelectionEfficiency: 40.72%;TotalJetsProcessed: 49030726;MCWeighted: Yes;L1MinBiasEvents: 12787944;CCFilterEvents: 12787414;PVFilterEvents: 12787409;ZvtxCutEvents: 12726645;HFEFilterEvents: 11495891;
+
+=== MEMORY SUMMARY ===
+Peak memory usage: 405.758 MB
+Memory cleanup completed.
+=======================
+(int) 0
