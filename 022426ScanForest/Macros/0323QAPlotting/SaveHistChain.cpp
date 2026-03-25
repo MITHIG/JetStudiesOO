@@ -17,16 +17,15 @@
 #include <TSystemFile.h> 
 #include <chrono>
 #include <sys/resource.h>
-
-
-static void StyleHist(TH1* h,
-    int color,
-    int marker){
-  h->SetLineColor(color);
-  h->SetMarkerColor(color);
-  h->SetMarkerStyle(marker);
-  h->SetLineWidth(2);
-}
+#include <iostream>
+#include <string>
+#include <vector>
+#include <ctime>
+#include <iomanip>
+#include <TSystem.h>
+#include <TRegexp.h>
+#include <TH2F.h>
+#include <TVector2.h>
 
 using namespace std;
 
@@ -68,7 +67,7 @@ vector<string> GetRootFiles(const string& pattern) {
 
     return rootFiles;
 }
-int SaveHistChain() {
+int main() {
 
     string MCpthat15String = "/eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/*";
     string MCpthat0String = "/eos/cms/store/group/phys_heavyions/hbossi/mc_productions/MinBias_OO_5p36TeV_hijing/MiniumBiasOO_MC_5p36TeV_HIJING/260316_213344/0000/*";
@@ -80,10 +79,10 @@ int SaveHistChain() {
      *                                                                       *
      *************************************************************************/
     int nevents = 0; // Set to 0 to process all events
-    bool MC = false;
-    string outfoldername = "0323OnePD_Try2";
-    string ForestFolder = DataString;
-    string outfiletag = "Data_1PD_withjetcuts";
+    bool MC = true;
+    string outfoldername = "0324TreeDebug";
+    string ForestFolder = MCpthat15String;
+    string outfiletag = "MC_1PD_withjetcuts_Chain";
 
     bool L1MinBiasBool = true;
     bool HLTMinBiasBool = false;
@@ -158,6 +157,7 @@ int SaveHistChain() {
     char datebuf[64];
     strftime(datebuf, sizeof(datebuf), "%Y%m%d", &tm);
     std::string date(datebuf);
+    cout << "Current time: " << std::put_time(&tm, "%Y-%m-%d %H:%M:%S") << endl;
     string sampleType = MC ? "MC" : "Data";
     
     
@@ -218,8 +218,6 @@ int SaveHistChain() {
     float jtpt2 = -1;
     float refpt1 = -1;
     float refpt2 = -1;
-    float genpt1 = -1;
-    float genpt2 = -1;
 
     float A_J = 0;
     float X_J = 0;
@@ -227,10 +225,6 @@ int SaveHistChain() {
     float A_J_ref = 0;
     float X_J_ref = 0;
     float dPhi_ref = 0;
-    float A_J_gen = 0;
-    float X_J_gen = 0;
-    float dPhi_gen = 0;
-    float pi = TMath::Pi();
 
     //Trigger variables
     int L1_MinimumBiasHF1_OR_BptxAND;
