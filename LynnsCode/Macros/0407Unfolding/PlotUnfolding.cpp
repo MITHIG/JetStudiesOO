@@ -3,6 +3,12 @@
 #include <TCanvas.h>
 #include <TH1F.h>
 #include <TLegend.h>
+#include "RooUnfoldResponse.h"
+#include "RooUnfoldBayes.h"
+#include "RooUnfold.h"
+#include "RooUnfoldResponse.h"
+#include "RooUnfoldBayes.h"
+#include <TStyle.h>
 
 struct BlockCaptionInfo{
   std::vector<std::string> text;
@@ -205,12 +211,11 @@ static void NormalizePerEvt(TH1* h, double nEvts){
 }
 
 
-int PlotResponse(){
-
+int PlotUnfolding(){
 
     string dataFile = "/home/xirong/JetStudiesOO/LynnsCode/RootFiles/0408Unfolding/Response_Data_93.4MEvts_Data_xrd_20260409.root";
     string MCFile = "/home/xirong/JetStudiesOO/LynnsCode/RootFiles/0408Unfolding/Response_MC_99.7MEvts_MC_xrd_20260409.root";
-    string outfolder = "/home/xirong/JetStudiesOO/022426ScanForest/Plots/Response/0331ResponsePlotsNew/";
+    string outfolder = "/home/xirong/JetStudiesOO/LynnsCode/Plots/Response/0409Unfolding/";
 
     TFile *dataf = TFile::Open(dataFile.c_str(), "READ");
     TFile *MCf = TFile::Open(MCFile.c_str(), "READ");
@@ -224,28 +229,39 @@ int PlotResponse(){
     }
 
     TH1F* hDataPt = (TH1F*)dataf->Get("hDataPt");
+    TH1F* hGenPt = (TH1F*)MCf->Get("hGenPt");
+    TH1F* hRecoPt = (TH1F*)MCf->Get("hRecoPt");
+    RooUnfoldResponse* response_pt = (RooUnfoldResponse*)MCf->Get("response_pt");    // ===== UNFOLDING =====
+    // Add these checks:
+    if (!hDataPt) {
+        cout << "Error: Could not find hDataPt in data file" << endl;
+        return 1;
+    }
+    if (!hGenPt) {
+        cout << "Error: Could not find hGenPt in MC file" << endl;
+        return 1;
+    }
+    if (!hRecoPt) {
+        cout << "Error: Could not find hRecoPt in MC file" << endl;
+        return 1;
+    }
+    if (!response_pt) {
+        cout << "Error: Could not find response_pt in MC file" << endl;
+        return 1;
+    }
+    RooUnfoldBayes unfold(response_pt, hDataPt, 4);  // Use pointer, not reference
+    TH1F* hUnfolded = (TH1F*)unfold.Hunfold();
+    RooUnfoldBayes unfold_toy(response_pt, hRecoPt, 4);  // Use pointer, not reference
+    TH1F* hUnfoldedToy = (TH1F*)unfold_toy.Hunfold();
+    cout << "Unfolding complete!" << endl;
+    cout << "Unfolded histogram: " << hUnfolded->GetName() << endl;
+    // ===== END UNFOLDING =====
 
-    TNamed* cutInfo= (TNamed*)file->Get("Cuts");
-    TNamed* generalInfo = (TNamed*)file->Get("GeneralInfo");
-  
+    TNamed* cutInfo= (TNamed*)MCf->Get("Cuts");
+    TNamed* generalInfo = (TNamed*)MCf->Get("GeneralInfo");
+
     cout << "Debug: Cuts applied: " << cutInfo->GetTitle() << endl;
     cout << "Debug: General info: " << generalInfo->GetTitle() << endl;
-
-    TH2F* hResponse_pt = (TH2F*)file->Get("hResponse_pt");
-    if (!hResponse_pt) {
-        cout << "Error: hResponse_pt not found in file!" << endl;
-        return 1;
-    }
-    TH2F* hResponse_rg = (TH2F*)file->Get("hResponse_rg");
-    if (!hResponse_rg) {
-        cout << "Error: hResponse_rg not found in file!" << endl;
-        return 1;
-    }
-    TH2F* hResponse_zg = (TH2F*)file->Get("hResponse_zg");
-    if (!hResponse_zg) {
-        cout << "Error: hResponse_zg not found in file!" << endl;
-        return 1;
-    }
 
     vector<std::string> cutInfoVector;
     std::stringstream ssCut(cutInfo->GetTitle());
@@ -265,39 +281,35 @@ int PlotResponse(){
     gStyle->SetOptStat(0); // Disable statistics box
     gStyle->SetPaintTextFormat(".2f");
  
-    // PT response
-    captionInfo = {captionLines, 0.20, 0.80, 0.03, 0.03, true};
+    StyleHist(hGenPt, kBlue, 20);
+    StyleHist(hRecoPt, kRed, 21);
+    StyleHist(hDataPt, kBlack, 22);
+    StyleHist(hUnfolded, kGreen+2, 23);
+    StyleHist(hUnfoldedToy, kGreen+2, 24);
+    vector<TH1*> histsToCheck = {hGenPt, hRecoPt, hDataPt, hUnfolded};
+    vector<string> histNames = {"hGenPt", "hRecoPt", "hDataPt", "hUnfolded"};
+
+    DrawAndSave({hGenPt, hRecoPt, hDataPt, hUnfolded}, 
+                {"Gen", "Reco", "Measured data", "Unfolded"}, 
+                outfolder + "PtComparison.png", 
+                "p_{T} (GeV/c)", 
+                "dN/dp_{T}", 
+                "p_{T} distribution: Gen vs Reco vs Data vs Unfolded", 
+                30, -999, 1e-6, 5e5, true, true, captionInfo);
+    DrawAndSave({hGenPt, hRecoPt, hUnfoldedToy}, 
+                {"Gen", "Reco","Unfolded (Toy)"},
+                outfolder + "PtComparison_Toy.png",
+                "p_{T} (GeV/c)",
+                "dN/dp_{T}",
+                "p_{T} distribution: Gen vs Unfolded (Toy)",
+                30, -999, 1e-6, 5e5, true, true, captionInfo);
+
+    //Plot Response matrix
     TCanvas* c = new TCanvas("c", "Response Matrix", 800, 800);
     FormatCanvas(c, false, false);
     c->SetLogz();
-    hResponse_pt->Draw("COLZ TEXT");
-    hResponse_pt->GetXaxis()->SetTitleOffset(1.4);   // increase >1 to move down
-    hResponse_pt->SetTitle("Response Matrix: Jet p_{T}");
+    response_pt->Hresponse()->Draw("COLZ");
     DrawTLatexLines(captionInfo);
 
     c->SaveAs((outfolder + "ResponseMatrix_pt_logz.png").c_str());
-
-    // Rg response
-    gStyle->SetPaintTextFormat(".0f");
-    captionInfo = {captionLines, 0.20, 0.85, 0.03, 0.03, true};
-    c = new TCanvas("c", "Response Matrix", 800, 800);
-    FormatCanvas(c, false, false);
-    hResponse_rg->GetXaxis()->SetTitleOffset(1.4);   // increase >1 to move down
-    hResponse_rg->SetTitle("Response Matrix: Jet R_{g}");
-    hResponse_rg->Draw("COLZ TEXT");
-    DrawTLatexLines(captionInfo);
-    c->SetLogz();
-    c->SaveAs((outfolder + "ResponseMatrix_rg_logz.png").c_str());
-
-
-    // Zg response
-    c = new TCanvas("c", "Response Matrix", 800, 800);
-    FormatCanvas(c, false, false);
-    hResponse_zg->GetXaxis()->SetTitleOffset(1.4);   // increase >1 to move down
-    hResponse_zg->SetTitle("Response Matrix: Jet Z_{g}");
-    hResponse_zg->Draw("COLZ TEXT");
-    c->SetLogz();
-    c->SaveAs((outfolder + "ResponseMatrix_zg_logz.png").c_str());
-
-    return 0;
 }
