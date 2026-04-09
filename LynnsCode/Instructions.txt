@@ -1,0 +1,9 @@
+
+1. Inside Macros, Run SaveHist.cpp by: root SaveHist.cpp
+   Histograms will be saved in root file named JetSubstructureHistogramNocuts.root in RootFiles
+
+2. Run root PlotsHists.cpp and histograms would show up in Plots
+
+
+Kinematics given in tree:  pt,eta,phi,sym,rg,dynkt,angu
+Calculated Observables: Leading jet pt, subleading jet pt, A_J, X_J, dPhi

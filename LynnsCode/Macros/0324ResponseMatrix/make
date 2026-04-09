@@ -1,0 +1,9 @@
+default: ExecuteResponse
+
+ExecuteResponse: Response.cpp
+	g++ Response.cpp $(SRC) -O3 \
+	  -I. \
+	  -I./Include \
+	  -I./Src \
+	  -I/home/xirong/JetStudiesOO/LynnsCode/CommonFunctions \
+	  -o Response `root-config --cflags --glibs`
