@@ -108,10 +108,16 @@ int main() {
      *                                                                       *
      *************************************************************************/
     int nEventsCut = 0; // Set to 0 to process all events
-    bool MC = false;
+    bool MC = true;
     string outfoldername = "0408Unfolding";
-    string ForestFolder = DataString;
-    string outfiletag = "Data_xrd";
+    string ForestFolder;
+    if (MC) {
+        ForestFolder = MCpthat15String;
+    }
+    else {
+        ForestFolder = DataString;
+    }
+    string outfiletag = "MC_CorrectVer";
     bool L1MinBiasBool = true;
     bool HLTMinBiasBool = false;
     bool JetTriggerBool = false;
@@ -243,6 +249,7 @@ int main() {
         Float_t genpt[50],  geneta[50], genphi[50], geny[50], genrg[50], genzg[50], genkt[50], genangu[50];
         Float_t jtPfCHF[50], jtPfNHF[50], jtPfCEF[50], jtPfNEF[50], jtPfMUF[50];
         int jtPfCHM[50];
+        Int_t genmatchindex[25];   //[ngen]
 
         //Trigger variables
         int L1_MinimumBiasHF1_OR_BptxAND;
@@ -321,7 +328,6 @@ int main() {
 
         if (MC) {
             JetAnalyserTree->SetBranchStatus("ngen", 1);
-
             JetAnalyserTree->SetBranchStatus("refpt", 1);
             JetAnalyserTree->SetBranchStatus("refeta", 1);
             JetAnalyserTree->SetBranchStatus("refphi", 1);
@@ -339,6 +345,7 @@ int main() {
             JetAnalyserTree->SetBranchStatus("genzg", 1);
             JetAnalyserTree->SetBranchStatus("genkt", 1);
             JetAnalyserTree->SetBranchStatus("genangu", 1);
+            JetAnalyserTree->SetBranchStatus("genmatchindex", 1);
         }
 
 
@@ -377,6 +384,7 @@ int main() {
             JetAnalyserTree->SetBranchAddress("genkt",genkt);
             JetAnalyserTree->SetBranchAddress("genangu",genangu);
             JetAnalyserTree->SetBranchAddress("ngen",&ngen);
+            JetAnalyserTree->SetBranchAddress("genmatchindex",genmatchindex);
 
         }
 
@@ -448,17 +456,9 @@ int main() {
                 if (hiHFMinus_pf < HFEMaxCut || hiHFEPlus_pf < HFEMaxCut) continue;
             }
             eventsAfterCuts++;
-          //  cout << "Jet Reco Pt    |    Jet Ref PT   |    Jet Gen PT | Jet Eta" << endl;
-           int njets;
-            if (MC){
-                njets = ngen;
-            }
-            else{
-                njets = nref;  
-            }
-          for (int j = 0; j < njets; j++){
+            for (int j = 0; j < nref; j++){
                 jetsBeforeSelection++;
-             //   if (TMath::Abs(jteta[j]) > etaCut) continue;
+                if (TMath::Abs(jteta[j]) > etaCut) continue;
                 if (JetSelectionsBool == 1){
                     if (jtPfCEF[j] > jtPfCEFcut) continue;
                     if (jtPfNEF[j] > jtPfNEFcut) continue;
@@ -468,25 +468,16 @@ int main() {
                 if (MC){
                     double reco_pt = jtpt[j];
                     double ref_matched_pt = refpt[j];
-                    double gen_pt = genpt[j];
-
-                    if (gen_pt > jtptCut) {
-                        hGenPt->Fill(gen_pt, weight);
-                    }
                     if (reco_pt > jtptCut) {
                         hRecoPt->Fill(reco_pt, weight);
                     }
                     if (reco_pt > jtptCut && ref_matched_pt > jtptCut) {
                         nMatch++;
-                //        cout << "✓ MATCHED: " << Form("%14.2f    |    %14.2f    |    %14.2f", reco_pt, ref_matched_pt, gen_pt) << endl;
+                    //    cout << "✓ MATCHED: " << Form("%14.2f    |    %14.2f", reco_pt, ref_matched_pt) << endl;
                         response_pt.Fill(reco_pt, ref_matched_pt, weight);  // ✓ MATCHED
-                    } else if (gen_pt > jtptCut && (reco_pt <= jtptCut || reco_pt < 0)) {
-                        nMiss++;
-                //        cout << "✓ MISS: " << Form("%14.2f    |    %14.2f    |    %14.2f", reco_pt, ref_matched_pt, gen_pt) << endl;
-                        response_pt.Miss(gen_pt, weight);               // ✓ MISS
-                    } else if (reco_pt > jtptCut && (ref_matched_pt <= jtptCut || ref_matched_pt < 0)) {
+                    } else if (reco_pt > jtptCut && ref_matched_pt <= jtptCut) {
                         nFake++;
-                //        cout << "✓ FAKE: " << Form("%14.2f    |    %14.2f    |    %14.2f", reco_pt, ref_matched_pt, gen_pt) << endl;
+                    //    cout << "✓ FAKE: " << Form("%14.2f    |    %14.2f", reco_pt, ref_matched_pt) << endl;
                         response_pt.Fake(reco_pt, weight);                // ✓ FAKE
                     }
                 }
@@ -495,8 +486,27 @@ int main() {
                     hDataPt->Fill(reco_pt, weight);
                 }
                 jetsAfterSelection++;
-            
             }
+            if (MC){
+                for (int j = 0; j < ngen; j++){
+                    if (TMath::Abs(geneta[j]) > etaCut) continue;
+                    double gen_pt = genpt[j];
+                    if (gen_pt > jtptCut) {
+                        hGenPt->Fill(gen_pt, weight);
+                    }
+                    if ((gen_pt > jtptCut && (genmatchindex[j] < 0 || jtpt[genmatchindex[j]] < jtptCut)) ) {
+                        nMiss++;
+                        if (genmatchindex[j] >= 0) {
+                        //    cout << "✓ MISSED: " << Form("%14.2f    |    %14.2f    |    %14.2f", jtpt[genmatchindex[j]], refpt[genmatchindex[j]], gen_pt) << endl;
+                        }
+                        else {
+                        //    cout << "✓ MISSED: " << Form("No reco match    |    %14.2f", gen_pt) << endl;
+                        }
+                        response_pt.Miss(gen_pt, weight);                // ✓ MISSED
+                    }
+                }
+            }
+
             if (nEvents > nEventsCut && nEventsCut != 0){
                 cout << Form("Debug mode: stopping after %d entries.", nEventsCut) << endl;
                 break;
@@ -506,6 +516,12 @@ int main() {
             cout << Form("Debug mode: stopping after %d entries.", nEventsCut) << endl;
             break;
         }
+
+        cout << "File Contains: " << nEntries << " entries." << endl;
+        cout << "NMiss: " << nMiss << " | ";
+        cout << "NFake: " << nFake << " | ";
+        cout << "NMatch: " << nMatch << endl;
+
         file->Close();
         delete file;
         file = nullptr;

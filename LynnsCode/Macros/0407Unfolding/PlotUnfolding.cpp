@@ -214,7 +214,7 @@ static void NormalizePerEvt(TH1* h, double nEvts){
 int PlotUnfolding(){
 
     string dataFile = "/home/xirong/JetStudiesOO/LynnsCode/RootFiles/0408Unfolding/Response_Data_93.4MEvts_Data_xrd_20260409.root";
-    string MCFile = "/home/xirong/JetStudiesOO/LynnsCode/RootFiles/0408Unfolding/Response_MC_99.7MEvts_MC_xrd_20260409.root";
+    string MCFile = "/home/xirong/JetStudiesOO/LynnsCode/RootFiles/0408Unfolding/Response_MC_99.7MEvts_MC_CorrectVer_20260409.root";
     string outfolder = "/home/xirong/JetStudiesOO/LynnsCode/Plots/Response/0409Unfolding/";
 
     TFile *dataf = TFile::Open(dataFile.c_str(), "READ");
@@ -249,13 +249,19 @@ int PlotUnfolding(){
         cout << "Error: Could not find response_pt in MC file" << endl;
         return 1;
     }
-    RooUnfoldBayes unfold(response_pt, hDataPt, 4);  // Use pointer, not reference
+    RooUnfoldBayes unfold(response_pt, hDataPt, 4);  
     TH1F* hUnfolded = (TH1F*)unfold.Hunfold();
-    RooUnfoldBayes unfold_toy(response_pt, hRecoPt, 4);  // Use pointer, not reference
-    TH1F* hUnfoldedToy = (TH1F*)unfold_toy.Hunfold();
+
+    RooUnfoldBayes unfold_toy(response_pt, response_pt->Hmeasured(), 20);
+    TH1F* hUnfoldedToy = (TH1F*)unfold_toy.Hunfold()->Clone("hUnfoldedToy");
+  
     cout << "Unfolding complete!" << endl;
     cout << "Unfolded histogram: " << hUnfolded->GetName() << endl;
     // ===== END UNFOLDING =====
+
+    for (int i = 1; i <= hGenPt->GetNbinsX(); i++) {
+        cout << "Bin " << i << "Gen: " << hGenPt->GetBinContent(i) << " | Reco: " << hRecoPt->GetBinContent(i) << " | Unfolded: " << hUnfoldedToy->GetBinContent(i) << endl;
+    }
 
     TNamed* cutInfo= (TNamed*)MCf->Get("Cuts");
     TNamed* generalInfo = (TNamed*)MCf->Get("GeneralInfo");
@@ -280,23 +286,16 @@ int PlotUnfolding(){
 
     gStyle->SetOptStat(0); // Disable statistics box
     gStyle->SetPaintTextFormat(".2f");
- 
+    TH1F* hGenResponse = (TH1F*)response_pt->Htruth();
+
     StyleHist(hGenPt, kBlue, 20);
+    StyleHist(hGenResponse, kBlue, 24);
     StyleHist(hRecoPt, kRed, 21);
     StyleHist(hDataPt, kBlack, 22);
     StyleHist(hUnfolded, kGreen+2, 23);
     StyleHist(hUnfoldedToy, kGreen+2, 24);
-    vector<TH1*> histsToCheck = {hGenPt, hRecoPt, hDataPt, hUnfolded};
-    vector<string> histNames = {"hGenPt", "hRecoPt", "hDataPt", "hUnfolded"};
-
-    DrawAndSave({hGenPt, hRecoPt, hDataPt, hUnfolded}, 
-                {"Gen", "Reco", "Measured data", "Unfolded"}, 
-                outfolder + "PtComparison.png", 
-                "p_{T} (GeV/c)", 
-                "dN/dp_{T}", 
-                "p_{T} distribution: Gen vs Reco vs Data vs Unfolded", 
-                30, -999, 1e-6, 5e5, true, true, captionInfo);
-    DrawAndSave({hGenPt, hRecoPt, hUnfoldedToy}, 
+                
+    DrawAndSave({hGenResponse, hRecoPt, hUnfoldedToy}, 
                 {"Gen", "Reco","Unfolded (Toy)"},
                 outfolder + "PtComparison_Toy.png",
                 "p_{T} (GeV/c)",
@@ -308,8 +307,57 @@ int PlotUnfolding(){
     TCanvas* c = new TCanvas("c", "Response Matrix", 800, 800);
     FormatCanvas(c, false, false);
     c->SetLogz();
+    response_pt->Hresponse()->SetMinimum(1e-6);
     response_pt->Hresponse()->Draw("COLZ");
     DrawTLatexLines(captionInfo);
 
     c->SaveAs((outfolder + "ResponseMatrix_pt_logz.png").c_str());
+
+    TCanvas* c2 = new TCanvas("c2", "Gen Compare", 800, 800);
+    FormatCanvas(c2, true, true);
+    StyleHist(hGenResponse, kRed, 24);
+    StyleHist(hGenPt, kBlue, 20);
+    hGenResponse->SetTitle("DEBUG: Gen from Response vs Gen from GenPt hist");
+    hGenResponse->Draw("E1 HIST");
+    hGenPt->Draw("E1 HIST SAME");
+    hGenResponse->GetXaxis()->SetTitle("p_{T} (GeV/c)");
+    hGenResponse->GetYaxis()->SetTitle("dN/dp_{T}");
+    TLegend* leg = new TLegend(0.5, 0.8, 0.9, 0.9);
+    leg->SetBorderSize(0);
+    leg->SetFillStyle(0);
+    leg->SetTextFont(132);
+    leg->SetTextSize(0.03);
+    leg->AddEntry(hGenResponse, "Gen from Response", "l");
+    leg->AddEntry(hGenPt, "Gen from GenPt hist", "l");
+    leg->Draw();
+    c2->SaveAs((outfolder + "gencomp.png").c_str());
+
+    for (int i = 1; i <= hGenResponse->GetNbinsX(); i++) {
+        cout << "Bin " << i << "Gen from Response: " << hGenResponse->GetBinContent(i) << " | Gen from GenPt hist: " << hGenPt->GetBinContent(i) << endl;
+    }
+
+    TCanvas* c3 = new TCanvas("c3", "Gen Compare", 800, 800);
+    FormatCanvas(c3, true, true);
+    TH1F* hRecoResponse = (TH1F*)response_pt->Hmeasured();
+    StyleHist(hRecoResponse, kRed, 24);
+    StyleHist(hRecoPt, kBlue, 20);
+    hRecoResponse->SetTitle("DEBUG: Reco from Response vs Reco from GenPt hist");
+    hRecoResponse->Draw("E1 HIST");
+    hRecoPt->Draw("E1 HIST SAME");
+    hRecoResponse->GetXaxis()->SetTitle("p_{T} (GeV/c)");
+    hRecoResponse->GetYaxis()->SetTitle("dN/dp_{T}");
+    leg = new TLegend(0.5, 0.8, 0.9, 0.9);
+    leg->SetBorderSize(0);
+    leg->SetFillStyle(0);
+    leg->SetTextFont(132);
+    leg->SetTextSize(0.03);
+    leg->AddEntry(hRecoResponse, "Reco from Response", "l");
+    leg->AddEntry(hRecoPt, "Reco from GenPt hist", "l");
+    leg->Draw();
+    c3->SaveAs((outfolder + "recocomp.png").c_str());
+    for (int i = 1; i <= hRecoResponse->GetNbinsX(); i++) {
+        cout << "Bin " << i << "Reco from Response: " << hRecoResponse->GetBinContent(i) << " | Reco from RecoPt hist: " << hRecoPt->GetBinContent(i) << endl;
+    }
+
+      return 0;
 }
