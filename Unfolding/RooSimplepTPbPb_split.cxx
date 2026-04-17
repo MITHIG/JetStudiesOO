@@ -25,6 +25,9 @@
 using std::cout;
 using std::endl;
 
+#include <vector>
+#include <string>
+
 #include "TRandom.h"
 #include "TRandom3.h"
 
@@ -45,6 +48,7 @@ using std::endl;
 #include "TTreeReader.h"
 #include "TSystemDirectory.h"
 #include "TTreeReaderArray.h"
+#include "TMath.h"
 
 #include "RooUnfoldResponse.h"
 #include "RooUnfoldBayes.h"
@@ -187,8 +191,8 @@ void RooSimplepTPbPb_split(){
   TH2F *hcovariance(0);
   hcovariance=new TH2F("covariance","covariance",13,0.,1.,13,0,1.);
 
-  TH2F *effnum=(TH2F*)h1fulleff->Clone("effnum");
-  TH2F *effdenom=(TH2F*)h1fulleff->Clone("effdenom");
+  TH1F *effnum=(TH1F*)h1fulleff->Clone("effnum");
+  TH1F *effdenom=(TH1F*)h1fulleff->Clone("effdenom");
  
   effnum->Sumw2();
   effdenom->Sumw2();
@@ -277,7 +281,7 @@ void RooSimplepTPbPb_split(){
       // jet pT cuts at reco and gen level (test)
       if(jetPt[j] < 80  || jetPt[j] > 450) continue; // reco level
       if(genJetPt[j] < 80 || genJetPt[j] > 450) continue; // gen matched level
-      h1fulleff->Fill(jetPt[j], w);  
+      h1fulleff->Fill(genJetPt[j], w);  
       h1smearednocuts->Fill(jetPt[j],w);  
       responsenotrunc.Fill(jetPt[j],genJetPt[j],w);
       
@@ -331,15 +335,18 @@ void RooSimplepTPbPb_split(){
       //FOLD BACK
       TH1* hfold = response.ApplyToTruth (hunf, "");
 
-      TH2D *htempUnf=(TH2D*)hunf->Clone("htempUnf");          
+      TH1D *htempUnf=(TH1D*)hunf->Clone("htempUnf");          
       htempUnf->SetName(Form("Bayesian_Unfoldediter%d",iter));
       
-      TH2D *htempFold=(TH2D*)hfold->Clone("htempFold");          
+      TH1D *htempFold=(TH1D*)hfold->Clone("htempFold");          
       htempFold->SetName(Form("Bayesian_Foldediter%d",iter));        
 
       htempUnf->Write();
       htempFold->Write();
     }
+
+    // close the output file
+    fout->Close();
 	  
 }
 #ifndef __CINT__
