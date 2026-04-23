@@ -7,7 +7,7 @@ void drawJetPerf(){
     gStyle->SetOptStat(0);
     gStyle->SetOptTitle(0);
 
-    string tag = "OO_March18th_NoEmbedded"; 
+    std::string tag = "OO_March18th_NoEmbedded"; 
 
     TLatex* cms = new TLatex(0.10,0.92, "#bf{PYTHIA8 OO} (5.36 TeV) ");
     cms->SetNDC();
@@ -158,7 +158,7 @@ void drawJetPerf(){
       TH1D* px = h10_30->ProjectionY(proj, i, i); 
       TF1 *f1 = new TF1("f1", "gaus", 0.5, 1.2);
       px->Fit(f1,"","",0.5, 1.5);
-      if(h0_10->GetXaxis()->GetBinLowEdge(i) > 30){
+      if(h10_30->GetXaxis()->GetBinLowEdge(i) > 30){
         hJER_10_30->SetBinContent(i,  f1->GetParameter(2)/f1->GetParameter(1));
         hJER_10_30->SetBinError(i,  f1->GetParError(2));
         hJES_10_30->SetBinContent(i, f1->GetParameter(1)); 
@@ -167,8 +167,8 @@ void drawJetPerf(){
     }
 
 
-    TH1D* hJES_30_50 = (TH1D*)h10_30->ProjectionX("JES_30_50"); 
-    TH1D* hJER_30_50 = (TH1D*)h10_30->ProjectionX("JER_30_50");
+    TH1D* hJES_30_50 = (TH1D*)h30_50->ProjectionX("JES_30_50"); 
+    TH1D* hJER_30_50 = (TH1D*)h30_50->ProjectionX("JER_30_50");
     hJES_30_50->Reset();
     hJER_30_50->Reset(); 
 
@@ -176,9 +176,9 @@ void drawJetPerf(){
     for(Int_t i=1; i <= nBins ; i++){
       TString proj = Form("px_%d", i);
       TH1D* px = h30_50->ProjectionY(proj, i, i); 
-      TF1 *f1 = new TF1("f1", "gaus", 0.5, 1.2);
+      TF1 *f1 = new TF1(Form("f1_%d", i), "gaus", 0.5, 1.2);
       px->Fit(f1,"","",0.5, 1.5);
-      if(h0_10->GetXaxis()->GetBinLowEdge(i) > 30){
+      if(h30_50->GetXaxis()->GetBinLowEdge(i) > 30){
         hJER_30_50->SetBinContent(i,  f1->GetParameter(2)/f1->GetParameter(1));
         hJER_30_50->SetBinError(i,  f1->GetParError(2));
         hJES_30_50->SetBinContent(i, f1->GetParameter(1)); 
@@ -188,7 +188,7 @@ void drawJetPerf(){
 
     TH1D* hJES_Raw = (TH1D*)hRaw->ProjectionX("JES_Raw"); 
     TH1D* hJER_Raw = (TH1D*)hRaw->ProjectionX("JER_Raw");
-    hJER_Raw->Reset();
+    hJES_Raw->Reset();
     hJER_Raw->Reset(); 
 
     // 30-50 

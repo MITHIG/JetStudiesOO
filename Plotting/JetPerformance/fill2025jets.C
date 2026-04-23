@@ -7,28 +7,28 @@
 
 
 // list of functions
-void GetFiles(char const *input, vector<string> &files); 
-void FillChain(TChain &chain, vector<string> &files); 
+void GetFiles(char const *input, std::vector<std::string> &files); 
+void FillChain(TChain &chain, std::vector<std::string> &files); 
 int GetCentBin(float hiHFval); 
 void fill2025jets(); 
 
 // get the files 
-void GetFiles(char const *input, vector<string> &files) {
+void GetFiles(char const *input, std::vector<std::string> &files) {
   TSystemDirectory dir(input, input);
   TList *list = dir.GetListOfFiles();
 
   if (list) {
     TSystemFile *file;
-    string fname;
+    std::string fname;
     TIter next(list);
     while ((file = (TSystemFile *)next())) {
       fname = file->GetName();
 
-      if (file->IsDirectory() && (fname.find(".") == string::npos)) {
-        string newDir = string(input) + fname + "/";
+      if (file->IsDirectory() && (fname.find(".") == std::string::npos)) {
+        std::string newDir = std::string(input) + fname + "/";
         GetFiles(newDir.c_str(), files);
-      } else if ((fname.find(".root") != string::npos)) {
-        files.push_back(string(input) + fname);
+      } else if ((fname.find(".root") != std::string::npos)) {
+        files.push_back(std::string(input) + fname);
         cout << files.back() << endl;
       }
     }
@@ -38,7 +38,7 @@ void GetFiles(char const *input, vector<string> &files) {
 }
 
 // fill the tchain
-void FillChain(TChain &chain, vector<string> &files) {
+void FillChain(TChain &chain, std::vector<std::string> &files) {
   for (auto file : files) {
     chain.Add(file.c_str());
   }
@@ -47,19 +47,21 @@ void FillChain(TChain &chain, vector<string> &files) {
 
 // main function
 void fill2025jets(){
-
-    //char const *input = "/eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/";
-    char const *input = "/eos/cms/store/group/phys_heavyions/hbossi/mc_productions/Dijet_pThat-15to1200_TuneCP5_5p36TeV_pythia8/OO_MC_DijetNoEmbedding_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260318_152047/0000/";
+    // embedded dataset
+    char const *input = "/eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/";
+    // no embedding
+    //char const *input = "/eos/cms/store/group/phys_heavyions/hbossi/mc_productions/Dijet_pThat-15to1200_TuneCP5_5p36TeV_pythia8/OO_MC_DijetNoEmbedding_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260318_152047/0000/";
 
     std::cout << "Running over " << input << std::endl; 
 
     /* read in all files in the input folder */
-    vector<string> files;
+    std::vector<std::string> files;
     GetFiles(input, files);
     std::cout << "Done getting the files " << std::endl; 
 
 
-    const double Rjet = 0.4; 
+    const double Rjet = 0.4; // controls the jet radius
+    const double fracOfDataToProcess = 0.2; // controls the fraction of data to process
 
     /* read in event information */
     TChain hiEventChain("hiEvtAnalyzer/HiTree"); 
@@ -127,7 +129,8 @@ void fill2025jets(){
       TH2D* hJetPerfCent = new TH2D(Form("hJetPerf_cent_%d_%d", centBins.at(c), centBins.at(c+1)), "", 250, 0, 500, 50, 0.0, 2.0); 
       hJetPerfHists.push_back(hJetPerfCent);
     }
-    Long64_t totalEvents = 1000000;// jetReader.GetEntries(true)*0.05;
+
+    Long64_t totalEvents = jetReader.GetEntries(true)*fracOfDataToProcess;
 
     std::cout << " ---> Total number of events to process is " << totalEvents << std::endl;
 
@@ -169,16 +172,10 @@ void fill2025jets(){
           }
        }
 
-       if(centBinIndex < 0) std::cout << "Something went wrong: " << cent << std::endl;
-
-        float maxJetPt = -999;
-        float maxJetPhi = -999;
-        float maxJetEta = -999;
-
         int size = genJetRg.GetSize();
         if(size != *jetN)std::cout << "size of Rg: " << size << " size of nRef " << *jetN << std::endl;
 
-        /* iterate through jets and find the jet with max pT */
+        /* iterate through jets */
         for (int j = 0; j < *jetN; ++ j) {
           // jet kinematic and quality selections 
           if (TMath::Abs(jetEta[j]) > 1.6) { continue; }
@@ -232,7 +229,7 @@ int GetCentBin(float hiHFval){
   int centrality = -999; 
   for(int index = 0; index < 201; index ++){
     if(hiHFval < vcent[index]){
-      centrality = abs(200 - (index -1))/2; 
+      centrality = std::abs(200 - (index -1))/2; 
       break; 
     }
   }
