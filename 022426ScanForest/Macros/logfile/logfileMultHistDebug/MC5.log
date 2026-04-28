@@ -1,0 +1,1111 @@
+   ------------------------------------------------------------------
+  | Welcome to ROOT 6.30/08                        https://root.cern |
+  | (c) 1995-2024, The ROOT Team; conception: R. Brun, F. Rademakers |
+  | Built for linuxx8664gcc on Apr 19 2025, 17:03:44                 |
+  | From heads/master@tags/v6-30-08                                  |
+  | With c++ (GCC) 8.5.0 20210514 (Red Hat 8.5.0-26)                 |
+  | Try '.help'/'.?', '.demo', '.license', '.credits', '.quit'/'.q'  |
+   ------------------------------------------------------------------
+
+
+Processing SaveHistChain.cpp...
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_5.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_50.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_500.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_501.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_502.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_503.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_504.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_505.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_506.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_507.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_508.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_509.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_51.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_510.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_511.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_512.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_513.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_514.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_515.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_516.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_517.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_518.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_519.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_52.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_520.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_521.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_522.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_523.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_524.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_525.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_526.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_527.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_528.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_529.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_53.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_530.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_531.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_532.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_533.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_534.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_535.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_536.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_537.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_538.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_539.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_54.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_540.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_541.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_542.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_543.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_544.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_545.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_546.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_547.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_548.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_549.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_55.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_550.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_551.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_552.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_553.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_554.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_555.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_556.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_557.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_558.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_559.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_56.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_560.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_561.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_562.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_563.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_564.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_565.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_566.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_567.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_568.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_569.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_57.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_570.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_571.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_572.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_573.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_574.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_575.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_576.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_577.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_578.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_579.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_58.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_580.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_581.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_582.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_583.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_584.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_585.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_586.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_587.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_588.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_589.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_59.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_590.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_591.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_592.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_593.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_594.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_595.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_596.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_597.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_598.root
+Adding file: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_599.root
+Found 111 ROOT files matching pattern: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_5*
+Number of ROOT files to process: 111
+Warning in <TClass::Init>: no dictionary for class L1Analysis::L1AnalysisRecoMetFilterDataFormat is available
+Number of entries: 13659000
+
+Starting processing...
+
+Processing entry 0 out of 13659000; 0%
+Number of Jets in this event: 3
+Total jets processed so far: 3
+Current memory usage: 248.898 MB (+0 MB from start)
+pthat: 37.3567; weight: 0.0164722
+
+
+Processing entry 100000 out of 13659000; 0.732118%
+Number of Jets in this event: 2
+Total jets processed so far: 382726
+Current memory usage: 351.082 MB (+102.184 MB from start)
+pthat: 26.0182; weight: 0.0838732
+
+
+Processing entry 200000 out of 13659000; 1.46424%
+Number of Jets in this event: 2
+Total jets processed so far: 766169
+Current memory usage: 365.945 MB (+117.047 MB from start)
+pthat: 33.687; weight: 0.0262306
+
+
+Processing entry 300000 out of 13659000; 2.19635%
+Number of Jets in this event: 4
+Total jets processed so far: 1149356
+Current memory usage: 368.773 MB (+119.875 MB from start)
+pthat: 45.9609; weight: 0.00648129
+
+
+Processing entry 400000 out of 13659000; 2.92847%
+Number of Jets in this event: 1
+Total jets processed so far: 1533995
+Current memory usage: 383.273 MB (+134.375 MB from start)
+pthat: 29.9871; weight: 0.0442797
+
+
+Processing entry 500000 out of 13659000; 3.66059%
+Number of Jets in this event: 2
+Total jets processed so far: 1917234
+Current memory usage: 394.742 MB (+145.844 MB from start)
+pthat: 44.9531; weight: 0.00716065
+
+
+Processing entry 600000 out of 13659000; 4.39271%
+Number of Jets in this event: 2
+Total jets processed so far: 2299885
+Current memory usage: 395.215 MB (+146.316 MB from start)
+pthat: 32.3991; weight: 0.0312615
+
+
+Processing entry 700000 out of 13659000; 5.12483%
+Number of Jets in this event: 2
+Total jets processed so far: 2683059
+Current memory usage: 395.215 MB (+146.316 MB from start)
+pthat: 39.2381; weight: 0.0132046
+
+
+Processing entry 800000 out of 13659000; 5.85694%
+Number of Jets in this event: 1
+Total jets processed so far: 3066519
+Current memory usage: 396.547 MB (+147.648 MB from start)
+pthat: 42.6212; weight: 0.00910117
+
+
+Processing entry 900000 out of 13659000; 6.58906%
+Number of Jets in this event: 2
+Total jets processed so far: 3449986
+Current memory usage: 396.547 MB (+147.648 MB from start)
+pthat: 59.6289; weight: 0.00200842
+
+
+Processing entry 1000000 out of 13659000; 7.32118%
+Number of Jets in this event: 2
+Total jets processed so far: 3834145
+Current memory usage: 396.547 MB (+147.648 MB from start)
+pthat: 42.5533; weight: 0.00916666
+
+
+Processing entry 1100000 out of 13659000; 8.0533%
+Number of Jets in this event: 4
+Total jets processed so far: 4217079
+Current memory usage: 399.449 MB (+150.551 MB from start)
+pthat: 101.223; weight: 0.000185628
+
+
+Processing entry 1200000 out of 13659000; 8.78542%
+Number of Jets in this event: 2
+Total jets processed so far: 4598452
+Current memory usage: 399.449 MB (+150.551 MB from start)
+pthat: 58.9084; weight: 0.00212128
+
+
+Processing entry 1300000 out of 13659000; 9.51753%
+Number of Jets in this event: 3
+Total jets processed so far: 4981430
+Current memory usage: 399.449 MB (+150.551 MB from start)
+pthat: 15.1854; weight: 0.946213
+
+
+Processing entry 1400000 out of 13659000; 10.2497%
+Number of Jets in this event: 2
+Total jets processed so far: 5363407
+Current memory usage: 400.922 MB (+152.023 MB from start)
+pthat: 30.2278; weight: 0.042715
+
+
+Processing entry 1500000 out of 13659000; 10.9818%
+Number of Jets in this event: 2
+Total jets processed so far: 5745928
+Current memory usage: 401.359 MB (+152.461 MB from start)
+pthat: 27.6184; weight: 0.0641239
+
+
+Processing entry 1600000 out of 13659000; 11.7139%
+Number of Jets in this event: 0
+Total jets processed so far: 6129267
+Current memory usage: 406 MB (+157.102 MB from start)
+pthat: 16.1588; weight: 0.715408
+
+
+Processing entry 1700000 out of 13659000; 12.446%
+Number of Jets in this event: 2
+Total jets processed so far: 6512942
+Current memory usage: 406.75 MB (+157.852 MB from start)
+pthat: 33.3644; weight: 0.0273926
+
+
+Processing entry 1800000 out of 13659000; 13.1781%
+Number of Jets in this event: 1
+Total jets processed so far: 6895549
+Current memory usage: 406.75 MB (+157.852 MB from start)
+pthat: 15.5339; weight: 0.854363
+
+
+Processing entry 1900000 out of 13659000; 13.9102%
+Number of Jets in this event: 2
+Total jets processed so far: 7279632
+Current memory usage: 406.75 MB (+157.852 MB from start)
+pthat: 45.4292; weight: 0.00682972
+
+
+Processing entry 2000000 out of 13659000; 14.6424%
+Number of Jets in this event: 3
+Total jets processed so far: 7663742
+Current memory usage: 406.75 MB (+157.852 MB from start)
+pthat: 64.8608; weight: 0.00137559
+
+
+Processing entry 2100000 out of 13659000; 15.3745%
+Number of Jets in this event: 2
+Total jets processed so far: 8047584
+Current memory usage: 406.914 MB (+158.016 MB from start)
+pthat: 59.0296; weight: 0.00210171
+
+
+Processing entry 2200000 out of 13659000; 16.1066%
+Number of Jets in this event: 2
+Total jets processed so far: 8431541
+Current memory usage: 406.914 MB (+158.016 MB from start)
+pthat: 91.349; weight: 0.000294606
+
+
+Processing entry 2300000 out of 13659000; 16.8387%
+Number of Jets in this event: 1
+Total jets processed so far: 8814993
+Current memory usage: 406.914 MB (+158.016 MB from start)
+pthat: 21.7605; weight: 0.187458
+
+
+Processing entry 2400000 out of 13659000; 17.5708%
+Number of Jets in this event: 2
+Total jets processed so far: 9198480
+Current memory usage: 406.914 MB (+158.016 MB from start)
+pthat: 87.742; weight: 0.000353165
+
+
+Processing entry 2500000 out of 13659000; 18.3029%
+Number of Jets in this event: 1
+Total jets processed so far: 9582763
+Current memory usage: 406.914 MB (+158.016 MB from start)
+pthat: 17.181; weight: 0.54286
+
+
+Processing entry 2600000 out of 13659000; 19.0351%
+Number of Jets in this event: 3
+Total jets processed so far: 9965649
+Current memory usage: 408.266 MB (+159.367 MB from start)
+pthat: 85.8757; weight: 0.000389034
+
+
+Processing entry 2700000 out of 13659000; 19.7672%
+Number of Jets in this event: 0
+Total jets processed so far: 10349438
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 25.816; weight: 0.0868673
+
+
+Processing entry 2800000 out of 13659000; 20.4993%
+Number of Jets in this event: 3
+Total jets processed so far: 10733514
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 45.5718; weight: 0.00673382
+
+
+Processing entry 2900000 out of 13659000; 21.2314%
+Number of Jets in this event: 2
+Total jets processed so far: 11116707
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 21.9271; weight: 0.181131
+
+
+Processing entry 3000000 out of 13659000; 21.9635%
+Number of Jets in this event: 1
+Total jets processed so far: 11500322
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 18.175; weight: 0.421479
+
+
+Processing entry 3100000 out of 13659000; 22.6957%
+Number of Jets in this event: 2
+Total jets processed so far: 11882167
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 31.2601; weight: 0.036724
+
+
+Processing entry 3200000 out of 13659000; 23.4278%
+Number of Jets in this event: 1
+Total jets processed so far: 12265817
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 19.5371; weight: 0.304456
+
+
+Processing entry 3300000 out of 13659000; 24.1599%
+Number of Jets in this event: 2
+Total jets processed so far: 12649151
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 27.4072; weight: 0.0663635
+
+
+Processing entry 3400000 out of 13659000; 24.892%
+Number of Jets in this event: 2
+Total jets processed so far: 13033748
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 24.9954; weight: 0.10047
+
+
+Processing entry 3500000 out of 13659000; 25.6241%
+Number of Jets in this event: 3
+Total jets processed so far: 13419129
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 33.393; weight: 0.0272873
+
+
+Processing entry 3600000 out of 13659000; 26.3563%
+Number of Jets in this event: 3
+Total jets processed so far: 13804022
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 87.9649; weight: 0.00034915
+
+
+Processing entry 3700000 out of 13659000; 27.0884%
+Number of Jets in this event: 0
+Total jets processed so far: 14186096
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 19.6025; weight: 0.299897
+
+
+Processing entry 3800000 out of 13659000; 27.8205%
+Number of Jets in this event: 2
+Total jets processed so far: 14569400
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 17.9289; weight: 0.44813
+
+
+Processing entry 3900000 out of 13659000; 28.5526%
+Number of Jets in this event: 2
+Total jets processed so far: 14952855
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 47.4916; weight: 0.00559286
+
+
+Processing entry 4000000 out of 13659000; 29.2847%
+Number of Jets in this event: 1
+Total jets processed so far: 15335546
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 18.1217; weight: 0.426935
+
+
+Processing entry 4100000 out of 13659000; 30.0168%
+Number of Jets in this event: 2
+Total jets processed so far: 15718913
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 44.5284; weight: 0.00747363
+
+
+Processing entry 4200000 out of 13659000; 30.749%
+Number of Jets in this event: 2
+Total jets processed so far: 16102255
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 20.7726; weight: 0.231042
+
+
+Processing entry 4300000 out of 13659000; 31.4811%
+Number of Jets in this event: 2
+Total jets processed so far: 16485322
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 42.8815; weight: 0.00885476
+
+
+Processing entry 4400000 out of 13659000; 32.2132%
+Number of Jets in this event: 2
+Total jets processed so far: 16868696
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 41.5158; weight: 0.0102435
+
+
+Processing entry 4500000 out of 13659000; 32.9453%
+Number of Jets in this event: 2
+Total jets processed so far: 17253655
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 45.2543; weight: 0.00694903
+
+
+Processing entry 4600000 out of 13659000; 33.6774%
+Number of Jets in this event: 1
+Total jets processed so far: 17634966
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 27.2375; weight: 0.0682556
+
+
+Processing entry 4700000 out of 13659000; 34.4095%
+Number of Jets in this event: 1
+Total jets processed so far: 18018215
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 29.7071; weight: 0.0461886
+
+
+Processing entry 4800000 out of 13659000; 35.1417%
+Number of Jets in this event: 0
+Total jets processed so far: 18402399
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 19.7604; weight: 0.289288
+
+
+Processing entry 4900000 out of 13659000; 35.8738%
+Number of Jets in this event: 1
+Total jets processed so far: 18785208
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 17.1717; weight: 0.543998
+
+
+Processing entry 5000000 out of 13659000; 36.6059%
+Number of Jets in this event: 3
+Total jets processed so far: 19169140
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 19.5532; weight: 0.303337
+
+
+Processing entry 5100000 out of 13659000; 37.338%
+Number of Jets in this event: 0
+Total jets processed so far: 19552266
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 16.4544; weight: 0.659391
+
+
+Processing entry 5200000 out of 13659000; 38.0701%
+Number of Jets in this event: 2
+Total jets processed so far: 19935475
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 27.1563; weight: 0.0691824
+
+
+Processing entry 5300000 out of 13659000; 38.8023%
+Number of Jets in this event: 2
+Total jets processed so far: 20318910
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 31.74; weight: 0.0342907
+
+
+Processing entry 5400000 out of 13659000; 39.5344%
+Number of Jets in this event: 3
+Total jets processed so far: 20703763
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 110.434; weight: 0.000125444
+
+
+Processing entry 5500000 out of 13659000; 40.2665%
+Number of Jets in this event: 4
+Total jets processed so far: 21087659
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 23.6419; weight: 0.129015
+
+
+Processing entry 5600000 out of 13659000; 40.9986%
+Number of Jets in this event: 2
+Total jets processed so far: 21471171
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 42.1367; weight: 0.00958115
+
+
+Processing entry 5700000 out of 13659000; 41.7307%
+Number of Jets in this event: 4
+Total jets processed so far: 21855054
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 36.772; weight: 0.0176827
+
+
+Processing entry 5800000 out of 13659000; 42.4628%
+Number of Jets in this event: 1
+Total jets processed so far: 22239846
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 19.1507; weight: 0.33305
+
+
+Processing entry 5900000 out of 13659000; 43.195%
+Number of Jets in this event: 5
+Total jets processed so far: 22623822
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 45.3643; weight: 0.00687377
+
+
+Processing entry 6000000 out of 13659000; 43.9271%
+Number of Jets in this event: 2
+Total jets processed so far: 23007295
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 27.1402; weight: 0.0693645
+
+
+Processing entry 6100000 out of 13659000; 44.6592%
+Number of Jets in this event: 2
+Total jets processed so far: 23391088
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 45.8505; weight: 0.00655183
+
+
+Processing entry 6200000 out of 13659000; 45.3913%
+Number of Jets in this event: 0
+Total jets processed so far: 23774299
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 15.2349; weight: 0.932457
+
+
+Processing entry 6300000 out of 13659000; 46.1234%
+Number of Jets in this event: 4
+Total jets processed so far: 24157225
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 41.4746; weight: 0.0102894
+
+
+Processing entry 6400000 out of 13659000; 46.8556%
+Number of Jets in this event: 2
+Total jets processed so far: 24540853
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 23.5296; weight: 0.131869
+
+
+Processing entry 6500000 out of 13659000; 47.5877%
+Number of Jets in this event: 3
+Total jets processed so far: 24923447
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 44.9731; weight: 0.00714688
+
+
+Processing entry 6600000 out of 13659000; 48.3198%
+Number of Jets in this event: 2
+Total jets processed so far: 25307972
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 39.8794; weight: 0.0122578
+
+
+Processing entry 6700000 out of 13659000; 49.0519%
+Number of Jets in this event: 2
+Total jets processed so far: 25690925
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 18.2514; weight: 0.413594
+
+
+Processing entry 6800000 out of 13659000; 49.784%
+Number of Jets in this event: 2
+Total jets processed so far: 26073310
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 80.3045; weight: 0.000526115
+
+
+Processing entry 6900000 out of 13659000; 50.5161%
+Number of Jets in this event: 0
+Total jets processed so far: 26456554
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 17.3959; weight: 0.513281
+
+
+Processing entry 7000000 out of 13659000; 51.2483%
+Number of Jets in this event: 2
+Total jets processed so far: 26840847
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 67.03; weight: 0.0011863
+
+
+Processing entry 7100000 out of 13659000; 51.9804%
+Number of Jets in this event: 4
+Total jets processed so far: 27223149
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 57.4035; weight: 0.00238334
+
+
+Processing entry 7200000 out of 13659000; 52.7125%
+Number of Jets in this event: 1
+Total jets processed so far: 27605658
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 27.9035; weight: 0.0612278
+
+
+Processing entry 7300000 out of 13659000; 53.4446%
+Number of Jets in this event: 2
+Total jets processed so far: 27988820
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 41.8185; weight: 0.00991363
+
+
+Processing entry 7400000 out of 13659000; 54.1767%
+Number of Jets in this event: 0
+Total jets processed so far: 28372296
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 22.365; weight: 0.165711
+
+
+Processing entry 7500000 out of 13659000; 54.9089%
+Number of Jets in this event: 2
+Total jets processed so far: 28755415
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 64.17; weight: 0.00144349
+
+
+Processing entry 7600000 out of 13659000; 55.641%
+Number of Jets in this event: 0
+Total jets processed so far: 29139197
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 20.242; weight: 0.25958
+
+
+Processing entry 7700000 out of 13659000; 56.3731%
+Number of Jets in this event: 1
+Total jets processed so far: 29522894
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 15.8442; weight: 0.781614
+
+
+Processing entry 7800000 out of 13659000; 57.1052%
+Number of Jets in this event: 2
+Total jets processed so far: 29907101
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 61.8213; weight: 0.0017072
+
+
+Processing entry 7900000 out of 13659000; 57.8373%
+Number of Jets in this event: 3
+Total jets processed so far: 30290942
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 121.575; weight: 8.13966e-05
+
+
+Processing entry 8000000 out of 13659000; 58.5694%
+Number of Jets in this event: 2
+Total jets processed so far: 30675011
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 92.3116; weight: 0.000281032
+
+
+Processing entry 8100000 out of 13659000; 59.3016%
+Number of Jets in this event: 4
+Total jets processed so far: 31058195
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 77.2698; weight: 0.000625702
+
+
+Processing entry 8200000 out of 13659000; 60.0337%
+Number of Jets in this event: 4
+Total jets processed so far: 31441996
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 68.6638; weight: 0.00106446
+
+
+Processing entry 8300000 out of 13659000; 60.7658%
+Number of Jets in this event: 3
+Total jets processed so far: 31825365
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 59.4059; weight: 0.00204257
+
+
+Processing entry 8400000 out of 13659000; 61.4979%
+Number of Jets in this event: 2
+Total jets processed so far: 32209525
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 32.2463; weight: 0.0319339
+
+
+Processing entry 8500000 out of 13659000; 62.23%
+Number of Jets in this event: 2
+Total jets processed so far: 32593727
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 70.821; weight: 0.000926136
+
+
+Processing entry 8600000 out of 13659000; 62.9622%
+Number of Jets in this event: 2
+Total jets processed so far: 32977821
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 76.7418; weight: 0.000645295
+
+
+Processing entry 8700000 out of 13659000; 63.6943%
+Number of Jets in this event: 3
+Total jets processed so far: 33360325
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 45.1255; weight: 0.00703827
+
+
+Processing entry 8800000 out of 13659000; 64.4264%
+Number of Jets in this event: 1
+Total jets processed so far: 33743534
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 36.8155; weight: 0.0175888
+
+
+Processing entry 8900000 out of 13659000; 65.1585%
+Number of Jets in this event: 6
+Total jets processed so far: 34127432
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 70.6093; weight: 0.000938709
+
+
+Processing entry 9000000 out of 13659000; 65.8906%
+Number of Jets in this event: 2
+Total jets processed so far: 34509584
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 21.5273; weight: 0.196718
+
+
+Processing entry 9100000 out of 13659000; 66.6227%
+Number of Jets in this event: 2
+Total jets processed so far: 34892959
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 28.1676; weight: 0.0586861
+
+
+Processing entry 9200000 out of 13659000; 67.3549%
+Number of Jets in this event: 2
+Total jets processed so far: 35274703
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 41.8679; weight: 0.00986159
+
+
+Processing entry 9300000 out of 13659000; 68.087%
+Number of Jets in this event: 3
+Total jets processed so far: 35657605
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 100.25; weight: 0.000193876
+
+
+Processing entry 9400000 out of 13659000; 68.8191%
+Number of Jets in this event: 2
+Total jets processed so far: 36040115
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 29.7091; weight: 0.0461753
+
+
+Processing entry 9500000 out of 13659000; 69.5512%
+Number of Jets in this event: 1
+Total jets processed so far: 36422564
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 18.4749; weight: 0.39155
+
+
+Processing entry 9600000 out of 13659000; 70.2833%
+Number of Jets in this event: 1
+Total jets processed so far: 36806876
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 15.9314; weight: 0.762549
+
+
+Processing entry 9700000 out of 13659000; 71.0154%
+Number of Jets in this event: 2
+Total jets processed so far: 37189252
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 42.0757; weight: 0.00964426
+
+
+Processing entry 9800000 out of 13659000; 71.7476%
+Number of Jets in this event: 2
+Total jets processed so far: 37574144
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 54.5427; weight: 0.00299971
+
+
+Processing entry 9900000 out of 13659000; 72.4797%
+Number of Jets in this event: 0
+Total jets processed so far: 37958297
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 15.1002; weight: 0.970472
+
+
+Processing entry 10000000 out of 13659000; 73.2118%
+Number of Jets in this event: 4
+Total jets processed so far: 38342349
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 71.6128; weight: 0.000880942
+
+
+Processing entry 10100000 out of 13659000; 73.9439%
+Number of Jets in this event: 2
+Total jets processed so far: 38725938
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 17.5155; weight: 0.497749
+
+
+Processing entry 10200000 out of 13659000; 74.676%
+Number of Jets in this event: 2
+Total jets processed so far: 39109020
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 22.6868; weight: 0.155393
+
+
+Processing entry 10300000 out of 13659000; 75.4082%
+Number of Jets in this event: 3
+Total jets processed so far: 39492725
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 35.3232; weight: 0.0211905
+
+
+Processing entry 10400000 out of 13659000; 76.1403%
+Number of Jets in this event: 2
+Total jets processed so far: 39875673
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 46.3693; weight: 0.00622838
+
+
+Processing entry 10500000 out of 13659000; 76.8724%
+Number of Jets in this event: 0
+Total jets processed so far: 40258200
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 18.6; weight: 0.379845
+
+
+Processing entry 10600000 out of 13659000; 77.6045%
+Number of Jets in this event: 1
+Total jets processed so far: 40640697
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 15.0102; weight: 0.9952
+
+
+Processing entry 10700000 out of 13659000; 78.3366%
+Number of Jets in this event: 4
+Total jets processed so far: 41023131
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 72.1004; weight: 0.00085446
+
+
+Processing entry 10800000 out of 13659000; 79.0687%
+Number of Jets in this event: 2
+Total jets processed so far: 41406090
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 66.073; weight: 0.00126562
+
+
+Processing entry 10900000 out of 13659000; 79.8009%
+Number of Jets in this event: 0
+Total jets processed so far: 41788719
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 15.6382; weight: 0.829039
+
+
+Processing entry 11000000 out of 13659000; 80.533%
+Number of Jets in this event: 3
+Total jets processed so far: 42171144
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 27.8068; weight: 0.0621917
+
+
+Processing entry 11100000 out of 13659000; 81.2651%
+Number of Jets in this event: 1
+Total jets processed so far: 42554699
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 27.3824; weight: 0.0646209
+
+
+Processing entry 11200000 out of 13659000; 81.9972%
+Number of Jets in this event: 3
+Total jets processed so far: 42938007
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 37.5992; weight: 0.0159995
+
+
+Processing entry 11300000 out of 13659000; 82.7293%
+Number of Jets in this event: 2
+Total jets processed so far: 43321398
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 41.0556; weight: 0.01077
+
+
+Processing entry 11400000 out of 13659000; 83.4614%
+Number of Jets in this event: 2
+Total jets processed so far: 43705205
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 27.7872; weight: 0.0623789
+
+
+Processing entry 11500000 out of 13659000; 84.1936%
+Number of Jets in this event: 3
+Total jets processed so far: 44088481
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 16.8729; weight: 0.58874
+
+
+Processing entry 11600000 out of 13659000; 84.9257%
+Number of Jets in this event: 2
+Total jets processed so far: 44470827
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 59.3223; weight: 0.00205537
+
+
+Processing entry 11700000 out of 13659000; 85.6578%
+Number of Jets in this event: 2
+Total jets processed so far: 44855429
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 60.9034; weight: 0.0018261
+
+
+Processing entry 11800000 out of 13659000; 86.3899%
+Number of Jets in this event: 0
+Total jets processed so far: 45238362
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 18.8554; weight: 0.357232
+
+
+Processing entry 11900000 out of 13659000; 87.122%
+Number of Jets in this event: 2
+Total jets processed so far: 45621350
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 53.9224; weight: 0.00315817
+
+
+Processing entry 12000000 out of 13659000; 87.8542%
+Number of Jets in this event: 2
+Total jets processed so far: 46003791
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 23.4781; weight: 0.133162
+
+
+Processing entry 12100000 out of 13659000; 88.5863%
+Number of Jets in this event: 2
+Total jets processed so far: 46386769
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 23.1903; weight: 0.140749
+
+
+Processing entry 12200000 out of 13659000; 89.3184%
+Number of Jets in this event: 1
+Total jets processed so far: 46771187
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 17.2486; weight: 0.533359
+
+
+Processing entry 12300000 out of 13659000; 90.0505%
+Number of Jets in this event: 2
+Total jets processed so far: 47155678
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 53.7392; weight: 0.00320689
+
+
+Processing entry 12400000 out of 13659000; 90.7826%
+Number of Jets in this event: 4
+Total jets processed so far: 47539215
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 72.9735; weight: 0.000809407
+
+
+Processing entry 12500000 out of 13659000; 91.5148%
+Number of Jets in this event: 2
+Total jets processed so far: 47923649
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 33.1804; weight: 0.0280759
+
+
+Processing entry 12600000 out of 13659000; 92.2469%
+Number of Jets in this event: 2
+Total jets processed so far: 48308213
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 23.8132; weight: 0.124948
+
+
+Processing entry 12700000 out of 13659000; 92.979%
+Number of Jets in this event: 2
+Total jets processed so far: 48690499
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 34.6203; weight: 0.0231961
+
+
+Processing entry 12800000 out of 13659000; 93.7111%
+Number of Jets in this event: 1
+Total jets processed so far: 49073802
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 16.0547; weight: 0.736532
+
+
+Processing entry 12900000 out of 13659000; 94.4432%
+Number of Jets in this event: 2
+Total jets processed so far: 49457206
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 66.8473; weight: 0.00120097
+
+
+Processing entry 13000000 out of 13659000; 95.1753%
+Number of Jets in this event: 2
+Total jets processed so far: 49841520
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 30.8959; weight: 0.0387131
+
+
+Processing entry 13100000 out of 13659000; 95.9075%
+Number of Jets in this event: 1
+Total jets processed so far: 50224681
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 16.5817; weight: 0.636913
+
+
+Processing entry 13200000 out of 13659000; 96.6396%
+Number of Jets in this event: 3
+Total jets processed so far: 50608306
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 63.5648; weight: 0.00150639
+
+
+Processing entry 13300000 out of 13659000; 97.3717%
+Number of Jets in this event: 2
+Total jets processed so far: 50991932
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 21.1455; weight: 0.213268
+
+
+Processing entry 13400000 out of 13659000; 98.1038%
+Number of Jets in this event: 3
+Total jets processed so far: 51376270
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 38.618; weight: 0.0141839
+
+
+Processing entry 13500000 out of 13659000; 98.8359%
+Number of Jets in this event: 0
+Total jets processed so far: 51760227
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 15.3905; weight: 0.890796
+
+
+Processing entry 13600000 out of 13659000; 99.5681%
+Number of Jets in this event: 0
+Total jets processed so far: 52144463
+Current memory usage: 408.523 MB (+159.625 MB from start)
+pthat: 19.3483; weight: 0.318067
+
+
+=== PROCESSING SUMMARY ===
+Events before cuts: 13659000
+Events after cuts: 12278458
+Event cut efficiency: 89.8928%
+Jets before selection: 48298354
+Jets after selection: 19660983
+Jet selection efficiency: 40.7074%
+Total jets processed: 52371611
+=========================
+
+=== TIMING SUMMARY ===
+Total processing time (H:M:S): 1h 15m 35.64s
+Events processed per second: 3011.48 Hz
+Average time per event: 0.332063 ms
+=======================
+Cuts applied: L1 MinBias Trigger;Cluster Compatibility Filter;Primary Vertex Filter;Jet pT > 30.0 GeV/c;Jet |eta| < 1.6;HF E_{Max}+ AND HF E_{Max}- > 14;Jet PF CEF < 0.8;Jet PF NEF < 0.8;Jet PF MUF < 0.8;
+General info: NEntries: 13.7M;Sample: MC;Tag: pthat15_1PD_5_withjetcuts;ProcessingDate: 20260320;EventsBeforeCuts: 13659000;EventsAfterCuts: 12278458;EventCutEfficiency: 89.89%;JetsBeforeSelection: 48298354;JetsAfterSelection: 19660983;JetSelectionEfficiency: 40.71%;TotalJetsProcessed: 52371611;MCWeighted: Yes;L1MinBiasEvents: 13658956;CCFilterEvents: 13658342;PVFilterEvents: 13658341;ZvtxCutEvents: 13593459;HFEFilterEvents: 12278458;
+
+=== MEMORY SUMMARY ===
+Peak memory usage: 408.523 MB
+Memory cleanup completed.
+=======================
+(int) 0

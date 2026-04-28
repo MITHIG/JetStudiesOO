@@ -1,0 +1,47 @@
+   ------------------------------------------------------------------
+  | Welcome to ROOT 6.30/08                        https://root.cern |
+  | (c) 1995-2024, The ROOT Team; conception: R. Brun, F. Rademakers |
+  | Built for linuxx8664gcc on Apr 19 2025, 17:03:44                 |
+  | From heads/master@tags/v6-30-08                                  |
+  | With c++ (GCC) 8.5.0 20210514 (Red Hat 8.5.0-26)                 |
+  | Try '.help'/'.?', '.demo', '.license', '.credits', '.quit'/'.q'  |
+   ------------------------------------------------------------------
+
+
+Processing SaveHistTree.cpp...
+Current time: 2026-03-25 17:03:33
+
+ *** Break *** segmentation violation
+
+
+
+===========================================================
+There was a crash.
+This is the entire stack trace of all threads:
+===========================================================
+#0  0x00007f179fab9e0b in waitpid () at /lib64/libc.so.6
+#1  0x00007f179fa0d747 in do_system () at /lib64/libc.so.6
+#2  0x00007f17a0631e80 in TUnixSystem::StackTrace() () at /usr/lib64/root/libCore.so.6.30
+#3  0x00007f17a0634465 in TUnixSystem::DispatchSignals(ESignals) () at /usr/lib64/root/libCore.so.6.30
+#4  0x00007f179fa005b0 in <signal handler called> () at /lib64/libc.so.6
+#5  0x00007f17a0cda2a0 in  ()
+#6  0x0000000000000000 in  ()
+===========================================================
+
+
+The lines below might hint at the cause of the crash. If you see question
+marks as part of the stack trace, try to recompile with debugging information
+enabled and export CLING_DEBUG=1 environment variable before running.
+You may get help by asking at the ROOT forum https://root.cern/forum
+preferably using the command (.forum bug) in the ROOT prompt.
+Only if you are really convinced it is a bug in ROOT then please submit a
+report at https://root.cern/bugs or (preferably) using the command (.gh bug) in
+the ROOT prompt. Please post the ENTIRE stack trace
+from above as an attachment in addition to anything else
+that might help us fixing this issue.
+===========================================================
+#5  0x00007f17a0cda2a0 in  ()
+#6  0x0000000000000000 in  ()
+===========================================================
+
+

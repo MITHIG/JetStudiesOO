@@ -1,0 +1,125 @@
+   ------------------------------------------------------------------
+  | Welcome to ROOT 6.30/08                        https://root.cern |
+  | (c) 1995-2024, The ROOT Team; conception: R. Brun, F. Rademakers |
+  | Built for linuxx8664gcc on Apr 19 2025, 17:03:44                 |
+  | From heads/master@tags/v6-30-08                                  |
+  | With c++ (GCC) 8.5.0 20210514 (Red Hat 8.5.0-26)                 |
+  | Try '.help'/'.?', '.demo', '.license', '.credits', '.quit'/'.q'  |
+   ------------------------------------------------------------------
+
+
+Processing SaveHistChain.cpp...
+Found 11 ROOT files matching pattern: /eos/cms/store/group/phys_heavyions/hbossi/mc_productions/QCD-dijet_pThat15-event-weighted_TuneCP5_5p36TeV_pythia8/OO_MC_DijetEmbedded_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260306_002843/0000/HiForestMiniAOD_9*
+Number of ROOT files to process: 11
+Warning in <TClass::Init>: no dictionary for class L1Analysis::L1AnalysisRecoMetFilterDataFormat is available
+Number of entries: 1185000
+
+Starting processing...
+
+Processing entry 0 out of 1185000; 0%
+Number of Jets in this event: 2
+Total jets processed so far: 2
+Current memory usage: 245.953 MB (+0 MB from start)
+pthat: 54.9474; weight: 0.00290167
+
+
+Processing entry 100000 out of 1185000; 8.43882%
+Number of Jets in this event: 2
+Total jets processed so far: 382971
+Current memory usage: 347.211 MB (+101.258 MB from start)
+pthat: 32.6533; weight: 0.0301812
+
+
+Processing entry 200000 out of 1185000; 16.8776%
+Number of Jets in this event: 1
+Total jets processed so far: 766754
+Current memory usage: 350.641 MB (+104.688 MB from start)
+pthat: 25.4526; weight: 0.0925935
+
+
+Processing entry 300000 out of 1185000; 25.3165%
+Number of Jets in this event: 0
+Total jets processed so far: 1151149
+Current memory usage: 371.195 MB (+125.242 MB from start)
+pthat: 18.7024; weight: 0.370569
+
+
+Processing entry 400000 out of 1185000; 33.7553%
+Number of Jets in this event: 3
+Total jets processed so far: 1534206
+Current memory usage: 388.316 MB (+142.363 MB from start)
+pthat: 34.1934; weight: 0.0245286
+
+
+Processing entry 500000 out of 1185000; 42.1941%
+Number of Jets in this event: 3
+Total jets processed so far: 1918672
+Current memory usage: 392.008 MB (+146.055 MB from start)
+pthat: 70.6154; weight: 0.000938348
+
+
+Processing entry 600000 out of 1185000; 50.6329%
+Number of Jets in this event: 5
+Total jets processed so far: 2300485
+Current memory usage: 401.426 MB (+155.473 MB from start)
+pthat: 91.5908; weight: 0.000291124
+
+
+Processing entry 700000 out of 1185000; 59.0717%
+Number of Jets in this event: 2
+Total jets processed so far: 2683585
+Current memory usage: 402.379 MB (+156.426 MB from start)
+pthat: 52.9696; weight: 0.00342193
+
+
+Processing entry 800000 out of 1185000; 67.5106%
+Number of Jets in this event: 2
+Total jets processed so far: 3066163
+Current memory usage: 402.676 MB (+156.723 MB from start)
+pthat: 30.0511; weight: 0.0438568
+
+
+Processing entry 900000 out of 1185000; 75.9494%
+Number of Jets in this event: 3
+Total jets processed so far: 3449623
+Current memory usage: 403.641 MB (+157.688 MB from start)
+pthat: 44.5525; weight: 0.00745566
+
+
+Processing entry 1000000 out of 1185000; 84.3882%
+Number of Jets in this event: 6
+Total jets processed so far: 3831357
+Current memory usage: 403.77 MB (+157.816 MB from start)
+pthat: 21.4018; weight: 0.202015
+
+
+Processing entry 1100000 out of 1185000; 92.827%
+Number of Jets in this event: 3
+Total jets processed so far: 4215030
+Current memory usage: 404.004 MB (+158.051 MB from start)
+pthat: 115.28; weight: 0.0001034
+
+
+=== PROCESSING SUMMARY ===
+Events before cuts: 1185000
+Events after cuts: 1065046
+Event cut efficiency: 89.8773%
+Jets before selection: 4186714
+Jets after selection: 1705706
+Jet selection efficiency: 40.7409%
+Total jets processed: 4540324
+=========================
+
+=== TIMING SUMMARY ===
+Total processing time (H:M:S): 0h 6m 41.67s
+Events processed per second: 2950.19 Hz
+Average time per event: 0.338961 ms
+=======================
+Cuts applied: L1 MinBias Trigger;Cluster Compatibility Filter;Primary Vertex Filter;Jet pT > 30.0 GeV/c;Jet |eta| < 1.6;HF E_{Max}+ AND HF E_{Max}- > 14;Jet PF CEF < 0.8;Jet PF NEF < 0.8;Jet PF MUF < 0.8;
+General info: NEntries: 1.2M;Sample: MC;Tag: pthat15_1PD_9_withjetcuts;ProcessingDate: 20260320;EventsBeforeCuts: 1185000;EventsAfterCuts: 1065046;EventCutEfficiency: 89.88%;JetsBeforeSelection: 4186714;JetsAfterSelection: 1705706;JetSelectionEfficiency: 40.74%;TotalJetsProcessed: 4540324;MCWeighted: Yes;L1MinBiasEvents: 1184997;CCFilterEvents: 1184946;PVFilterEvents: 1184946;ZvtxCutEvents: 1179376;HFEFilterEvents: 1065046;
+
+=== MEMORY SUMMARY ===
+Peak memory usage: 405.398 MB
+Memory cleanup completed.
+=======================
+(int) 0
