@@ -130,7 +130,7 @@ int main() {
      *************************************************************************/
     int nEventsCut = 0; // Set to 0 to process all events
     int startfilenum = 0; // Set to 0 to start from the first file, or a positive integer to skip files
-    int fileCut = 1; // Set to -1 to process all files, or a positive integer to limit number of files
+    int fileCut = -1; // Set to -1 to process all files, or a positive integer to limit number of files
     bool MC = true;
     string outfoldername = "0428RooUnfoldVer2/";
     string ForestFolder;
@@ -140,10 +140,9 @@ int main() {
     else {
         ForestFolder = DataString;  
     }
-    string outfiletag = "MC_10Files_NewBin_debug";
+    string outfiletag = "MC_FullPD_bin2";
     bool L1MinBiasBool = true;
     bool HLTMinBiasBool = false;
-    bool JetTriggerBool = false;
     bool CCFilterBool = true;
     bool PVFilterBool = true;
     bool zvtxCutBool = true;
@@ -156,7 +155,7 @@ int main() {
     float jtPfMUFcut = 0.9;
     int jtPfCHMcut = 0;
 
-    float jtptUpperCut = 450;
+    float jtptUpperCut = 500;
     float jtptCut = 80;
     float etaCut = 1.6;
     float HFEMaxCut = 14;
@@ -178,9 +177,6 @@ int main() {
     }
     if (HLTMinBiasBool == 1){
         cutString += "HLT MinBias Trigger;";
-    }
-    if (JetTriggerBool == 1){
-        cutString += "Jet60 Trigger (L1 and HLT);";
     }
     if (CCFilterBool == 1){
         cutString += "Cluster Compatibility Filter;";
@@ -229,19 +225,13 @@ int main() {
     Long64_t totaljets = 0;
     int nEvents = 0;
 
-    double ptBins[] = {80, 
-                        95,
-                        110, 
-                        125,
-                        150,
-                        175,
-                        200,
-                        250,
-                        350,
-                        450};
+    //Bin1
+   // double ptBins[] = {80, 95, 110, 125, 150, 175, 200, 250, 350, 450};
+
+    //Bin2
+     double ptBins[] = {80, 140, 200, 300,400,500};
  //   double ptBins[] = {0,20,40,60,80,100,120,140,160,180,200,250,300,350,400,450,500,600,700,800,900,1000,1100,1200,1300,1400,1500};
     const int nPtBins = sizeof(ptBins)/sizeof(double) - 1;
-
     TH1::SetDefaultSumw2();
     TH1D* hGenPt = new TH1D("hGenPt", "Gen", nPtBins, ptBins);
     TH1D* hRecoPt  = new TH1D("hRecoPt",  "Reco",  nPtBins, ptBins);
@@ -295,11 +285,10 @@ int main() {
         TTree *PPTracksTree = (TTree*)file->Get(PPTracksTreeString.c_str());
         TTree *JetAnalyserTree = (TTree*)file->Get(JetAnalyserTreeString.c_str());
 
-        int run, evt, lumi, nref, ngen;
-        Float_t rawpt[50];
-        Float_t jtpt[50],   jteta[50],  jtphi[50],  jty[50],  jtrg[50],  jtzg[50],  jtkt[50],  jtangu[50];
-        Float_t refpt[50],  refeta[50], refphi[50], refy[50], refrg[50], refzg[50], refkt[50], refangu[50];
-        Float_t genpt[50],  geneta[50], genphi[50], geny[50], genrg[50], genzg[50], genkt[50], genangu[50];
+        int run, nref, ngen;
+        Float_t jtpt[50],   jteta[50],  jtphi[50];
+        Float_t refpt[50],  refeta[50], refphi[50];
+        Float_t genpt[50],  geneta[50], genphi[50];
         Float_t jtPfCHF[50], jtPfNHF[50], jtPfCEF[50], jtPfNEF[50], jtPfMUF[50];
         int jtPfCHM[50];
         Int_t genmatchindex[25];   //[ngen]
@@ -307,8 +296,6 @@ int main() {
         //Trigger variables
         int L1_MinimumBiasHF1_OR_BptxAND;
         int HLT_MinimumBiasHF_AND_BptxAND_v1;
-        int L1_SingleJet60;
-        int HLT_OxyL1SingleJet60_v1;
         float weight;
 
         //SkimFilters
@@ -322,13 +309,7 @@ int main() {
 
         //vtx
         int nvtx;
-        vector<float>* xvtx = nullptr;
-        vector<float>* yvtx = nullptr;
         vector<float>* zVtx = nullptr;
-
-        vector<float>* xErrVtx = nullptr;
-        vector<float>* yErrVtx = nullptr;
-        vector<float>* zErrVtx = nullptr;
 
         HltTree->SetBranchStatus("*", 0); // Disable all branches
         SkimTree->SetBranchStatus("*", 0); // Disable all branches
@@ -339,22 +320,20 @@ int main() {
             for (auto& b : branches) t->SetBranchStatus(b.c_str(), 1);
         };
         
-        Enable(HltTree, {"L1_MinimumBiasHF1_OR_BptxAND", "HLT_MinimumBiasHF_AND_BptxAND_v1", "L1_SingleJet60", "HLT_OxyL1SingleJet60_v1"});
+        Enable(HltTree, {"L1_MinimumBiasHF1_OR_BptxAND", "HLT_MinimumBiasHF_AND_BptxAND_v1"});
         Enable(SkimTree, {"pclusterCompatibilityFilter", "pprimaryVertexFilter"});
         Enable(HiEvtAnalyzersTree, {"hiHFMinus_pf", "hiHFEPlus_pf"});
-        Enable(PPTracksTree, {"nVtx", "xVtx", "yVtx", "zVtx", "xErrVtx", "yErrVtx", "zErrVtx"});
-        Enable(JetAnalyserTree, {"run", "evt", "lumi", "nref", "rawpt", "jtpt", "jteta", "jtphi", "jty", "jtrg", "jtzg", "jtkt", "jtangu",
+        Enable(PPTracksTree, {"nVtx", "zVtx"});
+        Enable(JetAnalyserTree, {"run",  "nref", "jtpt", "jteta", "jtphi",
                                 "jtPfCHF", "jtPfNHF", "jtPfCEF", "jtPfNEF", "jtPfMUF", "jtPfCHM"});
         if (MC){
-            Enable(JetAnalyserTree, {"ngen", "refpt", "refeta", "refphi", "refy", "refrg", "refzg", "refkt", "refangu",
-                                     "genpt", "geneta", "genphi", "geny", "genrg", "genzg", "genkt", "genangu", "genmatchindex"});
+            Enable(JetAnalyserTree, {"ngen", "refpt", "refeta", "refphi",
+                                     "genpt", "geneta", "genphi", "genmatchindex"});
             Enable(HiEvtAnalyzersTree, {"pthat", "weight"});
         }
 
         HltTree->SetBranchAddress("L1_MinimumBiasHF1_OR_BptxAND",&L1_MinimumBiasHF1_OR_BptxAND);
         HltTree->SetBranchAddress("HLT_MinimumBiasHF_AND_BptxAND_v1",&HLT_MinimumBiasHF_AND_BptxAND_v1);
-        HltTree->SetBranchAddress("L1_SingleJet60",&L1_SingleJet60);
-        HltTree->SetBranchAddress("HLT_OxyL1SingleJet60_v1",&HLT_OxyL1SingleJet60_v1);
 
         SkimTree->SetBranchAddress("pclusterCompatibilityFilter",&pclusterCompatibilityFilter);
         SkimTree->SetBranchAddress("pprimaryVertexFilter",&pprimaryVertexFilter);
@@ -365,26 +344,13 @@ int main() {
         HiEvtAnalyzersTree->SetBranchAddress("weight",&weight);
        
         PPTracksTree->SetBranchAddress("nVtx",&nvtx);
-        PPTracksTree->SetBranchAddress("xVtx",&xvtx);
-        PPTracksTree->SetBranchAddress("yVtx",&yvtx);
         PPTracksTree->SetBranchAddress("zVtx",&zVtx);
-        PPTracksTree->SetBranchAddress("xErrVtx",&xErrVtx);
-        PPTracksTree->SetBranchAddress("yErrVtx",&yErrVtx);
-        PPTracksTree->SetBranchAddress("zErrVtx",&zErrVtx);
 
         JetAnalyserTree->SetBranchAddress("run",&run);
-        JetAnalyserTree->SetBranchAddress("evt",&evt);
-        JetAnalyserTree->SetBranchAddress("lumi",&lumi);
         JetAnalyserTree->SetBranchAddress("nref",&nref);
-        JetAnalyserTree->SetBranchAddress("rawpt",&rawpt);
         JetAnalyserTree->SetBranchAddress("jtpt",&jtpt);
         JetAnalyserTree->SetBranchAddress("jteta",&jteta);
         JetAnalyserTree->SetBranchAddress("jtphi",&jtphi);
-        JetAnalyserTree->SetBranchAddress("jty",&jty);
-        JetAnalyserTree->SetBranchAddress("jtrg",&jtrg);
-        JetAnalyserTree->SetBranchAddress("jtzg",&jtzg);
-        JetAnalyserTree->SetBranchAddress("jtkt",&jtkt);
-        JetAnalyserTree->SetBranchAddress("jtangu",&jtangu);
         JetAnalyserTree->SetBranchAddress("jtPfCHF",&jtPfCHF);
         JetAnalyserTree->SetBranchAddress("jtPfNHF",&jtPfNHF);
         JetAnalyserTree->SetBranchAddress("jtPfCEF",&jtPfCEF);
@@ -396,19 +362,9 @@ int main() {
             JetAnalyserTree->SetBranchAddress("refpt",&refpt);
             JetAnalyserTree->SetBranchAddress("refeta",&refeta);
             JetAnalyserTree->SetBranchAddress("refphi",&refphi);
-            JetAnalyserTree->SetBranchAddress("refy",&refy);
-            JetAnalyserTree->SetBranchAddress("refrg",&refrg);
-            JetAnalyserTree->SetBranchAddress("refzg",&refzg);
-            JetAnalyserTree->SetBranchAddress("refkt",&refkt);
-            JetAnalyserTree->SetBranchAddress("refangu",&refangu);
             JetAnalyserTree->SetBranchAddress("genpt",&genpt);
             JetAnalyserTree->SetBranchAddress("geneta",&geneta);
             JetAnalyserTree->SetBranchAddress("genphi",&genphi);
-            JetAnalyserTree->SetBranchAddress("geny",&geny);
-            JetAnalyserTree->SetBranchAddress("genrg",&genrg);
-            JetAnalyserTree->SetBranchAddress("genzg",&genzg);
-            JetAnalyserTree->SetBranchAddress("genkt",&genkt);
-            JetAnalyserTree->SetBranchAddress("genangu",&genangu);
             JetAnalyserTree->SetBranchAddress("genmatchindex",&genmatchindex);
         }
 
@@ -432,9 +388,6 @@ int main() {
             }
             if (HLTMinBiasBool == 1){
                 if (HLT_MinimumBiasHF_AND_BptxAND_v1 != 1) continue;
-            }
-            if (JetTriggerBool == 1){
-                if (L1_SingleJet60 != 1 || HLT_OxyL1SingleJet60_v1 != 1) continue;
             }
             if (CCFilterBool == 1){
                 if (pclusterCompatibilityFilter != 1) continue;
@@ -465,6 +418,7 @@ int main() {
                 bool genPass  = refpt[j] > jtptCut && refpt[j] < jtptUpperCut;
                 bool JetQualityPass = (jtPfCEF[j] < jtPfCEFcut) && (jtPfNEF[j] < jtPfNEFcut) && (jtPfMUF[j] < jtPfMUFcut) && (jtPfCHM[j] > jtPfCHMcut);
                 if (!JetQualityPass) continue;
+
                 if (recoPass) {
                     if (isTrain) hRecoPt->Fill(jtpt[j], w);
                     else hRecoPt2->Fill(jtpt[j], w);
@@ -656,7 +610,6 @@ int main() {
     hFakePt2->Write();
     hMissPt2->Write();
     response_pt->Write("response_pt");
-
 
     cout << "Output written to: " << outFileName << endl;
     delete outFile;
