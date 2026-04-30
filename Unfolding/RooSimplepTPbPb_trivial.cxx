@@ -10,7 +10,7 @@
 //==============================================================================
 
 /*
-  RooSimplepTPbPb_split.cxx : Script to perform the split MC test.
+  RooSimplepTPbPb_trivial.cxx : Script to perform the trivial test.
   Hannah Bossi <hannah.bossi@cern.ch>
   4/16/2026, adapted from Yale code. 
   
@@ -67,7 +67,7 @@ const double Rjet = 0.4;
 void FillChain(TChain &chain, std::vector<std::string> &files); 
 void GetFiles(char const *input, std::vector<std::string> &files); 
 void Normalize2D(TH2* h); 
-void RooSimplepTPbPb_split(); 
+void RooSimplepTPbPb_trivial(); 
    
 // fill the tchain
 void FillChain(TChain &chain, std::vector<std::string> &files) {
@@ -135,7 +135,7 @@ void Normalize2D(TH2* h)
 // Example Unfolding
 //==============================================================================
 
-void RooSimplepTPbPb_split(){
+void RooSimplepTPbPb_trivial(){
 #ifdef __CINT__
   gSystem->Load("libRooUnfold");
 #endif
@@ -262,6 +262,9 @@ void RooSimplepTPbPb_split(){
     /* get the event weight we wil apply to each event */
     double w = *weight;
    
+  
+    //std::cout << "weight before rounding: " << *weight << " weight after rounding " << w << std::endl;
+
     /* now loop over jets and fill the response */
     for (int j = 0; j < *jetN; ++ j) {
       // jet kinematic and quality selections
@@ -272,26 +275,16 @@ void RooSimplepTPbPb_split(){
       if(jtPfCHM[j] < 0) continue;
 
       // jet pT cuts at reco and gen level (test)
-      if(jetPt[j] <= 80.0  || jetPt[j] >= 450.0) continue; // reco level
-      if(genJetPt[j] <= 80.0 || genJetPt[j] >= 450.0) continue; // gen matched level
+      if(jetPt[j] <= 80.0  || jetPt[j] >= 500.0) continue; // reco level
+      if(genJetPt[j] <= 80.0 || genJetPt[j] >= 500.0) continue; // gen matched level
       h1fulleff->Fill(genJetPt[j], w);  
       h1smearednocuts->Fill(jetPt[j],w);  
       responsenotrunc.Fill(jetPt[j],genJetPt[j],w);
       
-      /* do the splitting that corresponds to the split test */
-      double split = rand->Rndm();
-      if (split < 0.5){
-	      h1smeared->Fill(jetPt[j],w);
-	      //this is the half split to be the response 
-	      response.Fill(jetPt[j],genJetPt[j],w);
-	    }
-      else {
-        //this is the psuedo data!
-        h1raw->Fill(jetPt[j], w);
-        //this is the generator level distribution for the pseudo data or our answer :)
-        h1true->Fill(genJetPt[j],w);
-	    }
-    
+      h1smeared->Fill(jetPt[j],w);
+      response.Fill(jetPt[j],genJetPt[j],w);
+      h1raw->Fill(jetPt[j], w);
+      h1true->Fill(genJetPt[j],w);
 
 
     } // end loop over the number of jets
@@ -303,7 +296,7 @@ void RooSimplepTPbPb_split(){
  
     //////////efficiencies done////////////////////////////////////
  
-    TFile *fout=new TFile (Form("UnfoldingSplit5050_R040_Test.root"),"RECREATE");
+    TFile *fout=new TFile (Form("UnfoldingTrivial_R040_Test.root"),"RECREATE");
     fout->cd();
     h1raw->SetName("raw");
     h1raw->Write();
@@ -341,5 +334,5 @@ void RooSimplepTPbPb_split(){
 	  
 }
 #ifndef __CINT__
-int main () { RooSimplepTPbPb_split(); return 0; }  // Main program when run stand-alone
+int main () { RooSimplepTPbPb_trivial(); return 0; }  // Main program when run stand-alone
 #endif
