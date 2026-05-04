@@ -272,8 +272,8 @@ void RooSimplepTPbPb_split(){
       if(jtPfCHM[j] < 0) continue;
 
       // jet pT cuts at reco and gen level (test)
-      if(jetPt[j] <= 80.0  || jetPt[j] >= 450.0) continue; // reco level
-      if(genJetPt[j] <= 80.0 || genJetPt[j] >= 450.0) continue; // gen matched level
+      if(jetPt[j] <= 80.0  || jetPt[j] >= 500.0) continue; // reco level
+      if(genJetPt[j] <= 80.0 || genJetPt[j] >= 500.0) continue; // gen matched level
       h1fulleff->Fill(genJetPt[j], w);  
       h1smearednocuts->Fill(jetPt[j],w);  
       responsenotrunc.Fill(jetPt[j],genJetPt[j],w);

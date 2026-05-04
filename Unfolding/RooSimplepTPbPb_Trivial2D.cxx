@@ -37,6 +37,9 @@ using std::endl;
 #include "TTreeReaderArray.h"
 #include "TMath.h"
 
+#include <vector>
+#include <string>
+
 #include "RooUnfoldResponse.h"
 #include "RooUnfoldBayes.h"
 #endif

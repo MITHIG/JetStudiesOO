@@ -14,9 +14,9 @@
   Hannah Bossi <hannah.bossi@cern.ch>
   4/16/2026, adapted from Yale code. 
   
-  To compile run: make Execute. 
+  To compile run: make ExecuteTrivial. 
   export LD_LIBRARY_PATH=/afs/cern.ch/user/h/hbossi/RooUnfold/:$LD_LIBRARY_PATH
-  ./Execute
+  ./ExecuteTrivial
  */
 
 

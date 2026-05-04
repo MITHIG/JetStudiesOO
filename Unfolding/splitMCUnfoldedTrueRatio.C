@@ -130,20 +130,13 @@ void splitMCUnfoldedTrueRatio(){
   unfoldClone_1->Divide(trueDist);
   unfoldClone_1->SetMarkerStyle(20);
   unfoldClone_1->SetMarkerColor(colors[0]);
-   for (int i = 1; i <= unfoldClone_1->GetNbinsX(); ++i) {
-      double ratio = unfoldClone_1->GetBinContent(i);
-      cout << "Bin " << i << ": " << Form("%.16f", ratio)  << endl;
-   }
+
   TH1D* unfoldClone_2 = (TH1D*) unfold_Iter2->Clone();
   unfoldClone_2->Sumw2();
   unfoldClone_2->Divide(trueDist);
   unfoldClone_2->SetMarkerStyle(20);
   unfoldClone_2->SetMarkerColor(colors[2]);
-  std::cout << "iter2 ----------" << std::endl;
- for (int i = 1; i <= unfoldClone_2->GetNbinsX(); ++i) {
-      double ratio = unfoldClone_2->GetBinContent(i);
-      cout << "Bin " << i << ": " << Form("%.16f", ratio)  << endl;
-   }
+
   TH1D* unfoldClone_3 = (TH1D*) unfold_Iter3->Clone();
   unfoldClone_3->Sumw2();
   unfoldClone_3->Divide(trueDist);

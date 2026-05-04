@@ -17,6 +17,8 @@ using std::endl;
 
 #include "TRandom.h"
 #include "TRandom3.h"
+#include <vector>
+#include <string>
 
 #include "TH1D.h"
 #include "TFile.h"
@@ -175,8 +177,8 @@ void RooSimplepTPbPb_Split2D(std::string date)
 
 
 
-  std::vector<Double_t> kBinsMeasured  = {-0.05,0,0.05,0.1,0.2,0.3}; 
-  std::vector<Double_t> kBinsUnfolded = {-0.05,0, 0.05,0.1,0.2,0.3}; 
+  std::vector<Double_t> kBinsMeasured  = {-0.05,0,0.05,0.1,0.2,0.3, 0.4}; 
+  std::vector<Double_t> kBinsUnfolded = {-0.05,0, 0.05,0.1,0.2,0.3, 0.4}; 
 
  TH2D *h2raw(0);
    h2raw=new TH2D("r","raw",kBinsMeasured.size()-1,kBinsMeasured.data(), nBinspT ,xbins);

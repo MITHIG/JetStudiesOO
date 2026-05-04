@@ -1,6 +1,8 @@
 // Hannah Bossi <hannah.bossi@cern.ch>
-// checkUnfoldingStab.C : Plots the ratio of unfolded distributions to the eigth iteration
+// checkSplitStability: Plots the ratio of unfolded distributions to the true distribution
 // 02/12/2021       
+
+#include <sstream>
 
 void checkSplitStability(bool isTrivial = false){
 
@@ -120,7 +122,7 @@ void checkSplitStability(bool isTrivial = false){
     leg2->Draw("same");
     
     // Save with pT bin range in filename
-    stringstream ss2; 
+    std::stringstream ss2; 
     if(isTrivial)ss2 << "./Trivial2DPlots/Trivial_Stability_pT" << (int)pTLow << "_" << (int)pTHigh << "_042326.pdf";
     else ss2 << "./SplitMC2DPlots/SplitMC_Stability_pT" << (int)pTLow << "_" << (int)pTHigh << "_042326.pdf";
     c->SaveAs(ss2.str().c_str());
