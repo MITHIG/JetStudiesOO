@@ -8,7 +8,7 @@ void splitMCUnfoldedTrueRatio(){
   gStyle->SetOptTitle(0);
   
   // Get the input file and the relevant objects to make the ratio plots
-  TFile*_file0       = TFile::Open("UnfoldingSplit_R040_Test.root");
+  TFile*_file0       = TFile::Open("UnfoldingSplit5050_R040_Test.root");
   TH1D* trueDist      = (TH1D*)_file0->Get("trueptd");
   TH1D* unfold_Iter1 = (TH1D*)_file0->Get("Bayesian_Unfoldediter1");
   TH1D* unfold_Iter2 = (TH1D*)_file0->Get("Bayesian_Unfoldediter2");
@@ -223,7 +223,7 @@ void splitMCUnfoldedTrueRatio(){
   pad1->cd();
   leg->Draw("same");
 
-  c->SaveAs("unfoldingSplitTest.pdf");
+  c->SaveAs("unfoldingSplit5050_04292026.pdf");
 
 
 }

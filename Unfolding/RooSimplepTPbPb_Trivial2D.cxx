@@ -9,24 +9,11 @@
 //
 //==============================================================================
 
-/*
-  RooSimplepTPbPb_split.cxx : Script to perform the split MC test.
-  Hannah Bossi <hannah.bossi@cern.ch>
-  4/16/2026, adapted from Yale code. 
-  
-  To compile run: make Execute. 
-  export LD_LIBRARY_PATH=/afs/cern.ch/user/h/hbossi/RooUnfold/:$LD_LIBRARY_PATH
-  ./Execute
- */
-
 
 #if !(defined(__CINT__) || defined(__CLING__)) || defined(__ACLIC__)
 #include <iostream>
 using std::cout;
 using std::endl;
-
-#include <vector>
-#include <string>
 
 #include "TRandom.h"
 #include "TRandom3.h"
@@ -50,6 +37,9 @@ using std::endl;
 #include "TTreeReaderArray.h"
 #include "TMath.h"
 
+#include <vector>
+#include <string>
+
 #include "RooUnfoldResponse.h"
 #include "RooUnfoldBayes.h"
 #endif
@@ -58,8 +48,7 @@ using std::endl;
 // Global definitions
 //==============================================================================
 
-// sets the jet radius
-const double Rjet = 0.4;
+const Double_t cutdummy= -99999.0;
 
 //==============================================================================
 // helper functions
@@ -67,7 +56,7 @@ const double Rjet = 0.4;
 void FillChain(TChain &chain, std::vector<std::string> &files); 
 void GetFiles(char const *input, std::vector<std::string> &files); 
 void Normalize2D(TH2* h); 
-void RooSimplepTPbPb_split(); 
+void RooSimplepTPbPb_Trivial2D(std::string date); 
    
 // fill the tchain
 void FillChain(TChain &chain, std::vector<std::string> &files) {
@@ -103,6 +92,7 @@ void GetFiles(char const *input, std::vector<std::string> &files) {
 
 
 
+
 void Normalize2D(TH2* h)
 {
    Int_t nbinsYtmp = h->GetNbinsY();
@@ -131,19 +121,42 @@ void Normalize2D(TH2* h)
      }
 }
 
+
+
+
+
+
+
+TH2D* CorrelationHist (const TMatrixD& cov,const char* name, const char* title,
+		       Double_t lo, Double_t hi,Double_t lon,Double_t hin)
+{
+  Int_t nb= cov.GetNrows();
+  Int_t na= cov.GetNcols();
+  cout<<nb<<" "<<na<<endl;
+  TH2D* h= new TH2D (name, title, nb, 0, nb, na, 0, na);
+  h->SetAxisRange (-1.0, 1.0, "Z");
+  for(int i=0; i < na; i++)
+  for(int j=0; j < nb; j++) {
+  Double_t Viijj= cov(i,i)*cov(j,j);
+      if (Viijj>0.0) h->SetBinContent (i+1, j+1, cov(i,j)/sqrt(Viijj));
+    }
+  return h;
+}
+
 //==============================================================================
 // Example Unfolding
 //==============================================================================
 
-void RooSimplepTPbPb_split(){
+void RooSimplepTPbPb_Trivial2D(std::string date)
+{
 #ifdef __CINT__
   gSystem->Load("libRooUnfold");
 #endif
   Int_t difference=1;
   Int_t Ppol=0;
-
   char const *input = "/eos/cms/store/group/phys_heavyions/hbossi/mc_productions/Dijet_pThat-15to1200_TuneCP5_5p36TeV_pythia8/OO_MC_DijetNoEmbedding_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260318_152047/0000/";
   std::cout << "Running over " << input << std::endl;
+  
   cout << "==================================== pick up the response matrix for background==========================" << endl;
   ///////////////////parameter setting
   RooUnfold::ErrorTreatment errorTreatment = RooUnfold::kCovariance;   
@@ -151,7 +164,7 @@ void RooSimplepTPbPb_split(){
   TRandom3* rand = new TRandom3();
 
    //***************************************************
-
+  
    Double_t xbins[6];
   xbins[0] = 80.0;
   xbins[1] = 140.0;
@@ -159,48 +172,67 @@ void RooSimplepTPbPb_split(){
   xbins[3] = 300.0;
   xbins[4] = 400.0; 
   xbins[5] = 500.0; 
-  //the raw correlation (data or psuedodata)
-  TH1D *h1raw(0);
-  h1raw=new TH1D("r","raw",5, xbins);
-  h1raw->Sumw2();
+
+  int nBinspT = 5; 
+	 
 
 
-  //detector measure level (reco or hybrid MC)
-  TH1D *h1smeared(0);
-  h1smeared=new TH1D("smeared","smeared",5, xbins);
-  h1smeared->Sumw2();
 
-  //detector measure level no cuts
-  TH1D *h1smearednocuts(0);
-  h1smearednocuts=new TH1D("smearednocuts","smearednocuts", 5, xbins);
-  h1smearednocuts->Sumw2(); 
+  std::vector<Double_t> kBinsMeasured  = {-0.05,0,0.05,0.1,0.2,0.3}; 
+  std::vector<Double_t> kBinsUnfolded = {-0.05,0, 0.05,0.1,0.2,0.3}; 
 
-  //true correlations with measured cuts
-  TH1D *h1true(0);
-  h1true=new TH1D("true","true", 5, xbins);
-  h1true->Sumw2();
+ TH2D *h2raw(0);
+   h2raw=new TH2D("r","raw",kBinsMeasured.size()-1,kBinsMeasured.data(), nBinspT ,xbins);
+   //detector measure level
 
-  //full true correlation
-  TH1D *h1fulleff(0);
-  h1fulleff=new TH1D("truef","truef", 5, xbins); 
-  h1fulleff->Sumw2();
+   TH2D *h2smeared(0);
+   h2smeared=new TH2D("smeared","smeared",kBinsMeasured.size()-1,kBinsMeasured.data(),nBinspT,xbins);
+
+   TH2D* h2resp(0);
+   h2resp = new TH2D("h2resp", "h2resp", kBinsMeasured.size()-1,kBinsMeasured.data(), kBinsMeasured.size()-1,kBinsMeasured.data());
+
+     //detector measure level no cuts
+   TH2D *h2smearednocuts(0);
+   h2smearednocuts=new TH2D("smearednocuts","smearednocuts",kBinsMeasured.size()-1,kBinsMeasured.data(),nBinspT,xbins);
+   //true correlations with measured cuts
+
+    TH2D *h2true(0);
+    h2true=new TH2D("true","true",kBinsUnfolded.size()-1,kBinsUnfolded.data(),nBinspT ,xbins);
+    //full true correlation
+    TH2D *h2fulleff(0);
+    h2fulleff=new TH2D("truef","truef",kBinsUnfolded.size()-1,kBinsUnfolded.data(),nBinspT ,xbins);
+   
+
+    TH2D * h2uf  = new TH2D("h2uf","h2uf",kBinsUnfolded.size()-1,kBinsUnfolded.data(),nBinspT ,xbins);
+    TH2D* h2resppT(0);
+   h2resppT = new TH2D("h2resppT", "h2resppT", nBinspT ,xbins, nBinspT ,xbins);
 
   
-  TH2D *hcovariance(0);
-  hcovariance=new TH2D("covariance","covariance",5,0.,1.,5,0,1.);
-  hcovariance->Sumw2(); 
 
-  TH1D *effnum=(TH1D*)h1fulleff->Clone("effnum");
-  TH1D *effdenom=(TH1D*)h1fulleff->Clone("effdenom");
+    TFile* frw;
+    TH2D* h2_weight; 
+    TH2D* h2_smooth; 
+
+   
+
+ 
+  
+   TH2D *hcovariance(0);
+  hcovariance=new TH2D("covariance","covariance",nBinspT,0.,1.,nBinspT,0,1.);
+
+  
+
+  TH2D *effnum=(TH2D*)h2fulleff->Clone("effnum");
+  TH2D *effdenom=(TH2D*)h2fulleff->Clone("effdenom");
+ 
   effnum->Sumw2();
   effdenom->Sumw2();
-
-  //branches in the tree that you need in this analysis
-  Float_t ptJet,ptJetMatch;
-
-  Int_t nEv=0;
-
-
+  h2smeared->Sumw2();
+  h2true->Sumw2();
+  h2raw->Sumw2();
+  h2fulleff->Sumw2();
+   
+  Int_t nEv=0;; 
   std::vector<std::string> files;
   GetFiles(input, files);
   std::cout << "Get the files " << std::endl;
@@ -245,12 +277,14 @@ void RooSimplepTPbPb_split(){
   TTreeReaderValue<int> mb(trigReader, "HLT_MinimumBiasHF_OR_BptxAND_v1");
 
   /* setup the response */
+
   RooUnfoldResponse response;
   RooUnfoldResponse responsenotrunc;
-  response.Setup(h1smeared,h1true);
-  responsenotrunc.Setup(h1smearednocuts,h1fulleff);
+  response.Setup(h2smeared,h2true);
+  responsenotrunc.Setup(h2smearednocuts,h2fulleff);
   
   Long64_t totalEvents = jetReader.GetEntries(true);
+
   for (Long64_t i = 0; i < totalEvents; i++) {
     jetReader.Next(); eventReader.Next(); trigReader.Next(); hiEventReader.Next();
 
@@ -260,8 +294,8 @@ void RooSimplepTPbPb_split(){
     if(*vertexFilter == 0 || *clusterFilter == 0) continue; // event filters
     //------------------------------------------------------
     /* get the event weight we wil apply to each event */
-    double w = *weight;
-   
+    float w = *weight;
+
     /* now loop over jets and fill the response */
     for (int j = 0; j < *jetN; ++ j) {
       // jet kinematic and quality selections
@@ -272,74 +306,96 @@ void RooSimplepTPbPb_split(){
       if(jtPfCHM[j] < 0) continue;
 
       // jet pT cuts at reco and gen level (test)
-      if(jetPt[j] <= 80.0  || jetPt[j] >= 500.0) continue; // reco level
-      if(genJetPt[j] <= 80.0 || genJetPt[j] >= 500.0) continue; // gen matched level
-      h1fulleff->Fill(genJetPt[j], w);  
-      h1smearednocuts->Fill(jetPt[j],w);  
-      responsenotrunc.Fill(jetPt[j],genJetPt[j],w);
+      if(jetPt[j] < 80  || jetPt[j] > 500) continue; // reco level
+      if(genJetPt[j] < 80 || genJetPt[j] > 500) continue; // gen matched level
+      if(jetRg[j] < kBinsMeasured.front() || jetRg[j] > kBinsMeasured.back()) continue; // reco level Rg
+      if(genJetRg[j] < kBinsMeasured.front() || genJetRg[j] > kBinsMeasured.back()) continue; // gen level Rg
+      h2fulleff->Fill(genJetRg[j],genJetPt[j],w);  
+      h2smearednocuts->Fill(jetRg[j],jetPt[j],w);  
+      responsenotrunc.Fill(jetRg[j],jetPt[j],genJetRg[j],genJetPt[j],w);
       
-      /* do the splitting that corresponds to the split test */
-      double split = rand->Rndm();
-      if (split < 0.5){
-	      h1smeared->Fill(jetPt[j],w);
-	      //this is the half split to be the response 
-	      response.Fill(jetPt[j],genJetPt[j],w);
-	    }
-      else {
-        //this is the psuedo data!
-        h1raw->Fill(jetPt[j], w);
-        //this is the generator level distribution for the pseudo data or our answer :)
-        h1true->Fill(genJetPt[j],w);
-	    }
+
+      h2smeared->Fill(jetRg[j],jetPt[j],w);
+      //	h2true->Fill(ngMatch,genJetPt,scalefactor);
+      response.Fill(jetRg[j],jetPt[j],genJetRg[j],genJetPt[j],w);
+      h2resp->Fill(genJetRg[j], jetRg[j], w);
+      h2raw->Fill(jetRg[j], jetPt[j], w);
+      h2true->Fill(genJetRg[j],genJetPt[j],w);
+      
+    }
+  }
+ 
+
     
-
-
-    } // end loop over the number of jets
-  } // end loop over the number of events
- 
+    TH1F *htrueptd=(TH1F*) h2fulleff->ProjectionX("trueptd",1,-1);
+    TH1F *htruept=(TH1F*) h2fulleff->ProjectionY( "truept",1,-1); 
     
-    TH1D *htrueptd=(TH1D*) h1fulleff->Clone("trueptd");
-    TH1D *htruept=(TH1D*) h1fulleff->Clone( "truept"); 
- 
-    //////////efficiencies done////////////////////////////////////
- 
-    TFile *fout=new TFile (Form("UnfoldingSplit5050_R040_Test.root"),"RECREATE");
-    fout->cd();
-    h1raw->SetName("raw");
-    h1raw->Write();
-    h1smeared->SetName("smeared");
-    h1smeared->Write();
-    htrueptd->Write();
-    h1true->SetName("true");
-    h1true->Write();
-    TH1D* htruth = (TH1D*)response.Htruth();
-    htruth->SetName("htruth");
-    htruth->Write();
+     
 
-    for(int jar=1;jar<10;jar++){
+
+  
+    //    TH2D* hfold=(TH2D*)h2raw->Clone("hfold");
+    //    hfold->Sumw2();
+ 
+ //////////efficiencies done////////////////////////////////////
+//  TH1D * effok=(TH1D *)h2true->ProjectionX("effok",2,2);
+//  TH1D * effok1=(TH1D *)h2fulleff->ProjectionX("effok2",2,2);
+//  effok->Divide(effok1);
+//  effok->SetName("correff20-40");
+ 
+//  TH1D * effok3=(TH1D *)h2true->ProjectionX("effok3",3,3);
+//   TH1D * effok4=(TH1D *)h2fulleff->ProjectionX("effok4",3,3);
+//  effok3->Divide(effok4);
+//   effok3->SetName("correff40-60"); 
+
+//   TH1D * effok5=(TH1D *)h2true->ProjectionX("effok5",4,4);
+//   TH1D * effok6=(TH1D *)h2fulleff->ProjectionX("effok6",4,4);
+//  effok5->Divide(effok6);
+//  effok5->SetName("correff60-80"); 
+
+//    TH1D * effok7=(TH1D *)h2true->ProjectionX("effok7",5,6);
+//   TH1D * effok8=(TH1D *)h2fulleff->ProjectionX("effok8",5,6);
+//  effok7->Divide(effok8);
+//  effok7->SetName("correff80-120"); 
+ 
+
+  TFile *fout=new TFile (Form("Unfold2D_Trivial_%s.root", date.c_str()),"RECREATE");
+
+  fout->cd();
+  // effok->Write(); 
+  // effok3->Write();
+  // effok5->Write();
+  // effok7->Write();
+  h2raw->SetName("raw");
+  h2raw->Write();
+  h2resp->Write();
+  h2smeared->SetName("smeared");
+  h2smeared->Write();
+  htrueptd->Write();
+  h2true->SetName("true");
+  h2true->Write();
+  for(int jar=1;jar<15;jar++){
       Int_t iter=jar;
       cout<<"iteration"<<iter<<endl;
       cout<<"==============Unfold h1====================="<<endl;
 
-      RooUnfoldBayes unfold(&response, h1raw, iter, false);    // OR
-      TH1D* hunf= (TH1D*) unfold.Hreco();
+      RooUnfoldBayes   unfold(&response, h2raw, iter);    // OR
+      TH2D* hunf= (TH2D*) unfold.Hreco(errorTreatment);
       //FOLD BACK
       TH1* hfold = response.ApplyToTruth (hunf, "");
-
-      TH1D *htempUnf=(TH1D*)hunf->Clone("htempUnf");          
+        
+      TH2D *htempUnf=(TH2D*)hunf->Clone("htempUnf");          
       htempUnf->SetName(Form("Bayesian_Unfoldediter%d",iter));
-      
-      TH1D *htempFold=(TH1D*)hfold->Clone("htempFold");          
+        
+      TH2D *htempFold=(TH2D*)hfold->Clone("htempFold");          
       htempFold->SetName(Form("Bayesian_Foldediter%d",iter));        
 
       htempUnf->Write();
       htempFold->Write();
-    }
 
-    // close the output file
-    fout->Close();
-	  
+  }
 }
+
 #ifndef __CINT__
-int main () { RooSimplepTPbPb_split(); return 0; }  // Main program when run stand-alone
+int main () { RooSimplepTPbPb_Trivial2D("042326"); return 0; }  // Main program when run stand-alone
 #endif
