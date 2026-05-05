@@ -17,6 +17,8 @@ using std::endl;
 
 #include "TRandom.h"
 #include "TRandom3.h"
+#include <vector>
+#include <string>
 
 #include "TH1D.h"
 #include "TFile.h"
@@ -37,9 +39,6 @@ using std::endl;
 #include "TTreeReaderArray.h"
 #include "TMath.h"
 
-#include <vector>
-#include <string>
-
 #include "RooUnfoldResponse.h"
 #include "RooUnfoldBayes.h"
 #endif
@@ -56,7 +55,7 @@ const Double_t cutdummy= -99999.0;
 void FillChain(TChain &chain, std::vector<std::string> &files); 
 void GetFiles(char const *input, std::vector<std::string> &files); 
 void Normalize2D(TH2* h); 
-void RooSimplepTPbPb_Trivial2D(std::string date); 
+void RooSimplepTPbPb_Split2D(std::string date); 
    
 // fill the tchain
 void FillChain(TChain &chain, std::vector<std::string> &files) {
@@ -147,15 +146,18 @@ TH2D* CorrelationHist (const TMatrixD& cov,const char* name, const char* title,
 // Example Unfolding
 //==============================================================================
 
-void RooSimplepTPbPb_Trivial2D(std::string date)
+void RooSimplepTPbPb_data2D(std::string date)
 {
 #ifdef __CINT__
   gSystem->Load("libRooUnfold");
 #endif
   Int_t difference=1;
   Int_t Ppol=0;
-  char const *input = "/eos/cms/store/group/phys_heavyions/hbossi/mc_productions/Dijet_pThat-15to1200_TuneCP5_5p36TeV_pythia8/OO_MC_DijetNoEmbedding_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260318_152047/0000/";
-  std::cout << "Running over " << input << std::endl;
+  char const *inputData = "/eos/cms/store/group/phys_heavyions/hbossi/OOJetSubstructure/DataForests/";
+  char const *inputMC = "/eos/cms/store/group/phys_heavyions/hbossi/mc_productions/Dijet_pThat-15to1200_TuneCP5_5p36TeV_pythia8/OO_MC_DijetNoEmbedding_pThat-15to1200_TuneCP5_5p36TeV_pythia8/260318_152047/0000/";
+  std::cout << "Unfolding with... " << std::endl; 
+  std::cout << "Data Sample: " << inputData << std::endl;
+  std::cout << "MC Sample: " << inputMC << std::endl;
   
   cout << "==================================== pick up the response matrix for background==========================" << endl;
   ///////////////////parameter setting
@@ -174,12 +176,10 @@ void RooSimplepTPbPb_Trivial2D(std::string date)
   xbins[5] = 500.0; 
 
   int nBinspT = 5; 
-	 
 
 
-
-  std::vector<Double_t> kBinsMeasured  =  {-0.05,0, 0.1, 0.2, 0.4};
-  std::vector<Double_t> kBinsUnfolded =  {-0.05,0, 0.1, 0.2, 0.4};  
+  std::vector<Double_t> kBinsMeasured  = {-0.05,0,0.1,0.2, 0.4}; 
+  std::vector<Double_t> kBinsUnfolded = {-0.05,0, 0.1,0.2, 0.4}; 
 
  TH2D *h2raw(0);
    h2raw=new TH2D("r","raw",kBinsMeasured.size()-1,kBinsMeasured.data(), nBinspT ,xbins);
@@ -231,16 +231,89 @@ void RooSimplepTPbPb_Trivial2D(std::string date)
   h2true->Sumw2();
   h2raw->Sumw2();
   h2fulleff->Sumw2();
+
+  // --------------------------------------
+  // handle the data
+  // --------------------------------------
+
+  std::vector<std::string> filesData;
+  GetFiles(inputData, filesData);
+  std::cout << "Getting the files from Data " << std::endl;
+
+  TChain hiEventChainData("hiEvtAnalyzer/HiTree");
+  FillChain(hiEventChainData, filesData);
+  TTreeReader hiEventReaderData(&hiEventChainData);
+  TTreeReaderValue<float>   HFpf_data(hiEventReaderData, "hiHF_pf");
+  TTreeReaderValue<float>   weight_data(hiEventReaderData, "weight");
+  TTreeReaderValue<float>   zVertex_data(hiEventReaderData, "vz");
+  TTreeReaderValue<int>   nTrk_data(hiEventReaderData, "hiNtracks");
    
-  Int_t nEv=0;; 
-  std::vector<std::string> files;
-  GetFiles(input, files);
-  std::cout << "Get the files " << std::endl;
+  TChain eventChainData("skimanalysis/HltTree");
+  FillChain(eventChainData, filesData);
+  TTreeReader eventReaderData(&eventChainData);
+  TTreeReaderValue<int>   vertexFilterData(eventReaderData, "pprimaryVertexFilter");
+  TTreeReaderValue<int>   clusterFilterData(eventReaderData, "pclusterCompatibilityFilter");
+
+   /* read in jet information */
+  TChain jetChainData("akCs4PFJetAnalyzer/t");
+  FillChain(jetChainData, filesData);
+  TTreeReader jetReaderData(&jetChainData);
+  TTreeReaderValue<int>   jetNData(jetReaderData, "nref");
+  TTreeReaderArray<float> jetEtaData(jetReaderData, "jteta");
+  TTreeReaderArray<float> jetPtData(jetReaderData, "jtpt");
+  TTreeReaderArray<float> rawPtData(jetReaderData, "rawpt");
+  TTreeReaderArray<float> jetRgData(jetReaderData, "jtrg");
+  TTreeReaderArray<float> jtPfCEFData(jetReaderData, "jtPfCEF");
+  TTreeReaderArray<float> jtPfMUFData(jetReaderData, "jtPfMUF");
+  TTreeReaderArray<float> jtPfNEFData(jetReaderData, "jtPfNEF");
+  TTreeReaderArray<int> jtPfCHMData(jetReaderData, "jtPfCHM");
+
+  /* read in trigger information */
+  TChain trigChainData("hltanalysis/HltTree");
+  FillChain(trigChainData, filesData);
+  TTreeReader trigReaderData(&trigChainData);
+  TTreeReaderValue<int> mbData(trigReaderData, "HLT_MinimumBiasHF_OR_BptxAND_v1");
+
+  Long64_t totalEventsData = jetReaderData.GetEntries(true);
+
+  for (Long64_t i = 0; i < totalEventsData; i++) {
+    jetReaderData.Next(); eventReaderData.Next(); trigReaderData.Next(); hiEventReaderData.Next();
+
+     // ------ step 1: Apply the necessary event filters ----
+    if(*mbData != 1) continue; // trigger selection
+    if(*zVertex_data< -15.0 || *zVertex_data > 15.0) continue;  // z vertex filter    
+    if(*vertexFilterData == 0 || *clusterFilterData == 0) continue; // event filters
+  
+    float w = *weight_data;
+    // loop over jets
+    for (int j = 0; j < *jetNData; ++ j) {
+      // jet kinematic and quality selections
+      if (TMath::Abs(jetEtaData[j]) > 1.6) { continue; }
+      if(jtPfCEFData[j] > 0.8) continue;
+      if(jtPfMUFData[j] > 0.8) continue;
+      if(jtPfNEFData[j] > 0.9) continue;
+      if(jtPfCHMData[j] < 0) continue;
+
+      if(jetPtData[j] < 80  || jetPtData[j] > 500) continue; // reco level
+
+       h2raw->Fill(jetRgData[j], jetPtData[j], w);
+    }
+
+  }// end loop over data events
+
+  // --------------------------------------
+  // handle the monte carlo
+  // --------------------------------------
+
+  // Int_t nEv=0;; 
+  std::vector<std::string> filesMC;
+  GetFiles(inputMC, filesMC);
+  std::cout << "Getting the files from MC " << std::endl;
 
 
   /* read in event information */
   TChain hiEventChain("hiEvtAnalyzer/HiTree");
-  FillChain(hiEventChain, files);
+  FillChain(hiEventChain, filesMC);
   TTreeReader hiEventReader(&hiEventChain);
   TTreeReaderValue<float>   HFpf(hiEventReader, "hiHF_pf");
   TTreeReaderValue<float>   weight(hiEventReader, "weight");
@@ -249,14 +322,14 @@ void RooSimplepTPbPb_Trivial2D(std::string date)
 
   /* read in filter information */
   TChain eventChain("skimanalysis/HltTree");
-  FillChain(eventChain, files);
+  FillChain(eventChain, filesMC);
   TTreeReader eventReader(&eventChain);
   TTreeReaderValue<int>   vertexFilter(eventReader, "pprimaryVertexFilter");
   TTreeReaderValue<int>   clusterFilter(eventReader, "pclusterCompatibilityFilter");
 
   /* read in jet information */
   TChain jetChain("akCs4PFJetAnalyzer/t");
-  FillChain(jetChain, files);
+  FillChain(jetChain, filesMC);
   TTreeReader jetReader(&jetChain);
   TTreeReaderValue<int>   jetN(jetReader, "nref");
   TTreeReaderArray<float> jetEta(jetReader, "jteta");
@@ -272,7 +345,7 @@ void RooSimplepTPbPb_Trivial2D(std::string date)
 
   /* read in trigger information */
   TChain trigChain("hltanalysis/HltTree");
-  FillChain(trigChain, files);
+  FillChain(trigChain, filesMC);
   TTreeReader trigReader(&trigChain);
   TTreeReaderValue<int> mb(trigReader, "HLT_MinimumBiasHF_OR_BptxAND_v1");
 
@@ -314,13 +387,14 @@ void RooSimplepTPbPb_Trivial2D(std::string date)
       h2smearednocuts->Fill(jetRg[j],jetPt[j],w);  
       responsenotrunc.Fill(jetRg[j],jetPt[j],genJetRg[j],genJetPt[j],w);
       
+        h2smeared->Fill(jetRg[j],jetPt[j],w);
+        //	h2true->Fill(ngMatch,genJetPt,scalefactor);
+        response.Fill(jetRg[j],jetPt[j],genJetRg[j],genJetPt[j],w);
+        h2resp->Fill(genJetRg[j], jetRg[j], w);
 
-      h2smeared->Fill(jetRg[j],jetPt[j],w);
-      //	h2true->Fill(ngMatch,genJetPt,scalefactor);
-      response.Fill(jetRg[j],jetPt[j],genJetRg[j],genJetPt[j],w);
-      h2resp->Fill(genJetRg[j], jetRg[j], w);
-      h2raw->Fill(jetRg[j], jetPt[j], w);
-      h2true->Fill(genJetRg[j],genJetPt[j],w);
+       
+        h2true->Fill(genJetRg[j],genJetPt[j],w);
+    
       
     }
   }
@@ -359,7 +433,7 @@ void RooSimplepTPbPb_Trivial2D(std::string date)
 //  effok7->SetName("correff80-120"); 
  
 
-  TFile *fout=new TFile (Form("Unfold2D_Trivial_%s.root", date.c_str()),"RECREATE");
+  TFile *fout=new TFile (Form("Unfold2D_SplitMCTest_%s.root", date.c_str()),"RECREATE");
 
   fout->cd();
   // effok->Write(); 
@@ -397,5 +471,5 @@ void RooSimplepTPbPb_Trivial2D(std::string date)
 }
 
 #ifndef __CINT__
-int main () { RooSimplepTPbPb_Trivial2D("042326"); return 0; }  // Main program when run stand-alone
+int main () { RooSimplepTPbPb_data2D("042326"); return 0; }  // Main program when run stand-alone
 #endif

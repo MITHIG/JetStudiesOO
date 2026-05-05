@@ -19,3 +19,10 @@ Execute2D: RooSimplepTPbPb_split2D.cxx
 	g++ RooSimplepTPbPb_split2D.cxx -o Execute2D \
 		-I/afs/cern.ch/user/h/hbossi/RooUnfold/src -L/afs/cern.ch/user/h/hbossi/RooUnfold/ -lRooUnfold \
 		`root-config --cflags --glibs`
+
+
+
+Execute2DData: RooSimplepTPbPb_data2D.cxx
+	g++ RooSimplepTPbPb_data2D.cxx -o Execute2DData \
+		-I/afs/cern.ch/user/h/hbossi/RooUnfold/src -L/afs/cern.ch/user/h/hbossi/RooUnfold/ -lRooUnfold \
+		`root-config --cflags --glibs`
