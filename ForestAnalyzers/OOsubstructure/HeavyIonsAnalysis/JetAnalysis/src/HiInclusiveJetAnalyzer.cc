@@ -551,7 +551,7 @@ void HiInclusiveJetAnalyzer::analyze(const Event& iEvent, const EventSetup& iSet
 
   // manually do the MC truth corrections for now
   vector<string> Files;
-  Files.push_back("HeavyIonsAnalysis/JetAnalysis/interface/ParallelMC_L2Relative_AK4PF.txt");
+  Files.push_back("HeavyIonsAnalysis/JetAnalysis/interface/Prompt25HIOO_V1_MC_L2Relative_AK4PF.txt");
   JetCorrector JEC(Files);
 
   for (unsigned int j = 0; j < jets->size(); ++j) {

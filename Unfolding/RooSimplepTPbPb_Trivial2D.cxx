@@ -165,21 +165,17 @@ void RooSimplepTPbPb_Trivial2D(std::string date)
 
    //***************************************************
   
-   Double_t xbins[6];
+ Double_t xbins[4];
   xbins[0] = 80.0;
   xbins[1] = 140.0;
-  xbins[2] = 200.0;
-  xbins[3] = 300.0;
-  xbins[4] = 400.0; 
-  xbins[5] = 500.0; 
+  xbins[2] = 300.0;
+  xbins[3] = 1000.0; 
 
-  int nBinspT = 5; 
-	 
+  int nBinspT = 3; 
 
 
-
-  std::vector<Double_t> kBinsMeasured  =  {-0.05,0, 0.1, 0.2, 0.4};
-  std::vector<Double_t> kBinsUnfolded =  {-0.05,0, 0.1, 0.2, 0.4};  
+  std::vector<Double_t> kBinsMeasured  = {-0.05,0.,0.05, 0.1,0.2, 0.3, 0.4}; 
+  std::vector<Double_t> kBinsUnfolded  = {-0.05,0.,0.05, 0.1,0.2, 0.3, 0.4}; 
 
  TH2D *h2raw(0);
    h2raw=new TH2D("r","raw",kBinsMeasured.size()-1,kBinsMeasured.data(), nBinspT ,xbins);

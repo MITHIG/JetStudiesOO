@@ -60,7 +60,15 @@ void RooSimplepTPbPb_Split2D(std::string date);
 // fill the tchain
 void FillChain(TChain &chain, std::vector<std::string> &files) {
   for (auto file : files) {
-    chain.Add(file.c_str());
+    TFile* rootFile = TFile::Open(file.c_str());
+    // add this if statement to avoid problematic files 
+    if (!rootFile || rootFile->IsZombie()) {
+            std::cerr << "Skipping corrupted file: " << file.c_str() << std::endl;
+            continue;
+    }
+    else{
+      chain.Add(file.c_str());
+    }
   }
 }
 
@@ -167,19 +175,18 @@ void RooSimplepTPbPb_data2D(std::string date)
 
    //***************************************************
   
-   Double_t xbins[6];
+
+   Double_t xbins[4];
   xbins[0] = 80.0;
-  xbins[1] = 140.0;
-  xbins[2] = 200.0;
-  xbins[3] = 300.0;
-  xbins[4] = 400.0; 
-  xbins[5] = 500.0; 
+  xbins[1] = 100.0;
+  xbins[2] = 300.0;
+  xbins[3] = 700.0; 
 
-  int nBinspT = 5; 
+  int nBinspT = 3; 
 
 
-  std::vector<Double_t> kBinsMeasured  = {-0.05,0,0.1,0.2, 0.4}; 
-  std::vector<Double_t> kBinsUnfolded = {-0.05,0, 0.1,0.2, 0.4}; 
+  std::vector<Double_t> kBinsMeasured  = {-0.05,0.,0.05, 0.1,0.2, 0.3, 0.4}; 
+  std::vector<Double_t> kBinsUnfolded  = {-0.05,0.,0.05, 0.1,0.2, 0.3, 0.4}; 
 
  TH2D *h2raw(0);
    h2raw=new TH2D("r","raw",kBinsMeasured.size()-1,kBinsMeasured.data(), nBinspT ,xbins);
@@ -279,6 +286,10 @@ void RooSimplepTPbPb_data2D(std::string date)
   for (Long64_t i = 0; i < totalEventsData; i++) {
     jetReaderData.Next(); eventReaderData.Next(); trigReaderData.Next(); hiEventReaderData.Next();
 
+    if(i%10000 == 0){
+      std::cout << "----> Made it to event " << i << " , out of " << totalEventsData << " events" << std::endl; 
+    }
+
      // ------ step 1: Apply the necessary event filters ----
     if(*mbData != 1) continue; // trigger selection
     if(*zVertex_data< -15.0 || *zVertex_data > 15.0) continue;  // z vertex filter    
@@ -294,7 +305,7 @@ void RooSimplepTPbPb_data2D(std::string date)
       if(jtPfNEFData[j] > 0.9) continue;
       if(jtPfCHMData[j] < 0) continue;
 
-      if(jetPtData[j] < 80  || jetPtData[j] > 500) continue; // reco level
+      if(jetPtData[j] < 80  || jetPtData[j] > 700) continue; // reco level
 
        h2raw->Fill(jetRgData[j], jetPtData[j], w);
     }
@@ -379,8 +390,8 @@ void RooSimplepTPbPb_data2D(std::string date)
       if(jtPfCHM[j] < 0) continue;
 
       // jet pT cuts at reco and gen level (test)
-      if(jetPt[j] < 80  || jetPt[j] > 500) continue; // reco level
-      if(genJetPt[j] < 80 || genJetPt[j] > 500) continue; // gen matched level
+      if(jetPt[j] < 80  || jetPt[j] > 700) continue; // reco level
+      if(genJetPt[j] < 80 || genJetPt[j] > 700) continue; // gen matched level
       if(jetRg[j] < kBinsMeasured.front() || jetRg[j] > kBinsMeasured.back()) continue; // reco level Rg
       if(genJetRg[j] < kBinsMeasured.front() || genJetRg[j] > kBinsMeasured.back()) continue; // gen level Rg
       h2fulleff->Fill(genJetRg[j],genJetPt[j],w);  

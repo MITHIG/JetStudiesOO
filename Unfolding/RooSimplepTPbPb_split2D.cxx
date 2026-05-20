@@ -164,19 +164,17 @@ void RooSimplepTPbPb_Split2D(std::string date)
 
    //***************************************************
   
-   Double_t xbins[6];
+   Double_t xbins[4];
   xbins[0] = 80.0;
-  xbins[1] = 140.0;
-  xbins[2] = 200.0;
-  xbins[3] = 300.0;
-  xbins[4] = 400.0; 
-  xbins[5] = 500.0; 
+  xbins[1] = 100.0;
+  xbins[2] = 300.0;
+  xbins[3] = 700.0; 
 
-  int nBinspT = 5; 
+  int nBinspT = 3; 
 
 
-  std::vector<Double_t> kBinsMeasured  = {-0.05,0,0.1,0.2, 0.4}; 
-  std::vector<Double_t> kBinsUnfolded = {-0.05,0, 0.1,0.2, 0.4}; 
+  std::vector<Double_t> kBinsMeasured  = {-0.05,0.,0.05, 0.1,0.2, 0.3, 0.4}; 
+  std::vector<Double_t> kBinsUnfolded  = {-0.05,0.,0.05, 0.1,0.2, 0.3, 0.4}; 
 
  TH2D *h2raw(0);
    h2raw=new TH2D("r","raw",kBinsMeasured.size()-1,kBinsMeasured.data(), nBinspT ,xbins);
@@ -303,8 +301,8 @@ void RooSimplepTPbPb_Split2D(std::string date)
       if(jtPfCHM[j] < 0) continue;
 
       // jet pT cuts at reco and gen level (test)
-      if(jetPt[j] < 80  || jetPt[j] > 500) continue; // reco level
-      if(genJetPt[j] < 80 || genJetPt[j] > 500) continue; // gen matched level
+      if(jetPt[j] < 80  || jetPt[j] > 700) continue; // reco level
+      if(genJetPt[j] < 80 || genJetPt[j] > 700) continue; // gen matched level
       if(jetRg[j] < kBinsMeasured.front() || jetRg[j] > kBinsMeasured.back()) continue; // reco level Rg
       if(genJetRg[j] < kBinsMeasured.front() || genJetRg[j] > kBinsMeasured.back()) continue; // gen level Rg
       h2fulleff->Fill(genJetRg[j],genJetPt[j],w);  

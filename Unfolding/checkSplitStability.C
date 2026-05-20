@@ -4,7 +4,7 @@
 
 #include <sstream>
 
-void checkSplitStability(bool isTrivial = true){
+void checkSplitStability(bool isTrivial = false){
 
    int colors[20] = {kRed+2, kRed-4, kOrange+7, kOrange, kYellow-4, kSpring+10, kSpring, kGreen-3, kGreen+3, kTeal-7, kTeal, kAzure+10, kAzure-4, kBlue+2, kViolet+8, kViolet-1, kMagenta+1, kMagenta-4, kPink+7, kPink-4};
   
