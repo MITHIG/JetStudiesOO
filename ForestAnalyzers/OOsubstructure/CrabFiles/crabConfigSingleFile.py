@@ -14,7 +14,7 @@ config.JobType.psetName = "forest_CMSSWConfig_Run3_OO_MC_miniAOD.py"
 config.JobType.maxMemoryMB = 3000
 config.JobType.maxJobRuntimeMin = 360
 # needed for temp jet energy corrections
-config.JobType.inputFiles = ['ParallelMC_L2Relative_AK4PF.txt']
+config.JobType.inputFiles = ['Prompt25HIOO_V1_MC_L2Relative_AK4PF.txt']
 
 config.section_("Data")
 config.Data.userInputFiles = open("test.txt").readlines()
